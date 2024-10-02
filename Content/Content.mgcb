@@ -13,6 +13,13 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin hudFontTest1.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:hudFontTest1.spritefont
+
 #begin SpaceInvaderTest/bulletPlayer.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -36,4 +43,40 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:SpaceInvaderTest/player.png;player.png
+
+#begin SpriteFont/SpriteFontTestSubject.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteFont/SpriteFontTestSubject.png;SpriteFontTestSubject.png
+
+#begin SpriteFont/SpriteFontTestSubject2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteFont/SpriteFontTestSubject2.png;SpriteFontTestSubject2.png
+
+#begin SpriteFont/SpriteFontTestSubject3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteFont/SpriteFontTestSubject3.png;SpriteFontTestSubject3.png
 

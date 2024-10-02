@@ -25,3 +25,8 @@ e:\ADaiHoc\A2_dotNET\DoAnXNA2\obj\Debug\net8.0\DoAnXNA2.genruntimeconfig.cache
 e:\ADaiHoc\A2_dotNET\DoAnXNA2\obj\Debug\net8.0\ref\DoAnXNA2.dll
 e:\ADaiHoc\A2_dotNET\DoAnXNA2\bin\Debug\net8.0\Content\bulletPlayer.xnb
 e:\ADaiHoc\A2_dotNET\DoAnXNA2\bin\Debug\net8.0\Content\player.xnb
+e:\ADaiHoc\A2_dotNET\DoAnXNA2\obj\Debug\net8.0\DoAnXNA2.sourcelink.json
+e:\ADaiHoc\A2_dotNET\DoAnXNA2\bin\Debug\net8.0\Content\SpriteFontTestSubject.xnb
+e:\ADaiHoc\A2_dotNET\DoAnXNA2\bin\Debug\net8.0\Content\hudFontTest1.xnb
+e:\ADaiHoc\A2_dotNET\DoAnXNA2\bin\Debug\net8.0\Content\SpriteFontTestSubject2.xnb
+e:\ADaiHoc\A2_dotNET\DoAnXNA2\bin\Debug\net8.0\Content\SpriteFontTestSubject3.xnb

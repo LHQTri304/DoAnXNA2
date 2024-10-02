@@ -18,6 +18,15 @@ public class Game1 : Game
     //the sprites
     private PlayerShip _playerShip;
 
+    // Test HUD
+    SpriteFont font; // Dùng để vẽ chữ
+    Texture2D healthBarTexture; // Dùng để vẽ thanh máu
+
+    TimeSpan gameTimeElapsed; // Đồng hồ thời gian
+    int enemyCount = 10; // Giả sử số lượng kẻ địch
+    float playerHealth = 100; // Thanh máu nhân vật
+    Random random = new Random(); // Dùng để ngẫu nhiên hóa thanh máu
+
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
@@ -62,6 +71,10 @@ public class Game1 : Game
 
         // Sử dụng texturePlayer thay cho Content.Load<Texture2D>("player")
         _playerShip.Texture = Textures.texturePlayer;
+
+        // Test HUD
+        font = Content.Load<SpriteFont>("hudFontTest1"); // Font để hiển thị văn bản
+        healthBarTexture = Content.Load<Texture2D>("player"); // Texture của thanh máu    
     }
 
     protected override void Update(GameTime gameTime)
@@ -79,6 +92,14 @@ public class Game1 : Game
         // Cập nhật vị trí của playerShip và kiểm tra việc bắn
         _playerShip.Update(gameTime, kstate, Textures.textureBulletP, 5f, _graphics); // 5f là tốc độ viên đạn
 
+        // Test HUD
+        // Cập nhật thời gian chơi
+        gameTimeElapsed += gameTime.ElapsedGameTime;
+
+        // Ngẫu nhiên tăng giảm thanh máu
+        playerHealth += (float)(random.NextDouble() * 2 - 1); // Tăng giảm ngẫu nhiên
+        playerHealth = MathHelper.Clamp(playerHealth, 0, 100); // Giới hạn từ 0 đến 100
+
         base.Update(gameTime);
     }
 
@@ -94,6 +115,22 @@ public class Game1 : Game
         {
             SimplifyDrawing.HandleCentered(_spriteBatch, _bullet.Texture, _bullet.Position);
         }
+
+        // Test HUD
+
+        // Hiển thị đồng hồ thời gian
+        string timeText = $"Time: {gameTimeElapsed.TotalSeconds:F2}";
+        Textures.customFont.DrawText(_spriteBatch, timeText, new Vector2(10, 10), Color.White);
+
+        // Hiển thị số lượng kẻ địch
+        string enemyText = $"Enemies: {enemyCount}";
+        _spriteBatch.DrawString(font, enemyText, new Vector2(10, 40), Color.White);
+
+        // Hiển thị thanh máu
+        int healthBarWidth = (int)(playerHealth / 100 * 200); // Chiều rộng thanh máu dựa trên sức khỏe
+        _spriteBatch.Draw(healthBarTexture, new Rectangle(10, 70, healthBarWidth, 20), Color.Red);
+        // Hết HUD
+
         _spriteBatch.End();
 
         // Quay trở lại vẽ vào màn hình chính
@@ -117,7 +154,6 @@ public class Game1 : Game
                          new Rectangle(offsetX, offsetY, (int)(virtualWidth * scale), (int)(virtualHeight * scale)),
                          Color.White);
         _spriteBatch.End();
-
 
         base.Draw(gameTime);
     }

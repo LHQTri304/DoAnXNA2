@@ -104,5 +104,10 @@ namespace DoAnXNA2.src.sprites
             if (Position.Y > windowHeight - (Texture.Height / 2))
                 Position = new Vector2(Position.X, windowHeight - (Texture.Height / 2));
         }
+
+        public void Draw(SpriteBatch _spriteBatch)
+        {
+            SimplifyDrawing.HandleCentered(_spriteBatch, Texture, Position);
+        }
     }
 }

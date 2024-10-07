@@ -8,6 +8,7 @@ namespace DoAnXNA2
         public static Texture2D texturePlayer;
         public static Texture2D textureBulletP;
         public static Texture2D textureHP;
+        public static Texture2D textureEnemy;
 
         // For HUD
         private static Texture2D fontTexture;
@@ -18,6 +19,7 @@ namespace DoAnXNA2
         {
             texturePlayer = content.Load<Texture2D>("player");
             textureBulletP = content.Load<Texture2D>("bulletPlayer");
+            textureEnemy = content.Load<Texture2D>("player");
 
             //GUI            
             textureHP = content.Load<Texture2D>("TestHP");

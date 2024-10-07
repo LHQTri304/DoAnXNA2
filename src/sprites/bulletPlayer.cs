@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using DoAnXNA2.src.utilities;
 
 namespace DoAnXNA2.src.sprites
 {
@@ -22,6 +23,11 @@ namespace DoAnXNA2.src.sprites
             Vector2 newPosition = Position;
             newPosition.Y -= Speed;
             Position = newPosition;
+        }
+
+        public void Draw(SpriteBatch _spriteBatch)
+        {
+            SimplifyDrawing.HandleCentered(_spriteBatch, Texture, Position);
         }
     }
 }

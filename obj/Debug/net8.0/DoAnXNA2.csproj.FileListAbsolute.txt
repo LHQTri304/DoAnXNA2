@@ -31,3 +31,4 @@ e:\ADaiHoc\A2_dotNET\DoAnXNA2\bin\Debug\net8.0\Content\hudFontTest1.xnb
 e:\ADaiHoc\A2_dotNET\DoAnXNA2\bin\Debug\net8.0\Content\SpriteFontTestSubject2.xnb
 e:\ADaiHoc\A2_dotNET\DoAnXNA2\bin\Debug\net8.0\Content\SpriteFontTestSubject3.xnb
 e:\ADaiHoc\A2_dotNET\DoAnXNA2\bin\Debug\net8.0\Content\TestHP.xnb
+e:\ADaiHoc\A2_dotNET\DoAnXNA2\bin\Debug\net8.0\SimplexNoise.dll

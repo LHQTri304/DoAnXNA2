@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using DoAnXNA2.src.sprites;
 using DoAnXNA2.src.utilities;
 using Microsoft.Xna.Framework;
@@ -17,12 +18,13 @@ public class Game1 : Game
 
     //the sprites
     private PlayerShip _playerShip;
+    private List<Enemy> _enemies;
+    private Random _randomEnemiesSpawnX;
 
     // Test HUD
     SpriteFont font; // Dùng để vẽ chữ
-
     TimeSpan gameTimeElapsed; // Đồng hồ thời gian
-    int enemyCount = 10; // Giả sử số lượng kẻ địch
+    int enemyCount; // Giả sử số lượng kẻ địch
     float playerHealth = 100; // Thanh máu nhân vật
     Random random = new Random(); // Dùng để ngẫu nhiên hóa thanh máu
 
@@ -39,24 +41,17 @@ public class Game1 : Game
         _graphics.PreferredBackBufferWidth = virtualWidth;
         _graphics.PreferredBackBufferHeight = virtualHeight;
         _graphics.ApplyChanges();
-
-        // Cho phép thay đổi kích thước cửa sổ
-        Window.AllowUserResizing = true;
-
-        // Nếu muốn fullscreen, thêm dòng này
-        _graphics.IsFullScreen = true;
+        Window.AllowUserResizing = true;    // Cho phép thay đổi kích thước cửa sổ        
+        _graphics.IsFullScreen = true;  // Nếu muốn fullscreen, thêm dòng này
 
         // Tạo RenderTarget với kích thước cố định
         renderTarget = new RenderTarget2D(GraphicsDevice, virtualWidth, virtualHeight);
 
-        // Lấy vị trí giữa khung hình
-        float windowWidth = _graphics.PreferredBackBufferWidth;
-        float windowHeight = _graphics.PreferredBackBufferHeight;
-        //Vector2 centerPosition = new Vector2(windowWidth / 2, windowHeight / 2);
-        Vector2 beginPosition = new Vector2(100, 100);
-
         // Tạo các sprites
-        _playerShip = new PlayerShip(null, beginPosition, 1000f);
+        _playerShip = new PlayerShip(null, new Vector2(100, 100), 1000f);
+        _enemies = new List<Enemy>();
+        _randomEnemiesSpawnX = new Random();
+        enemyCount = _enemies.Count;
 
         base.Initialize();
     }
@@ -98,7 +93,30 @@ public class Game1 : Game
         playerHealth += (float)(random.NextDouble() * 2 - 1); // Tăng giảm ngẫu nhiên
         playerHealth = MathHelper.Clamp(playerHealth, 0, 100); // Giới hạn từ 0 đến 100
 
+        // Kiểm tra nếu người chơi nhấn phím M để spawn kẻ địch
+        InputUtilities.HandleKeyPress(Keys.M, kstate, () => SpawnEnemy());
+
+        // Cập nhật vị trí các kẻ địch
+        for (int i = _enemies.Count - 1; i >= 0; i--)
+        {
+            _enemies[i].Update(gameTime, _playerShip.Bullets, _enemies, _graphics);
+            enemyCount = _enemies.Count;
+        }
+
         base.Update(gameTime);
+    }
+
+    private void SpawnEnemy()
+    {
+        // Sinh ra vị trí x ngẫu nhiên trong phạm vi chiều ngang khung hình
+        float randomX = _randomEnemiesSpawnX.Next(0, _graphics.PreferredBackBufferWidth);
+
+        // Tạo kẻ địch mới ở vị trí (randomX, -50) với tốc độ di chuyển dọc 100f
+        Vector2 enemyPosition = new Vector2(randomX, -50);
+        Enemy newEnemy = new Enemy(Textures.textureEnemy, enemyPosition, 100f);
+
+        // Thêm kẻ địch mới vào danh sách
+        _enemies.Add(newEnemy);
     }
 
     protected override void Draw(GameTime gameTime)
@@ -108,14 +126,17 @@ public class Game1 : Game
         GraphicsDevice.Clear(Color.Indigo);
 
         _spriteBatch.Begin();
-        SimplifyDrawing.HandleCentered(_spriteBatch, _playerShip.Texture, _playerShip.Position);
+        _playerShip.Draw(_spriteBatch);
         foreach (var _bullet in _playerShip.Bullets)
         {
-            SimplifyDrawing.HandleCentered(_spriteBatch, _bullet.Texture, _bullet.Position);
+            _bullet.Draw(_spriteBatch);
+        }
+        foreach (var enemy in _enemies)
+        {
+            enemy.Draw(_spriteBatch);
         }
 
         // Test HUD
-
         // Hiển thị đồng hồ thời gian
         string timeText = $"Time: {gameTimeElapsed.TotalSeconds:F2}";
         Textures.customFont.DrawText(_spriteBatch, timeText, new Vector2(10, 10), Color.White);

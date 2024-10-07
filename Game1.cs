@@ -20,7 +20,6 @@ public class Game1 : Game
 
     // Test HUD
     SpriteFont font; // Dùng để vẽ chữ
-    Texture2D healthBarTexture; // Dùng để vẽ thanh máu
 
     TimeSpan gameTimeElapsed; // Đồng hồ thời gian
     int enemyCount = 10; // Giả sử số lượng kẻ địch
@@ -73,8 +72,7 @@ public class Game1 : Game
         _playerShip.Texture = Textures.texturePlayer;
 
         // Test HUD
-        font = Content.Load<SpriteFont>("hudFontTest1"); // Font để hiển thị văn bản
-        healthBarTexture = Content.Load<Texture2D>("player"); // Texture của thanh máu    
+        font = Content.Load<SpriteFont>("hudFontTest1"); // Font để hiển thị văn bản  
     }
 
     protected override void Update(GameTime gameTime)
@@ -128,7 +126,7 @@ public class Game1 : Game
 
         // Hiển thị thanh máu
         int healthBarWidth = (int)(playerHealth / 100 * 200); // Chiều rộng thanh máu dựa trên sức khỏe
-        _spriteBatch.Draw(healthBarTexture, new Rectangle(10, 70, healthBarWidth, 20), Color.Red);
+        _spriteBatch.Draw(Textures.textureHP, new Rectangle(10, 70, healthBarWidth, 20), Color.Red);
         // Hết HUD
 
         _spriteBatch.End();

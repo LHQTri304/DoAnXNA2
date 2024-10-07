@@ -7,6 +7,7 @@ namespace DoAnXNA2
     {
         public static Texture2D texturePlayer;
         public static Texture2D textureBulletP;
+        public static Texture2D textureHP;
 
         // For HUD
         private static Texture2D fontTexture;
@@ -17,6 +18,9 @@ namespace DoAnXNA2
         {
             texturePlayer = content.Load<Texture2D>("player");
             textureBulletP = content.Load<Texture2D>("bulletPlayer");
+
+            //GUI            
+            textureHP = content.Load<Texture2D>("TestHP");
 
             // Load font texture từ file hình ảnh
             fontTexture = content.Load<Texture2D>("SpriteFontTestSubject3");

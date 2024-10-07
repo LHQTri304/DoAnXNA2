@@ -4,6 +4,7 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/GUI/TestHP.png</File>
     <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/hudFontTest1.spritefont</File>
     <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpaceInvaderTest/bulletPlayer.png</File>
     <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpaceInvaderTest/player.png</File>
@@ -12,6 +13,7 @@
     <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpriteFont/SpriteFontTestSubject3.png</File>
   </SourceFiles>
   <DestFiles>
+    <File>TestHP.png</File>
     <File xsi:nil="true" />
     <File>bulletPlayer.png</File>
     <File>player.png</File>

@@ -11,19 +11,17 @@ namespace DoAnXNA2.src.sprites
         public Texture2D Texture { get; set; }
         public Vector2 Position { get; set; }
         public float Speed { get; set; }
-        private bool AvoidHolding;
 
         // Danh sách để quản lý đạn
         public List<BulletPlayer> Bullets { get; set; }
         private float shootCoolDown;
-        private float shootCoolDownTime = 0.2f; // thời gian chờ giữa các lần bắn (3 giây)
+        private float shootCoolDownTime = 0.2f; // thời gian chờ giữa các lần bắn
 
         public PlayerShip(Texture2D texture, Vector2 position, float speed)
         {
             Texture = texture;
             Position = position;
             Speed = speed;
-            AvoidHolding = false;
             Bullets = new List<BulletPlayer>();
             shootCoolDown = 0;
         }

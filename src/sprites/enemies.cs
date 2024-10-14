@@ -18,9 +18,9 @@ namespace DoAnXNA2.src.sprites
         private float horizontalSpeed; // Tốc độ di chuyển ngang
 
         // Quản lý đạn & cooldown bắn
-        public List<BulletPlayer> Bullets { get; set; }
+        public List<BulletEnemy> Bullets { get; set; }
         private float shootCoolDown;
-        private float shootCoolDownTime = 1f; // thời gian chờ giữa các lần bắn
+        private float shootCoolDownTime = 3f; // thời gian chờ giữa các lần bắn
 
         // Quản lý chuyển động khi va chạm tường
         private bool isCollidedWithLeftWall;
@@ -36,7 +36,7 @@ namespace DoAnXNA2.src.sprites
             horizontalOffset = perlinNoiseOffset;
             perlinNoiseOffset += 0.03f; // Tạo sự khác biệt cho từng kẻ địch
             horizontalSpeed = 55f; // Tốc độ di chuyển ngang
-            Bullets = new List<BulletPlayer>();
+            Bullets = new List<BulletEnemy>();
             shootCoolDown = 0;
             isCollidedWithLeftWall = false;
             isCollidedWithRightWall = false;
@@ -44,11 +44,16 @@ namespace DoAnXNA2.src.sprites
         }
 
         // Phương thức bắn đạn
-        public void Shoot(Texture2D bulletTexture, float bulletSpeed)
+        public void Shoot(GameTime gameTime, Texture2D bulletTexture, float bulletSpeed)
         {
-            if (shootCoolDown <= 0)
+            // Cập nhật cooldown
+            if (shootCoolDown > 0)
             {
-                BulletPlayer bullet = new BulletPlayer(bulletTexture, new Vector2(Position.X, Position.Y), bulletSpeed);
+                shootCoolDown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
+            else if (shootCoolDown <= 0)
+            {
+                BulletEnemy bullet = new BulletEnemy(bulletTexture, new Vector2(Position.X, Position.Y), bulletSpeed);
                 Bullets.Add(bullet);
                 shootCoolDown = shootCoolDownTime; // Reset thời gian chờ sau khi bắn
             }
@@ -90,12 +95,17 @@ namespace DoAnXNA2.src.sprites
         }
 
         // Phương thức cập nhật trạng thái của kẻ địch
-        public void Update(GameTime gameTime, List<BulletPlayer> bullets, List<Enemy> enemies, GraphicsDeviceManager graphics)
+        public void Update(GameTime gameTime, GraphicsDeviceManager graphics, List<BulletPlayer> bullets, List<Enemy> enemies,Texture2D bulletTexture, float bulletSpeed)
         {
-            // Cập nhật cooldown
-            if (shootCoolDown > 0)
+            // auto bắn đạn sau cooldown & cập nhật vị trí của chúng, nếu chạm viền dưới sẽ biến mất
+            Shoot(gameTime, bulletTexture, bulletSpeed);
+            for (int i = Bullets.Count - 1; i >= 0; i--)
             {
-                shootCoolDown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                Bullets[i].Move();
+                if (Bullets[i].Position.Y > graphics.PreferredBackBufferHeight)
+                {
+                    Bullets.RemoveAt(i);
+                }
             }
 
             // Di chuyển kẻ địch xuống

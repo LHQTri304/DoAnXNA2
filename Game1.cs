@@ -68,7 +68,7 @@ public class Game1 : Game
 
         // Cập nhật các sprites
         _playerShip.Update(_gameTime, _graphics, kstate, Textures.textureBulletP, 5f); // 5f là tốc độ viên đạn
-        _enemySpawner.Update(_gameTime, _graphics, Textures.textureEnemy, _playerShip.Bullets);
+        _enemySpawner.Update(_gameTime, _graphics, Textures.textureEnemy, _playerShip.Bullets, Textures.textureBulletE, 3.5f);
 
         // Cập nhật GUI và HUD
         _gameHUD.Update(_gameTime, _enemySpawner.Enemies.Count);
@@ -83,13 +83,17 @@ public class Game1 : Game
 
         _spriteBatch.Begin();
         _playerShip.Draw(_spriteBatch);
-        foreach (var _bullet in _playerShip.Bullets)
+        foreach (var _bulletP in _playerShip.Bullets)
         {
-            _bullet.Draw(_spriteBatch);
+            _bulletP.Draw(_spriteBatch);
         }
-        foreach (var enemy in _enemySpawner.Enemies)
+        foreach (var _enemy in _enemySpawner.Enemies)
         {
-            enemy.Draw(_spriteBatch);
+            _enemy.Draw(_spriteBatch);
+        foreach (var _bulletE in _enemy.Bullets)
+        {
+            _bulletE.Draw(_spriteBatch);
+        }
         }
         _gameHUD.Draw(_spriteBatch, Textures.textureHP);    // Vẽ HUD
         _spriteBatch.End();

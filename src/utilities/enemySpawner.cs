@@ -24,12 +24,12 @@ namespace DoAnXNA2.src.utilities
 
 
         // Phương thức cập nhật để spawn kẻ địch theo thời gian
-        public void Update(GameTime gameTime, GraphicsDeviceManager graphics, Texture2D enemyTexture, List<BulletPlayer> bullets)
+        public void Update(GameTime gameTime, GraphicsDeviceManager graphics, Texture2D enemyTexture, List<BulletPlayer> bullets,Texture2D bulletTexture, float bulletSpeed)
         {
             //Cập nhật trạng thái từng kẻ địch đã có
             for (int i = _enemies.Count - 1; i >= 0; i--)
             {
-                _enemies[i].Update(gameTime, bullets, _enemies, graphics);
+                _enemies[i].Update(gameTime, graphics, bullets, _enemies, bulletTexture, bulletSpeed);
             }
             // Spawn kẻ địch mới sau cool down
             if (_spawnCooldown > 0)

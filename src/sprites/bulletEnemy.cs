@@ -5,13 +5,13 @@ using DoAnXNA2.src.utilities;
 
 namespace DoAnXNA2.src.sprites
 {
-    public class BulletPlayer
+    public class BulletEnemy
     {
         public Texture2D Texture { get; set; }
         public Vector2 Position { get; set; }
         public float Speed { get; set; }
 
-        public BulletPlayer(Texture2D texture, Vector2 position, float speed)
+        public BulletEnemy(Texture2D texture, Vector2 position, float speed)
         {
             Texture = texture;
             Position = position;
@@ -21,7 +21,7 @@ namespace DoAnXNA2.src.sprites
         public void Move()
         {
             Vector2 newPosition = Position;
-            newPosition.Y -= Speed;
+            newPosition.Y += Speed;
             Position = newPosition;
         }
 

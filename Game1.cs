@@ -42,8 +42,8 @@ public class Game1 : Game
         _renderTarget = new RenderTarget2D(GraphicsDevice, virtualWidth, virtualHeight);
 
         // Tạo các sprites
-        _playerShip = new PlayerShip(null, new Vector2(100, 100), 1000f);
-        _enemySpawner = new EnemySpawner(1f); // Khởi tạo EnemySpawner với thời gian cooldown 1 giây
+        _playerShip = new PlayerShip(null, new Vector2(100, 100), 100f);
+        _enemySpawner = new EnemySpawner(3f); // Khởi tạo EnemySpawner với thời gian cooldown
 
         base.Initialize();
     }
@@ -60,33 +60,23 @@ public class Game1 : Game
         _gameHUD = new GameHUD(Content.Load<SpriteFont>("hudFontTest1"));
     }
 
-    protected override void Update(GameTime gameTime)
+    protected override void Update(GameTime _gameTime)
     {
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
         var kstate = Keyboard.GetState();
 
-        // Liên tục update speed cho các sprites --> Giúp chuyển động nhìn mượt và thống nhất
-        float updatedPlayerShipSpeed = _playerShip.Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-        // Cập nhật vị trí của playerShip và kiểm tra việc bắn
-        _playerShip.Move(kstate, updatedPlayerShipSpeed);
-        _playerShip.Update(gameTime, kstate, Textures.textureBulletP, 5f, _graphics); // 5f là tốc độ viên đạn
-
-        // Cập nhật EnemySpawner để spawn kẻ địch & vị trí các kẻ địch
-        _enemySpawner.Update(gameTime, Textures.textureEnemy, _graphics);
-        for (int i = _enemySpawner.Enemies.Count - 1; i >= 0; i--)
-        {
-            _enemySpawner.Enemies[i].Update(gameTime, _playerShip.Bullets, _enemySpawner.Enemies, _graphics);
-        }
+        // Cập nhật các sprites
+        _playerShip.Update(_gameTime, _graphics, kstate, Textures.textureBulletP, 5f); // 5f là tốc độ viên đạn
+        _enemySpawner.Update(_gameTime, _graphics, Textures.textureEnemy, _playerShip.Bullets);
 
         // Cập nhật GUI và HUD
-        _gameHUD.Update(gameTime, _enemySpawner.Enemies.Count);
+        _gameHUD.Update(_gameTime, _enemySpawner.Enemies.Count);
 
-        base.Update(gameTime);
+        base.Update(_gameTime);
     }
 
-    protected override void Draw(GameTime gameTime)
+    protected override void Draw(GameTime _gameTime)
     {
         GraphicsDevice.SetRenderTarget(_renderTarget);   // Set RenderTarget để vẽ nội dung vào đó
         GraphicsDevice.Clear(Color.Indigo);
@@ -127,6 +117,6 @@ public class Game1 : Game
         _spriteBatch.End();
         //#### SCALING SCREEN FLEXIBLE - END ####//
 
-        base.Draw(gameTime);
+        base.Draw(_gameTime);
     }
 }

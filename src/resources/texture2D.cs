@@ -19,7 +19,7 @@ namespace DoAnXNA2
         {
             texturePlayer = content.Load<Texture2D>("player");
             textureBulletP = content.Load<Texture2D>("bulletPlayer");
-            textureEnemy = content.Load<Texture2D>("player");
+            textureEnemy = content.Load<Texture2D>("enemyYellow");
 
             //GUI            
             textureHP = content.Load<Texture2D>("TestHP");

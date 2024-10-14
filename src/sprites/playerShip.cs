@@ -15,7 +15,7 @@ namespace DoAnXNA2.src.sprites
         // Danh sách để quản lý đạn
         public List<BulletPlayer> Bullets { get; set; }
         private float shootCoolDown;
-        private float shootCoolDownTime = 0.2f; // thời gian chờ giữa các lần bắn
+        private float shootCoolDownTime = 1f; // thời gian chờ giữa các lần bắn
 
         public PlayerShip(Texture2D texture, Vector2 position, float speed)
         {
@@ -56,8 +56,12 @@ namespace DoAnXNA2.src.sprites
         }
 
         // Cập nhật trạng thái bắn đạn
-        public void Update(GameTime gameTime, KeyboardState kstate, Texture2D bulletTexture, float bulletSpeed, GraphicsDeviceManager graphics)
+        public void Update(GameTime gameTime, GraphicsDeviceManager graphics, KeyboardState kstate, Texture2D bulletTexture, float bulletSpeed)
         {
+            //update speed theo thời gian thực -> Giúp chuyển động nhìn mượt và thống nhất
+            float updatedPlayerShipSpeed = Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            Move(kstate, updatedPlayerShipSpeed); // Trạng thái di chuyển theo phím điều khiển
+
             // Cập nhật cooldown
             if (shootCoolDown > 0)
             {
@@ -70,18 +74,11 @@ namespace DoAnXNA2.src.sprites
             // Cập nhật vị trí của các viên đạn và kiểm tra xem có chạm viền trên không
             for (int i = Bullets.Count - 1; i >= 0; i--)
             {
-                Bullets[i].Move(kstate, bulletSpeed);
-                // Nếu viên đạn ra khỏi viền trên (Position.Y < 0), xóa nó khỏi danh sách
+                Bullets[i].Move();
                 if (Bullets[i].Position.Y < 0)
                 {
                     Bullets.RemoveAt(i);
                 }
-            }
-
-            // Cập nhật vị trí của các viên đạn
-            foreach (var bullet in Bullets)
-            {
-                bullet.Move(kstate, bulletSpeed);
             }
 
             // Giới hạn playerShip di chuyển trong cửa sổ

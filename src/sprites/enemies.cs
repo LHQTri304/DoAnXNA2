@@ -1,8 +1,7 @@
-// enemies.cs
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
-using Microsoft.Xna.Framework.Input;
+using System.Linq;
 using DoAnXNA2.src.utilities;
 using System;
 
@@ -13,20 +12,23 @@ namespace DoAnXNA2.src.sprites
         public Texture2D Texture { get; set; }
         public Vector2 Position { get; set; }
         public float Speed { get; set; }
+        public bool IsAlive { get; private set; } = true;
+
+        //Quản lý di chuyển ngẫu nhiên
         private float horizontalOffset; // Biến để lưu giá trị ngẫu nhiên (Perlin noise)
         private static float perlinNoiseOffset = 0; // Giá trị để tính Perlin noise cho mỗi kẻ địch
         private float horizontalSpeed; // Tốc độ di chuyển ngang
 
-        // Quản lý đạn & cooldown bắn
-        public List<BulletEnemy> Bullets { get; set; }
+        // Quản lý cơ chế bắn đạn
+        public List<BulletEnemy> Bullets { get; private set; } = new List<BulletEnemy>();
         private float shootCoolDown;
-        private float shootCoolDownTime = 3f; // thời gian chờ giữa các lần bắn
+        private const float shootCoolDownTime = 3f;
 
-        // Quản lý chuyển động khi va chạm tường
+        // Quản lý giới hạn di chuyển bên trong màn hình
         private bool isCollidedWithLeftWall;
         private bool isCollidedWithRightWall;
         private float wallCollisionCoolDown;
-        private float wallCollisionCoolDownTime = 0.75f; // thời gian di chuyển xa khỏi tường, tránh quay đầu quá nhanh
+        private const float wallCollisionCoolDownTime = 0.75f;
 
         public Enemy(Texture2D texture, Vector2 position, float speed)
         {
@@ -34,36 +36,24 @@ namespace DoAnXNA2.src.sprites
             Position = position;
             Speed = speed;
             horizontalOffset = perlinNoiseOffset;
-            perlinNoiseOffset += 0.03f; // Tạo sự khác biệt cho từng kẻ địch
-            horizontalSpeed = 55f; // Tốc độ di chuyển ngang
-            Bullets = new List<BulletEnemy>();
-            shootCoolDown = 0;
-            isCollidedWithLeftWall = false;
-            isCollidedWithRightWall = false;
-            wallCollisionCoolDown = 0;
+            perlinNoiseOffset += 0.03f;
+            horizontalSpeed = 55f;
         }
 
-        // Phương thức bắn đạn
         public void Shoot(GameTime gameTime, Texture2D bulletTexture, float bulletSpeed)
         {
-            // Cập nhật cooldown
-            if (shootCoolDown > 0)
+            shootCoolDown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (shootCoolDown <= 0)
             {
-                shootCoolDown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-            }
-            else if (shootCoolDown <= 0)
-            {
-                BulletEnemy bullet = new BulletEnemy(bulletTexture, new Vector2(Position.X, Position.Y), bulletSpeed);
-                Bullets.Add(bullet);
-                shootCoolDown = shootCoolDownTime; // Reset thời gian chờ sau khi bắn
+                Bullets.Add(new BulletEnemy(bulletTexture, new Vector2(Position.X, Position.Y), bulletSpeed));
+                shootCoolDown = shootCoolDownTime;
             }
         }
 
-        // Phương thức di chuyển ra xa khỏi tường sau khi va chạm --> tránh tình trạng kẹt lâu ở 2 mép màn hình
         public void MoveAfterCollisionWithWall(GameTime gameTime, GraphicsDeviceManager graphics, float moveValue)
         {
-            // dựng cờ
-            if (Position.X < 0 + Texture.Width / 2)
+            if (Position.X < Texture.Width / 2)
             {
                 isCollidedWithLeftWall = true;
                 wallCollisionCoolDown = wallCollisionCoolDownTime;
@@ -73,17 +63,13 @@ namespace DoAnXNA2.src.sprites
                 isCollidedWithRightWall = true;
                 wallCollisionCoolDown = wallCollisionCoolDownTime;
             }
-            // di chuyển
+
             if (wallCollisionCoolDown > 0)
             {
-                if (isCollidedWithLeftWall)
-                {
-                    Position += new Vector2(Math.Abs(moveValue), 0);
-                }
-                else if (isCollidedWithRightWall)
-                {
-                    Position += new Vector2(-Math.Abs(moveValue), 0);
-                }
+                Position += isCollidedWithLeftWall
+                    ? new Vector2(Math.Abs(moveValue), 0)
+                    : new Vector2(-Math.Abs(moveValue), 0);
+
                 wallCollisionCoolDown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
             else
@@ -94,59 +80,53 @@ namespace DoAnXNA2.src.sprites
             }
         }
 
-        // Phương thức cập nhật trạng thái của kẻ địch
-        public void Update(GameTime gameTime, GraphicsDeviceManager graphics, List<BulletPlayer> bullets, List<Enemy> enemies,Texture2D bulletTexture, float bulletSpeed)
+        public void Update(GameTime gameTime, GraphicsDeviceManager graphics, List<BulletPlayer> bullets, List<Enemy> enemies, Texture2D bulletTexture, float bulletSpeed)
         {
-            // auto bắn đạn sau cooldown & cập nhật vị trí của chúng, nếu chạm viền dưới sẽ biến mất
-            Shoot(gameTime, bulletTexture, bulletSpeed);
-            for (int i = Bullets.Count - 1; i >= 0; i--)
-            {
-                Bullets[i].Move();
-                if (Bullets[i].Position.Y > graphics.PreferredBackBufferHeight)
-                {
-                    Bullets.RemoveAt(i);
-                }
-            }
+            if (!IsAlive) return; // Không cập nhật kẻ địch nếu nó đã bị tiêu diệt
 
-            // Di chuyển kẻ địch xuống
+            Shoot(gameTime, bulletTexture, bulletSpeed);
+            Bullets = Bullets.Where(b => b.Position.Y <= graphics.PreferredBackBufferHeight)
+                             .Select(b => { b.Move(); return b; }).ToList();
+
+            // Auto di chuyển dọc
             Position += new Vector2(0, Speed * (float)gameTime.ElapsedGameTime.TotalSeconds);
 
-            // Di chuyển ngang dựa trên Perlin noise hoặc giá trị ngẫu nhiên
+            // Di chuyển ngang ngẫu nhiên và không vượt ra khỏi màn hình
             float perlinValue = MathHelper.Lerp(-1, 1, (float)SimplexNoise.Noise.CalcPixel2D((int)horizontalOffset, 0, 0.05f) / 255f);
-            horizontalOffset += 0.1f; // Tăng giá trị của Perlin noise theo thời gian
+            horizontalOffset += 0.1f;
             float moveValue = perlinValue * horizontalSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             MoveAfterCollisionWithWall(gameTime, graphics, moveValue);
-            //Position += new Vector2(moveValue, 0);
 
-            // Nếu kẻ địch vượt quá viền dưới màn hình (khoảng cách 50 đơn vị), xóa nó
+            // Xóa kẻ địch nếu ra khỏi màn hình
             if (Position.Y > graphics.PreferredBackBufferHeight + 50)
             {
-                enemies.Remove(this);
+                IsAlive = false;
             }
 
-            // Kiểm tra va chạm với đạn của người chơi
-            CheckCollisionWithBullets(bullets, enemies);
+            CheckCollisionWithBullets(bullets);
         }
 
-        // Phương thức kiểm tra va chạm với đạn
-        private void CheckCollisionWithBullets(List<BulletPlayer> bullets, List<Enemy> enemies)
+        private void CheckCollisionWithBullets(List<BulletPlayer> bullets)
         {
-            for (int i = bullets.Count - 1; i >= 0; i--)
+            var enemyBounds = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
+
+            bullets.RemoveAll(bullet =>
             {
-                BulletPlayer bullet = bullets[i];
-                if (Vector2.Distance(bullet.Position, this.Position) < (this.Texture.Width / 2 + bullet.Texture.Width / 2))
+                var bulletBounds = new Rectangle((int)bullet.Position.X, (int)bullet.Position.Y, bullet.Texture.Width, bullet.Texture.Height);
+
+                if (enemyBounds.Intersects(bulletBounds))
                 {
-                    // Nếu va chạm, xóa cả đạn và kẻ địch
-                    bullets.RemoveAt(i);
-                    enemies.Remove(this);
-                    break;
+                    IsAlive = false; // Kẻ địch bị tiêu diệt
+                    return true;
                 }
-            }
+                return false;
+            });
         }
 
-        public void Draw(SpriteBatch _spriteBatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            SimplifyDrawing.HandleCentered(_spriteBatch, Texture, Position);
+            if (IsAlive)
+                SimplifyDrawing.HandleCentered(spriteBatch, Texture, Position);
         }
     }
 }

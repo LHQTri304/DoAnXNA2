@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using DoAnXNA2.src.sprites;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -8,35 +9,31 @@ namespace DoAnXNA2.src.utilities
 {
     public class EnemySpawner
     {
-        private List<Enemy> _enemies;
-        public List<Enemy> Enemies => _enemies;
-        private Random _randomEnemiesSpawnX;
+        public List<Enemy> Enemies { get; private set; } = new List<Enemy>();
+        private Random _randomEnemiesSpawnX = new Random();
         private float _spawnCooldown;
-        private float _spawnCooldownTime;
+        private readonly float _spawnCooldownTime;
 
         public EnemySpawner(float spawnCooldownTime)
         {
-            _enemies = new List<Enemy>();
-            _randomEnemiesSpawnX = new Random();
             _spawnCooldownTime = spawnCooldownTime;
-            _spawnCooldown = 0;
         }
 
-
         // Phương thức cập nhật để spawn kẻ địch theo thời gian
-        public void Update(GameTime gameTime, GraphicsDeviceManager graphics, Texture2D enemyTexture, List<BulletPlayer> bullets,Texture2D bulletTexture, float bulletSpeed)
+        public void Update(GameTime gameTime, GraphicsDeviceManager graphics, Texture2D enemyTexture, List<BulletPlayer> bullets, Texture2D bulletTexture, float bulletSpeed)
         {
-            //Cập nhật trạng thái từng kẻ địch đã có
-            for (int i = _enemies.Count - 1; i >= 0; i--)
+            // Cập nhật trạng thái kẻ địch hiện tại
+            Enemies = Enemies.Where(enemy =>
             {
-                _enemies[i].Update(gameTime, graphics, bullets, _enemies, bulletTexture, bulletSpeed);
-            }
-            // Spawn kẻ địch mới sau cool down
-            if (_spawnCooldown > 0)
-            {
-                _spawnCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-            }
-            else
+                enemy.Update(gameTime, graphics, bullets, Enemies, bulletTexture, bulletSpeed);
+                return enemy.IsAlive; // Giữ lại kẻ địch còn sống
+            }).ToList();
+
+            // Giảm cooldown
+            _spawnCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            // Spawn kẻ địch mới nếu cooldown <= 0
+            if (_spawnCooldown <= 0)
             {
                 SpawnEnemy(enemyTexture, graphics);
                 _spawnCooldown = _spawnCooldownTime; // Reset cooldown
@@ -49,16 +46,15 @@ namespace DoAnXNA2.src.utilities
             float randomX = _randomEnemiesSpawnX.Next(0, graphics.PreferredBackBufferWidth);
 
             // Tạo kẻ địch mới ở vị trí (randomX, -10) với tốc độ di chuyển dọc 10f
-            Vector2 enemyPosition = new Vector2(randomX, -10);
-            Enemy newEnemy = new Enemy(enemyTexture, enemyPosition, 10f);
+            var newEnemy = new Enemy(enemyTexture, new Vector2(randomX, -10), 10f);
 
             // Thêm kẻ địch vào danh sách
-            _enemies.Add(newEnemy);
+            Enemies.Add(newEnemy);
         }
 
         public void ClearEnemies()
         {
-            _enemies.Clear();
+            Enemies.Clear();
         }
     }
 }

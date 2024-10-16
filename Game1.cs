@@ -42,7 +42,7 @@ public class Game1 : Game
         _renderTarget = new RenderTarget2D(GraphicsDevice, virtualWidth, virtualHeight);
 
         // Tạo các sprites
-        _playerShip = new PlayerShip(Textures.texturePlayer, new Vector2(100, 100), 100f);
+        _playerShip = new PlayerShip(null, new Vector2(100, 100), 100f);
         _enemySpawner = new EnemySpawner(3f); // Khởi tạo EnemySpawner với thời gian cooldown
 
         base.Initialize();
@@ -53,8 +53,9 @@ public class Game1 : Game
         _spriteBatch = new SpriteBatch(GraphicsDevice); //Tạo sprite batch        
         Textures.LoadTextures(Content); // Load tất cả các texture trong file texture2D.cs
 
-        // Khởi tạo GameHUD với font
-        _gameHUD = new GameHUD(Content.Load<SpriteFont>("hudFontTest1"));
+        _playerShip.Texture = Textures.texturePlayer; //Thêm Texture sau khi load, tránh lỗi null khi  và run
+
+        _gameHUD = new GameHUD(Content.Load<SpriteFont>("hudFontTest1"));// Khởi tạo GameHUD với font
     }
 
     protected override void Update(GameTime _gameTime)

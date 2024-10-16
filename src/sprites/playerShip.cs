@@ -9,9 +9,9 @@ namespace DoAnXNA2.src.sprites
 {
     public class PlayerShip
     {
-        public Texture2D Texture { get; private set; }
-        public Vector2 Position { get; private set; }
-        public float Speed { get; private set; }
+        public Texture2D Texture { get; set; }
+        public Vector2 Position { get; set; }
+        public float Speed { get; set; }
         public List<BulletPlayer> Bullets;
 
         // Quản lý bắn đạn
@@ -56,7 +56,7 @@ namespace DoAnXNA2.src.sprites
             float windowWidth = graphics.PreferredBackBufferWidth;
             float windowHeight = graphics.PreferredBackBufferHeight;
             Position = new Vector2(
-                MathHelper.Clamp(Position.X, 0, windowWidth - Texture.Width),
+                MathHelper.Clamp(Position.X, 0, windowWidth),
                 MathHelper.Clamp(Position.Y, (windowHeight * 2 / 3) + Texture.Height / 2, windowHeight - Texture.Height / 2)
             );
         }

@@ -12,7 +12,7 @@ namespace DoAnXNA2.src.sprites
         public Texture2D Texture { get; set; }
         public Vector2 Position { get; set; }
         public float Speed { get; set; }
-        public bool IsAlive { get; private set; } = true;
+        public bool IsAlive { get; set; } = true;
 
         //Quản lý di chuyển ngẫu nhiên
         private float horizontalOffset; // Biến để lưu giá trị ngẫu nhiên (Perlin noise)
@@ -20,7 +20,7 @@ namespace DoAnXNA2.src.sprites
         private float horizontalSpeed; // Tốc độ di chuyển ngang
 
         // Quản lý cơ chế bắn đạn
-        public List<BulletEnemy> Bullets { get; private set; } = new List<BulletEnemy>();
+        public List<BulletEnemy> Bullets { get; set; } = new List<BulletEnemy>();
         private float shootCoolDown;
         private const float shootCoolDownTime = 3f;
 
@@ -47,9 +47,15 @@ namespace DoAnXNA2.src.sprites
             if (shootCoolDown <= 0)
             {
                 Bullets.Add(new BulletEnemy(bulletTexture, new Vector2(Position.X, Position.Y), bulletSpeed));
-                shootCoolDown = shootCoolDownTime;
+                ResetShootCoolDown();
             }
         }
+        private void ResetShootCoolDown()
+        {
+            Random random = new Random();
+            shootCoolDown = (float)(random.NextDouble() * 1.5 + 3); // Giá trị ngẫu nhiên từ 3 đến 4.5 giây
+        }
+
 
         public void MoveAfterCollisionWithWall(GameTime gameTime, GraphicsDeviceManager graphics, float moveValue)
         {

@@ -9,7 +9,7 @@ namespace DoAnXNA2.src.utilities
 {
     public class EnemySpawner
     {
-        public List<Enemy> Enemies { get; private set; } = new List<Enemy>();
+        public List<Enemy> Enemies { get; set; } = new List<Enemy>();
         private Random _randomEnemiesSpawnX = new Random();
         private float _spawnCooldown;
         private readonly float _spawnCooldownTime;

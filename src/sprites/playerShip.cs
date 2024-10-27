@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using DoAnXNA2.src.utilities;
+using System.Diagnostics;
 
 namespace DoAnXNA2.src.sprites
 {
@@ -61,26 +62,40 @@ namespace DoAnXNA2.src.sprites
             );
         }
 
-        public void Update(GameTime gameTime, GraphicsDeviceManager graphics, KeyboardState kstate, Texture2D bulletTexture, float bulletSpeed)
+        public void CheckCollisionWithBulletEnemy(List<BulletEnemy> bullets)
+        {
+            var playerBounds = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
+
+    bullets.RemoveAll(bullet =>
+    {
+        var bulletBounds = new Rectangle((int)bullet.Position.X, (int)bullet.Position.Y, bullet.Texture.Width, bullet.Texture.Height);
+
+        if (playerBounds.Intersects(bulletBounds))
+        {
+            // In thông báo khi bị bắn
+            System.Diagnostics.Debug.WriteLine("bạn đã bị bắn");
+            return true; // Xóa viên đạn
+        }
+        return false;
+    });
+        }
+
+        public void Update(GameTime gameTime, GraphicsDeviceManager graphics, KeyboardState kstate, List<BulletEnemy> enemyBullets, Texture2D bulletTexture, float bulletSpeed)
         {
             float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            // Di chuyển
+            // Di chuyển & Giới hạn vị trí player trong cửa sổ
             Vector2 direction = GetMovementDirection(kstate);
             Move(direction, elapsedTime);
-
-            // Cập nhật thời gian cooldown
-            if (_shootCooldown > 0) _shootCooldown -= elapsedTime;
+            KeepPlayerInsideWindow(graphics);
 
             // Xử lý bắn
+            if (_shootCooldown > 0) _shootCooldown -= elapsedTime;
             InputUtilities.HandleKeyPress(Keys.Space, kstate, () => Shoot(bulletTexture, bulletSpeed));
 
             // Cập nhật vị trí viên đạn
             foreach (var bullet in Bullets) bullet.Move();
             Bullets = Bullets.Where(b => b.Position.Y >= 0).ToList();
-
-            // Giới hạn vị trí player trong cửa sổ
-            KeepPlayerInsideWindow(graphics);
         }
 
         public void Draw(SpriteBatch spriteBatch)

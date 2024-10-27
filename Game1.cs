@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using DoAnXNA2.src.sprites;
 using DoAnXNA2.src.utilities;
 using Microsoft.Xna.Framework;
@@ -65,11 +66,17 @@ public class Game1 : Game
         var kstate = Keyboard.GetState();
 
         // Cập nhật các sprites
-        _playerShip.Update(_gameTime, _graphics, kstate, Textures.textureBulletP, 5f); // 5f là tốc độ viên đạn
+        _playerShip.Update(_gameTime, _graphics, kstate, _enemySpawner.Enemies.SelectMany(e => e.Bullets).ToList(), Textures.textureBulletP, 5f); // 5f là tốc độ viên đạn
         _enemySpawner.Update(_gameTime, _graphics, Textures.textureEnemy, _playerShip.Bullets, Textures.textureBulletE, 3.5f);
 
         // Cập nhật GUI và HUD
         _gameHUD.Update(_gameTime, _enemySpawner.Enemies.Count);
+
+        // Kiểm tra va chạm giữa viên đạn của kẻ địch và tàu người chơi
+        foreach (var _enemy in _enemySpawner.Enemies)
+        {
+            _playerShip.CheckCollisionWithBulletEnemy(_enemy.Bullets);
+        }
 
         base.Update(_gameTime);
     }

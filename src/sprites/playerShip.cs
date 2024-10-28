@@ -19,8 +19,12 @@ namespace DoAnXNA2.src.sprites
         private float _shootCooldown;
         private readonly float _shootCooldownTime = 1f;
 
-        public PlayerShip(Texture2D texture, Vector2 position, float speed)
+// Thêm tham chiếu đến Game1 --> Phục vụ game over
+        private Game1 _game;  
+
+        public PlayerShip(Game1 game, Texture2D texture, Vector2 position, float speed)
         {
+            _game = game;
             Texture = texture;
             Position = position;
             Speed = speed;
@@ -66,18 +70,20 @@ namespace DoAnXNA2.src.sprites
         {
             var playerBounds = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
 
-    bullets.RemoveAll(bullet =>
-    {
-        var bulletBounds = new Rectangle((int)bullet.Position.X, (int)bullet.Position.Y, bullet.Texture.Width, bullet.Texture.Height);
+            bullets.RemoveAll(bullet =>
+            {
+                var bulletBounds = new Rectangle((int)bullet.Position.X, (int)bullet.Position.Y, bullet.Texture.Width, bullet.Texture.Height);
 
-        if (playerBounds.Intersects(bulletBounds))
-        {
-            // In thông báo khi bị bắn
-            System.Diagnostics.Debug.WriteLine("bạn đã bị bắn");
-            return true; // Xóa viên đạn
-        }
-        return false;
-    });
+                if (playerBounds.Intersects(bulletBounds))
+                {
+                    // In thông báo khi bị bắn
+                    System.Diagnostics.Debug.WriteLine("bạn đã bị bắn");
+                    // Cập nhật trạng thái game
+                    _game.SetGameOver();
+                    return true; // Xóa viên đạn
+                }
+                return false;
+            });
         }
 
         public void Update(GameTime gameTime, GraphicsDeviceManager graphics, KeyboardState kstate, List<BulletEnemy> enemyBullets, Texture2D bulletTexture, float bulletSpeed)

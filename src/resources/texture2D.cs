@@ -15,6 +15,10 @@ namespace DoAnXNA2
         public static CustomBitmapFont customFont;
         public static Texture2D textureHP;
 
+        //Button
+        public static Texture2D startButton;
+        public static Texture2D returnButton;
+
 
         public static void LoadTextures(ContentManager content)
         {
@@ -27,6 +31,11 @@ namespace DoAnXNA2
             textureHP = content.Load<Texture2D>("TestHP");
             fontTexture = content.Load<Texture2D>("SpriteFontTestSubject3");
             customFont = new CustomBitmapFont(fontTexture);
+
+            //Button
+            startButton = content.Load<Texture2D>("enemyYellow");
+            returnButton = content.Load<Texture2D>("enemyYellow");
+
         }
     }
 }

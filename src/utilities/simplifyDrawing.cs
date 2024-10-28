@@ -18,5 +18,16 @@ namespace DoAnXNA2.src.utilities
                 0f
             );
         }
+        public static void HandleCenteredText(SpriteBatch _spriteBatch, SpriteFont _spriteFont, string _text, Vector2 _position)
+        {
+            // Tính toán kích thước của đoạn text
+            Vector2 textSize = _spriteFont.MeasureString(_text);
+
+            // Tính toán origin sao cho trung tâm đoạn text nằm đúng vị trí yêu cầu
+            Vector2 origin = textSize / 2;
+
+            // Vẽ đoạn text với origin ở trung tâm
+            _spriteBatch.DrawString(_spriteFont, _text, _position, Color.White, 0f, origin, 1.0f, SpriteEffects.None, 0.5f);
+        }
     }
 }

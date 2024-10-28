@@ -6,7 +6,7 @@ namespace DoAnXNA2.src.utilities
 {
     public class GameHUD
     {
-        private SpriteFont _font;
+        private SpriteFont Font { get; set; }
         private TimeSpan _gameTimeElapsed;
         private int _enemyCount;
         private float _playerHealth;
@@ -14,7 +14,7 @@ namespace DoAnXNA2.src.utilities
 
         public GameHUD(SpriteFont font)
         {
-            _font = font;
+            Font = font;
             _gameTimeElapsed = TimeSpan.Zero;
             _enemyCount = 0;
             _playerHealth = 100;
@@ -41,7 +41,7 @@ namespace DoAnXNA2.src.utilities
 
             // Hiển thị số lượng kẻ địch
             string enemyText = $"Enemies: {_enemyCount}";
-            spriteBatch.DrawString(_font, enemyText, new Vector2(10, 40), Color.White);
+            spriteBatch.DrawString(Font, enemyText, new Vector2(10, 40), Color.White);
 
             // Hiển thị thanh máu
             int healthBarWidth = (int)(_playerHealth / 100 * 200); // Chiều rộng thanh máu dựa trên sức khỏe

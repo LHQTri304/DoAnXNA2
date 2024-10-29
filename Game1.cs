@@ -1,36 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using DoAnXNA2.src.sprites;
 using DoAnXNA2.src.utilities;
 using DoAnXNA2.src.components;
+using DoAnXNA2.src.gameState;
 
 namespace DoAnXNA2;
-
-public enum GameState
-{
-    MainMenu,
-    GameDisplay,
-    GameOver
-}
-
-
 public class Game1 : Game
 {
-    private GraphicsDeviceManager _graphics;
-    private int virtualWidth = 540; // Chiều rộng cố định của nội dung game
-    private int virtualHeight = 960;  // Chiều cao cố định của nội dung game
+    public GraphicsDeviceManager _graphics { get; }
+    public int virtualWidth { get; } = 540; // Chiều rộng cố định của nội dung game
+    public int virtualHeight { get; } = 960;// Chiều cao cố định của nội dung game
     private RenderTarget2D _renderTarget;
     private SpriteBatch _spriteBatch;
     private GameHUD _gameHUD;
 
     //GameState
-    private Button _startButton, _returnButton; // Nút Start và nút Return
-    private GameState currentGameState; // Trạng thái hiện tại của trò chơi
-    private bool _isGameOver; // Flag game over
+    public bool _isGameOver { get; private set; } // Flag game over
+    private IGameState _currentState;
+    private MainMenu _mainMenu;
+    private GameDisplay _gameDisplay;
+    private GameOver _gameOver;
 
     //the sprites
     private PlayerShip _playerShip;
@@ -42,7 +34,6 @@ public class Game1 : Game
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
-        currentGameState = GameState.MainMenu; // Bắt đầu với MainMenu
     }
 
     protected override void Initialize()
@@ -51,8 +42,7 @@ public class Game1 : Game
         _graphics.PreferredBackBufferWidth = virtualWidth;
         _graphics.PreferredBackBufferHeight = virtualHeight;
         _graphics.ApplyChanges();
-        Window.AllowUserResizing = true;    // Cho phép thay đổi kích thước cửa sổ        
-        //_graphics.IsFullScreen = true;  // Nếu muốn fullscreen, thêm dòng này
+        Window.AllowUserResizing = true;    // Cho phép thay đổi kích thước cửa sổ
 
         // Tạo RenderTarget với kích thước cố định
         _renderTarget = new RenderTarget2D(GraphicsDevice, virtualWidth, virtualHeight);
@@ -74,11 +64,12 @@ public class Game1 : Game
 
         _playerShip.Texture = Textures.texturePlayer; //Thêm Texture sau khi load, tránh lỗi null khi  và run
 
-        //GameState
-        _startButton = new Button(Textures.startButton, new Vector2(270, 480));
-        _returnButton = new Button(Textures.returnButton, new Vector2(270, 480));
-
-        _gameHUD = new GameHUD(Content.Load<SpriteFont>("hudFontTest1"));// Khởi tạo GameHUD với font
+        var font = Content.Load<SpriteFont>("hudFontTest1");
+        _gameHUD = new GameHUD(font);
+        _mainMenu = new MainMenu(font);
+        _gameDisplay = new GameDisplay(_playerShip, _enemySpawner, _gameHUD);
+        _gameOver = new GameOver(font);
+        _currentState = _mainMenu;
     }
 
     protected override void Update(GameTime _gameTime)
@@ -86,35 +77,7 @@ public class Game1 : Game
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
         var kstate = Keyboard.GetState();
-
-        switch (currentGameState)
-        {
-            case GameState.MainMenu:
-                InputUtilities.HandleKeyPress(Keys.Space, kstate, () => { currentGameState = GameState.GameDisplay; }); // Nhấn space để start
-                break;
-
-            case GameState.GameDisplay:
-                // Cập nhật các sprites
-                _playerShip.Update(_gameTime, _graphics, kstate, _enemySpawner.Enemies.SelectMany(e => e.Bullets).ToList(), Textures.textureBulletP, 5f); // 5f là tốc độ viên đạn
-                _enemySpawner.Update(_gameTime, _graphics, Textures.textureEnemy, _playerShip.Bullets, Textures.textureBulletE, 3.5f);
-
-                // Cập nhật GUI và HUD
-                _gameHUD.Update(_gameTime, _enemySpawner.Enemies.Count);
-
-                // Kiểm tra va chạm giữa viên đạn của kẻ địch và tàu người chơi
-                foreach (var _enemy in _enemySpawner.Enemies)
-                    _playerShip.CheckCollisionWithBulletEnemy(_enemy.Bullets);
-
-                //if (kstate.IsKeyDown(Keys.G)) // Nhấn G để chuyển sang GameOver
-                if (_isGameOver)
-                    currentGameState = GameState.GameOver;
-                break;
-
-            case GameState.GameOver:
-                InputUtilities.HandleKeyPress(Keys.Space, kstate, () => SetRestart()); // Nhấn space để chuyển sang main menu
-                break;
-        }
-
+        _currentState.Update(this, _gameTime, kstate);        
         base.Update(_gameTime);
     }
 
@@ -124,35 +87,7 @@ public class Game1 : Game
         GraphicsDevice.Clear(Color.Indigo);
 
         _spriteBatch.Begin();
-        var spriteFont = Content.Load<SpriteFont>("hudFontTest1");
-        switch (currentGameState)
-        {
-            case GameState.MainMenu:
-                SimplifyDrawing.HandleCenteredText(_spriteBatch, spriteFont, "MAIN MENU", new Vector2(virtualWidth / 2, virtualHeight / 2 - 200));
-                SimplifyDrawing.HandleCenteredText(_spriteBatch, spriteFont, "Press Space to Start", new Vector2(virtualWidth / 2, virtualHeight / 2));
-                //_spriteBatch.Draw(Textures.texturePlayer, new Vector2(270, 400), Color.White); // Hình ảnh playerShip
-                //_startButton.Draw(_spriteBatch);
-                break;
-
-            case GameState.GameDisplay:
-                _playerShip.Draw(_spriteBatch);
-                foreach (var _bulletP in _playerShip.Bullets)
-                    _bulletP.Draw(_spriteBatch);
-                foreach (var enemy in _enemySpawner.Enemies)
-                {
-                    enemy.Draw(_spriteBatch);
-                    foreach (var bullet in enemy.Bullets)
-                        bullet.Draw(_spriteBatch);
-                }
-                //_gameHUD.Draw(_spriteBatch, Textures.textureHP);
-                break;
-
-            case GameState.GameOver:
-                SimplifyDrawing.HandleCenteredText(_spriteBatch, spriteFont, "GAME OVER", new Vector2(virtualWidth / 2, virtualHeight / 2 - 200));
-                SimplifyDrawing.HandleCenteredText(_spriteBatch, spriteFont, "Press Space to Return Main Menu", new Vector2(virtualWidth / 2, virtualHeight / 2));
-                //_returnButton.Draw(_spriteBatch);
-                break;
-        }
+        _currentState.Draw(this, _spriteBatch);
         _spriteBatch.End();
 
         GraphicsDevice.SetRenderTarget(null);   // Kết thúc RenderTarget. Quay trở lại vẽ vào màn hình chính
@@ -180,21 +115,12 @@ public class Game1 : Game
 
         base.Draw(_gameTime);
     }
-
-    public void SetGameOver()
-    {
-        _isGameOver = true;
-        currentGameState = GameState.GameOver;
-    }
+    public void SetGameDisplay() => _currentState = _gameDisplay;
+    public void SetGameOver() => _currentState = _gameOver;
     public void SetRestart()
     {
-        _isGameOver = false;
-        currentGameState = GameState.MainMenu;
-
-    // Reset danh sách đạn của player
-    _playerShip.Bullets.Clear();
-
-    // Reset kẻ địch và đạn của kẻ địch
-    _enemySpawner.Enemies.Clear();
+        _currentState = _mainMenu;
+        _playerShip.Bullets.Clear();
+        _enemySpawner.Enemies.Clear();
     }
 }

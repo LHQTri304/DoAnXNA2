@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DoAnXNA2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+af1e6c0888a19959c063feee731fca808c5b0d5c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d52534c194560afd93c0e6a08afdb840ac3fcfd9")]
 [assembly: System.Reflection.AssemblyProductAttribute("DoAnXNA2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DoAnXNA2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

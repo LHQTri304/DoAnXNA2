@@ -12,6 +12,7 @@ namespace DoAnXNA2.src.gameState
         private PlayerShip _playerShip;
         private EnemySpawner _enemySpawner;
         private GameHUD _gameHUD;
+        private bool _isPaused;
 
         public GameDisplay(PlayerShip playerShip, EnemySpawner enemySpawner, GameHUD gameHUD)
         {
@@ -22,6 +23,15 @@ namespace DoAnXNA2.src.gameState
 
         public void Update(Game1 game, GameTime gameTime, KeyboardState kstate)
         {
+            //Xử lý khi game tạm dừng
+            InputUtilities.HandleKeyPress(Keys.Escape, kstate, () => _isPaused = !_isPaused);
+            if (_isPaused)
+            {
+                InputUtilities.HandleKeyPress(Keys.Space, kstate, () => _isPaused = false);
+                InputUtilities.HandleKeyPress(Keys.X, kstate, () => { _isPaused = false; game.SetMainMenu(); });
+                return;
+            }
+
             // Cập nhật các sprites
             _playerShip.Update(gameTime, game._graphics, kstate, _enemySpawner.Enemies.SelectMany(e => e.Bullets).ToList(), Textures.textureBulletP, 5f);
             _enemySpawner.Update(gameTime, game._graphics, Textures.textureEnemy, _playerShip.Bullets, Textures.textureBulletE, 3.5f);
@@ -47,6 +57,8 @@ namespace DoAnXNA2.src.gameState
                 foreach (var bullet in enemy.Bullets)
                     bullet.Draw(spriteBatch);
             }
+            if (_isPaused)
+                SimplifyDrawing.HandleCenteredText(spriteBatch, game.Content.Load<SpriteFont>("hudFontTest1"), "PAUSED\nPress Space to Continue\nPress X to Main Menu", new Vector2(game.virtualWidth / 2, game.virtualHeight / 2));
         }
     }
 }

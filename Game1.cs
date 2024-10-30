@@ -21,6 +21,8 @@ public class Game1 : Game
     public bool _isGameOver { get; private set; } // Flag game over
     private IGameState _currentState;
     private MainMenu _mainMenu;
+    private Setting _setting;
+    private ChoosingLevels _choosingLevels;
     private GameDisplay _gameDisplay;
     private GameOver _gameOver;
 
@@ -67,6 +69,8 @@ public class Game1 : Game
         var font = Content.Load<SpriteFont>("hudFontTest1");
         _gameHUD = new GameHUD(font);
         _mainMenu = new MainMenu(font);
+        _setting = new Setting(font);
+        _choosingLevels = new ChoosingLevels(font);
         _gameDisplay = new GameDisplay(_playerShip, _enemySpawner, _gameHUD);
         _gameOver = new GameOver(font);
         _currentState = _mainMenu;
@@ -74,8 +78,8 @@ public class Game1 : Game
 
     protected override void Update(GameTime _gameTime)
     {
-        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-            Exit();
+        /* if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            Exit(); */
         var kstate = Keyboard.GetState();
         _currentState.Update(this, _gameTime, kstate);        
         base.Update(_gameTime);
@@ -115,12 +119,14 @@ public class Game1 : Game
 
         base.Draw(_gameTime);
     }
-    public void SetGameDisplay() => _currentState = _gameDisplay;
-    public void SetGameOver() => _currentState = _gameOver;
-    public void SetRestart()
+    public void SetMainMenu()
     {
         _currentState = _mainMenu;
         _playerShip.Bullets.Clear();
         _enemySpawner.Enemies.Clear();
     }
+    public void SetSetting() => _currentState = _setting;
+    public void SetChoosingLevels() => _currentState = _choosingLevels;
+    public void SetGameDisplay(int level) => _currentState = _gameDisplay;
+    public void SetGameOver() => _currentState = _gameOver;
 }

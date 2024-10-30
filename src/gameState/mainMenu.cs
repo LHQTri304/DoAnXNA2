@@ -16,14 +16,14 @@ namespace DoAnXNA2.src.gameState
 
         public void Update(Game1 game, GameTime gameTime, KeyboardState kstate)
         {
-            if (kstate.IsKeyDown(Keys.Space))
-                game.SetGameDisplay(); // Chuyển sang trạng thái chơi game
+            InputUtilities.HandleKeyPress(Keys.Space,kstate,()=>game.SetChoosingLevels());
+            InputUtilities.HandleKeyPress(Keys.X,kstate,()=>game.SetSetting());
         }
 
         public void Draw(Game1 game, SpriteBatch spriteBatch)
         {
             SimplifyDrawing.HandleCenteredText(spriteBatch, _font, "MAIN MENU", new Vector2(game.virtualWidth / 2, game.virtualHeight / 2 - 200));
-            SimplifyDrawing.HandleCenteredText(spriteBatch, _font, "Press Space to Start", new Vector2(game.virtualWidth / 2, game.virtualHeight / 2));
+            SimplifyDrawing.HandleCenteredText(spriteBatch, _font, "Press Space to Start\nPress X to Setting", new Vector2(game.virtualWidth / 2, game.virtualHeight / 2));
         }
     }
 }

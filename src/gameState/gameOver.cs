@@ -16,8 +16,7 @@ namespace DoAnXNA2.src.gameState
 
         public void Update(Game1 game, GameTime gameTime, KeyboardState kstate)
         {
-            if (kstate.IsKeyDown(Keys.Space))
-                game.SetRestart();
+            InputUtilities.HandleKeyPress(Keys.Space, kstate, () => game.SetMainMenu());
         }
 
         public void Draw(Game1 game, SpriteBatch spriteBatch)

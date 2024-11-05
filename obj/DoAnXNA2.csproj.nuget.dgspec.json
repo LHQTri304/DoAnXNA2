@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "e:\\ADaiHoc\\A2_dotNET\\DoAnXNA2\\DoAnXNA2.csproj": {}
+    "E:\\ADaiHoc\\A2_dotNET\\DoAnXNA2\\DoAnXNA2.csproj": {}
   },
   "projects": {
-    "e:\\ADaiHoc\\A2_dotNET\\DoAnXNA2\\DoAnXNA2.csproj": {
+    "E:\\ADaiHoc\\A2_dotNET\\DoAnXNA2\\DoAnXNA2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\ADaiHoc\\A2_dotNET\\DoAnXNA2\\DoAnXNA2.csproj",
+        "projectUniqueName": "E:\\ADaiHoc\\A2_dotNET\\DoAnXNA2\\DoAnXNA2.csproj",
         "projectName": "DoAnXNA2",
-        "projectPath": "e:\\ADaiHoc\\A2_dotNET\\DoAnXNA2\\DoAnXNA2.csproj",
+        "projectPath": "E:\\ADaiHoc\\A2_dotNET\\DoAnXNA2\\DoAnXNA2.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "e:\\ADaiHoc\\A2_dotNET\\DoAnXNA2\\obj\\",
+        "outputPath": "E:\\ADaiHoc\\A2_dotNET\\DoAnXNA2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

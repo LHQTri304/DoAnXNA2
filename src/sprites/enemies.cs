@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using DoAnXNA2.src.utilities;
 using System;
+using DoAnXNA2.src.strategyMethod;
 
 namespace DoAnXNA2.src.sprites
 {
-    public class Enemy
+    public abstract class Enemy
     {
         public Texture2D Texture { get; set; }
         public Vector2 Position { get; set; }
-        public float Speed { get; set; }
+        public float GoDownSpeed { get; set; }
         public bool IsAlive { get; set; } = true;
 
         //Quản lý di chuyển ngẫu nhiên
@@ -30,14 +31,28 @@ namespace DoAnXNA2.src.sprites
         private float wallCollisionCoolDown;
         private const float wallCollisionCoolDownTime = 0.75f;
 
-        public Enemy(Texture2D texture, Vector2 position, float speed)
+        //Testing
+        protected IMovementStrategy movementStrategy;
+
+        public Enemy(Texture2D texture, Vector2 position, IMovementStrategy movementStrategy)
         {
             Texture = texture;
             Position = position;
-            Speed = speed;
+            GoDownSpeed = 3f;
             horizontalOffset = perlinNoiseOffset;
             perlinNoiseOffset += 0.03f;
             horizontalSpeed = 55f;
+            movementStrategy = movementStrategy;
+        }
+
+        public Vector2 GetPosition()    //Lấy Position không cần thông qua ref
+        {
+            return Position;
+        }
+
+        public void UpdatePosition(Vector2 newPosition) //Set Position không cần thông qua ref
+        {
+            Position = newPosition;
         }
 
         public void Shoot(GameTime gameTime, Texture2D bulletTexture, float bulletSpeed)
@@ -94,8 +109,8 @@ namespace DoAnXNA2.src.sprites
             Bullets = Bullets.Where(b => b.Position.Y <= graphics.PreferredBackBufferHeight)
                              .Select(b => { b.Move(); return b; }).ToList();
 
-            // Auto di chuyển dọc
-            Position += new Vector2(0, Speed * (float)gameTime.ElapsedGameTime.TotalSeconds);
+            /* // Auto di chuyển dọc
+            Position += new Vector2(0, GoDownSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
 
             // Di chuyển ngang ngẫu nhiên và không vượt ra khỏi màn hình
             float perlinValue = MathHelper.Lerp(-1, 1, (float)SimplexNoise.Noise.CalcPixel2D((int)horizontalOffset, 0, 0.05f) / 255f);
@@ -107,7 +122,8 @@ namespace DoAnXNA2.src.sprites
             if (Position.Y > graphics.PreferredBackBufferHeight + 50)
             {
                 IsAlive = false;
-            }
+            } */
+            movementStrategy.Move(Position);
 
             CheckCollisionWithBullets(bullets);
         }
@@ -136,3 +152,39 @@ namespace DoAnXNA2.src.sprites
         }
     }
 }
+/* {
+    public abstract class Enemy
+    {
+        protected Vector2 Position;
+        protected Texture2D Texture;
+        protected IMovementStrategy movementStrategy;
+
+        public Enemy(Vector2 position, Texture2D texture, IMovementStrategy movementStrategy)
+        {
+            this.Position = position;
+            this.Texture = texture;
+            this.movementStrategy = movementStrategy;
+        }
+
+        public Vector2 GetPosition()    //Lấy Position không cần thông qua ref
+        {
+            return Position;
+        }
+
+        public void UpdatePosition(Vector2 newPosition) //Set Position không cần thông qua ref
+        {
+            Position = newPosition;
+        }
+
+        public void Update()
+        {
+            movementStrategy.Move(ref Position);
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(Texture, Position, Color.White);
+        }
+    }
+}
+ */

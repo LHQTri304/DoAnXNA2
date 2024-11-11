@@ -1,4 +1,5 @@
 using System.Linq;
+using DoAnXNA2.src.spawners;
 using DoAnXNA2.src.sprites;
 using DoAnXNA2.src.utilities;
 using Microsoft.Xna.Framework;
@@ -34,7 +35,7 @@ namespace DoAnXNA2.src.gameState
 
             // Cập nhật các sprites
             _playerShip.Update(gameTime, game._graphics, kstate, _enemySpawner.Enemies.SelectMany(e => e.Bullets).ToList(), Textures.textureBulletP, 5f);
-            _enemySpawner.Update(gameTime, game._graphics, Textures.textureEnemy, _playerShip.Bullets, Textures.textureBulletE, 3.5f);
+            _enemySpawner.Update(gameTime, game._graphics, _playerShip.Bullets, Textures.textureBulletE, 3.5f);
 
             // Cập nhật GUI và HUD
             _gameHUD.Update(gameTime, _enemySpawner.Enemies.Count);

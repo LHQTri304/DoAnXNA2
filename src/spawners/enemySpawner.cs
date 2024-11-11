@@ -1,4 +1,4 @@
-using System;
+/* using System;
 using System.Collections.Generic;
 using System.Linq;
 using DoAnXNA2.src.sprites;
@@ -55,6 +55,54 @@ namespace DoAnXNA2.src.utilities
         public void ClearEnemies()
         {
             Enemies.Clear();
+        }
+    }
+}
+ */
+
+using System.Collections.Generic;
+using DoAnXNA2.src.factoryMethod;
+using DoAnXNA2.src.sprites;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace DoAnXNA2.src.spawners
+{
+    public class EnemySpawner
+    {
+        public List<Enemy> Enemies { get; set; } = new List<Enemy>();
+        private Vector2 spawnPosition;
+
+        public EnemySpawner(Vector2 spawnPosition)
+        {
+            Enemies = new List<Enemy>();
+            this.spawnPosition = spawnPosition;
+        }
+
+        public void SpawnEnemy(string type)
+        {
+            Enemy newEnemy = EnemyFactory.CreateEnemy(type, spawnPosition);
+            if (newEnemy != null)
+            {
+                Enemies.Add(newEnemy);
+            }
+        }
+
+        public void Update(GameTime gameTime, GraphicsDeviceManager graphics, List<BulletPlayer> bullets, Texture2D bulletTexture, float bulletSpeed)
+        {
+            foreach (var enemy in Enemies)
+            {
+                enemy.Update(gameTime, graphics, bullets, Enemies, bulletTexture, bulletSpeed);;
+            }
+            Enemies.RemoveAll(e => e.GetPosition().Y > 800); // Remove enemies that go out of bounds
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            foreach (var enemy in Enemies)
+            {
+                enemy.Draw(spriteBatch);
+            }
         }
     }
 }

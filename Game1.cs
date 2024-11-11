@@ -6,6 +6,7 @@ using DoAnXNA2.src.sprites;
 using DoAnXNA2.src.utilities;
 using DoAnXNA2.src.components;
 using DoAnXNA2.src.gameState;
+using DoAnXNA2.src.spawners;
 
 namespace DoAnXNA2;
 public class Game1 : Game
@@ -28,7 +29,13 @@ public class Game1 : Game
 
     //the sprites
     private PlayerShip _playerShip;
+
+    //the spawner
     private EnemySpawner _enemySpawner;
+    private int spawnCounter = 0; // Để kiểm soát thứ tự spawn kẻ địch
+    private double spawnTimer = 0; // Để kiểm soát thời gian giữa các lần spawn
+    private double spawnInterval = 2.0; // Thời gian (giây) giữa mỗi lần spawn
+
 
 
     public Game1()
@@ -54,7 +61,14 @@ public class Game1 : Game
 
         // Tạo các sprites
         _playerShip = new PlayerShip(this, null, new Vector2(100, 100), 100f);
-        _enemySpawner = new EnemySpawner(3f); // Khởi tạo EnemySpawner với thời gian cooldown
+
+
+        //_enemySpawner = new EnemySpawner(3f); // Khởi tạo EnemySpawner với thời gian cooldown
+
+        // Khởi tạo vị trí spawn cố định cho kẻ địch
+        Vector2 spawnPosition = new Vector2(100, 50);
+        _enemySpawner = new EnemySpawner(spawnPosition);
+
 
         base.Initialize();
     }
@@ -81,7 +95,7 @@ public class Game1 : Game
         /* if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit(); */
         var kstate = Keyboard.GetState();
-        _currentState.Update(this, _gameTime, kstate);        
+        _currentState.Update(this, _gameTime, kstate);
         base.Update(_gameTime);
     }
 

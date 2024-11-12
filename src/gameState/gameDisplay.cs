@@ -15,6 +15,11 @@ namespace DoAnXNA2.src.gameState
         private GameHUD _gameHUD;
         private bool _isPaused;
 
+        //For spawner        
+        private int spawnCounter = 0; // Để kiểm soát thứ tự spawn kẻ địch
+        private double spawnTimer = 0; // Để kiểm soát thời gian giữa các lần spawn
+        private double spawnInterval = 2.0; // Thời gian (giây) giữa mỗi lần spawn
+
         public GameDisplay(PlayerShip playerShip, EnemySpawner enemySpawner, GameHUD gameHUD)
         {
             _playerShip = playerShip;
@@ -33,9 +38,36 @@ namespace DoAnXNA2.src.gameState
                 return;
             }
 
+            //Xử lý spawner enemies
+            // Tăng thời gian đã trôi qua để kiểm tra thời điểm spawn kẻ địch mới
+            spawnTimer += gameTime.ElapsedGameTime.TotalSeconds;
+
+            // Kiểm tra nếu đã đến thời điểm spawn kẻ địch mới
+            if (spawnTimer >= spawnInterval)
+            {
+                // Reset lại thời gian đếm ngược
+                spawnTimer = 0;
+
+                // Xác định loại kẻ địch theo thứ tự
+                string enemyType = spawnCounter switch
+                {
+                    0 => "Red",
+                    1 => "Green",
+                    2 => "Yellow",
+                    3 => "Blue",
+                    _ => "Red"
+                };
+
+                // Gọi hàm spawn kẻ địch dựa trên loại
+                _enemySpawner.SpawnEnemy(enemyType);
+
+                // Tăng bộ đếm và reset lại nếu đạt đến 4 (để lặp lại thứ tự)
+                spawnCounter = (spawnCounter + 1) % 4;
+            }
+
             // Cập nhật các sprites
             _playerShip.Update(gameTime, game._graphics, kstate, _enemySpawner.Enemies.SelectMany(e => e.Bullets).ToList(), Textures.textureBulletP, 5f);
-            _enemySpawner.Update(gameTime, game._graphics, _playerShip.Bullets, Textures.textureBulletE, 3.5f);
+            _enemySpawner.Update(gameTime, game._graphics, _playerShip.Bullets);
 
             // Cập nhật GUI và HUD
             _gameHUD.Update(gameTime, _enemySpawner.Enemies.Count);

@@ -88,11 +88,11 @@ namespace DoAnXNA2.src.spawners
             }
         }
 
-        public void Update(GameTime gameTime, GraphicsDeviceManager graphics, List<BulletPlayer> bullets, Texture2D bulletTexture, float bulletSpeed)
+        public void Update(GameTime gameTime, GraphicsDeviceManager graphics, List<BulletPlayer> bullets)
         {
             foreach (var enemy in Enemies)
             {
-                enemy.Update(gameTime, graphics, bullets, Enemies, bulletTexture, bulletSpeed);;
+                enemy.Update(gameTime, graphics, bullets);
             }
             Enemies.RemoveAll(e => e.GetPosition().Y > 800); // Remove enemies that go out of bounds
         }

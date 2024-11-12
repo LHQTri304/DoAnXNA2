@@ -55,13 +55,14 @@ namespace DoAnXNA2.src.sprites
             Position = newPosition;
         }
 
-        public void Shoot(GameTime gameTime, Texture2D bulletTexture, float bulletSpeed)
+        public void Shoot(GameTime gameTime)
         {
+            float bulletSpeed = 3.5f;
             shootCoolDown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             if (shootCoolDown <= 0)
             {
-                Bullets.Add(new BulletEnemy(bulletTexture, new Vector2(Position.X, Position.Y), bulletSpeed));
+                Bullets.Add(new BulletEnemy(Textures.textureBulletE, new Vector2(Position.X, Position.Y), bulletSpeed));
                 ResetShootCoolDown();
             }
         }
@@ -101,15 +102,15 @@ namespace DoAnXNA2.src.sprites
             }
         }
 
-        public void Update(GameTime gameTime, GraphicsDeviceManager graphics, List<BulletPlayer> bullets, List<Enemy> enemies, Texture2D bulletTexture, float bulletSpeed)
+        public void Update(GameTime gameTime, GraphicsDeviceManager graphics, List<BulletPlayer> bullets)
         {
             if (!IsAlive) return; // Không cập nhật kẻ địch nếu nó đã bị tiêu diệt
 
-            Shoot(gameTime, bulletTexture, bulletSpeed);
+            Shoot(gameTime);
             Bullets = Bullets.Where(b => b.Position.Y <= graphics.PreferredBackBufferHeight)
                              .Select(b => { b.Move(); return b; }).ToList();
 
-            /* // Auto di chuyển dọc
+            // Auto di chuyển dọc
             Position += new Vector2(0, GoDownSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
 
             // Di chuyển ngang ngẫu nhiên và không vượt ra khỏi màn hình
@@ -122,8 +123,8 @@ namespace DoAnXNA2.src.sprites
             if (Position.Y > graphics.PreferredBackBufferHeight + 50)
             {
                 IsAlive = false;
-            } */
-            movementStrategy.Move(Position);
+            }
+            //movementStrategy.Move(Position);
 
             CheckCollisionWithBullets(bullets);
         }
@@ -152,39 +153,3 @@ namespace DoAnXNA2.src.sprites
         }
     }
 }
-/* {
-    public abstract class Enemy
-    {
-        protected Vector2 Position;
-        protected Texture2D Texture;
-        protected IMovementStrategy movementStrategy;
-
-        public Enemy(Vector2 position, Texture2D texture, IMovementStrategy movementStrategy)
-        {
-            this.Position = position;
-            this.Texture = texture;
-            this.movementStrategy = movementStrategy;
-        }
-
-        public Vector2 GetPosition()    //Lấy Position không cần thông qua ref
-        {
-            return Position;
-        }
-
-        public void UpdatePosition(Vector2 newPosition) //Set Position không cần thông qua ref
-        {
-            Position = newPosition;
-        }
-
-        public void Update()
-        {
-            movementStrategy.Move(ref Position);
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            spriteBatch.Draw(Texture, Position, Color.White);
-        }
-    }
-}
- */

@@ -30,7 +30,7 @@ namespace DoAnXNA2
         public static void LoadTextures(ContentManager content)
         {
             //Player
-            texturePlayer = content.Load<Texture2D>("player");
+            texturePlayer = content.Load<Texture2D>("Space Fighter");
             textureBulletP = content.Load<Texture2D>("bulletPlayer");
 
             //Enemies

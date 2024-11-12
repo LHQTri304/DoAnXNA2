@@ -17,7 +17,7 @@ namespace DoAnXNA2.src.sprites
 
         // Quản lý bắn đạn
         private float _shootCooldown;
-        private readonly float _shootCooldownTime = 1f;
+        private readonly float _shootCooldownTime = 0.1f;
 
 // Thêm tham chiếu đến Game1 --> Phục vụ game over
         private Game1 _game;  

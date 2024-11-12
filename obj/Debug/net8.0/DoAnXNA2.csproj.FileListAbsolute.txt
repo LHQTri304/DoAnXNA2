@@ -37,3 +37,4 @@ e:\ADaiHoc\A2_dotNET\DoAnXNA2\bin\Debug\net8.0\Content\bulletEnemy.xnb
 e:\ADaiHoc\A2_dotNET\DoAnXNA2\bin\Debug\net8.0\Content\enemyBlue.xnb
 e:\ADaiHoc\A2_dotNET\DoAnXNA2\bin\Debug\net8.0\Content\enemyGreen.xnb
 e:\ADaiHoc\A2_dotNET\DoAnXNA2\bin\Debug\net8.0\Content\enemyRed.xnb
+e:\ADaiHoc\A2_dotNET\DoAnXNA2\bin\Debug\net8.0\Content\Space Fighter.xnb

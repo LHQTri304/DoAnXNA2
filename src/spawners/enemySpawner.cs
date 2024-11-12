@@ -72,28 +72,32 @@ namespace DoAnXNA2.src.spawners
     public class EnemySpawner
     {
         public List<Enemy> Enemies { get; set; } = new List<Enemy>();
-        private Vector2 spawnPosition;
+        private Vector2 _spawnPosition;
 
-        public EnemySpawner(Vector2 spawnPosition)
+        // Thêm tham chiếu đến Game1 --> Phục vụ game over và allBullets
+        private Game1 _game;
+
+        public EnemySpawner(Game1 game, Vector2 spawnPosition)
         {
+            _game = game;
             Enemies = new List<Enemy>();
-            this.spawnPosition = spawnPosition;
+            _spawnPosition = spawnPosition;
         }
 
         public void SpawnEnemy(string type)
         {
-            Enemy newEnemy = EnemyFactory.CreateEnemy(type, spawnPosition);
+            Enemy newEnemy = EnemyFactory.CreateEnemy(_game, type, _spawnPosition);
             if (newEnemy != null)
             {
                 Enemies.Add(newEnemy);
             }
         }
 
-        public void Update(GameTime gameTime, GraphicsDeviceManager graphics, List<BulletPlayer> bullets)
+        public void Update(GameTime gameTime, GraphicsDeviceManager graphics)
         {
             Enemies = Enemies.Where(enemy =>
             {
-                enemy.Update(gameTime, graphics, bullets);
+                enemy.Update(gameTime, graphics);
                 return enemy.IsAlive; // Giữ lại kẻ địch còn sống
             }).ToList();
         }

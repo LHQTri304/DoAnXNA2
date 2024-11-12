@@ -7,6 +7,7 @@ using DoAnXNA2.src.utilities;
 using DoAnXNA2.src.components;
 using DoAnXNA2.src.gameState;
 using DoAnXNA2.src.spawners;
+using System.Collections.Generic;
 
 namespace DoAnXNA2;
 public class Game1 : Game
@@ -30,6 +31,7 @@ public class Game1 : Game
     //the sprites
     private PlayerShip _playerShip;
     private EnemySpawner _enemySpawner;
+    public List<Bullet> _allBullets { get; set; } = [];
 
     public Game1()
     {
@@ -53,11 +55,11 @@ public class Game1 : Game
         _isGameOver = false;
 
         // Tạo các sprites
-        _playerShip = new PlayerShip(this, null, new Vector2(100, 100), 100f);
+        _playerShip = new PlayerShip(this, new Vector2(100, 100), 100f);
 
         // Khởi tạo vị trí spawn cố định cho kẻ địch
         Vector2 spawnPosition = new Vector2(virtualWidth / 2, 50);
-        _enemySpawner = new EnemySpawner(spawnPosition);
+        _enemySpawner = new EnemySpawner(this, spawnPosition);
 
 
         base.Initialize();
@@ -75,7 +77,7 @@ public class Game1 : Game
         _mainMenu = new MainMenu(font);
         _setting = new Setting(font);
         _choosingLevels = new ChoosingLevels(font);
-        _gameDisplay = new GameDisplay(_playerShip, _enemySpawner, _gameHUD);
+        _gameDisplay = new GameDisplay(this, _playerShip, _enemySpawner, _gameHUD);
         _gameOver = new GameOver(font);
         _currentState = _mainMenu;
     }
@@ -84,7 +86,7 @@ public class Game1 : Game
     {
         /* if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit(); */
-        var kstate = Keyboard.GetState();
+        var kstate = Keyboard.GetState();        
         _currentState.Update(this, _gameTime, kstate);
         base.Update(_gameTime);
     }
@@ -126,7 +128,8 @@ public class Game1 : Game
     public void SetMainMenu()
     {
         _currentState = _mainMenu;
-        _playerShip.Bullets.Clear();
+        //_playerShip.Bullets.Clear();
+        _allBullets.Clear();
         _enemySpawner.Enemies.Clear();
     }
     public void SetSetting() => _currentState = _setting;

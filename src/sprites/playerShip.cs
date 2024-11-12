@@ -13,23 +13,24 @@ namespace DoAnXNA2.src.sprites
         public Texture2D Texture { get; set; }
         public Vector2 Position { get; set; }
         public float Speed { get; set; }
-        public List<BulletPlayer> Bullets;
 
         // Quản lý bắn đạn
+        private float _bulletSpeed;
         private float _shootCooldown;
-        private readonly float _shootCooldownTime = 0.1f;
+        private readonly float _shotReloading;
 
-// Thêm tham chiếu đến Game1 --> Phục vụ game over
-        private Game1 _game;  
+        // Thêm tham chiếu đến Game1 --> Phục vụ game over và allBullets
+        private Game1 _game;
 
-        public PlayerShip(Game1 game, Texture2D texture, Vector2 position, float speed)
+        public PlayerShip(Game1 game, Vector2 position, float speed)
         {
             _game = game;
-            Texture = texture;
+            Texture = Textures.texturePlayer;
             Position = position;
             Speed = speed;
-            Bullets = new List<BulletPlayer>();
+            _bulletSpeed = 3.5f;
             _shootCooldown = 0;
+            _shotReloading = 0.1f;
         }
 
         private void Move(Vector2 direction, float elapsedTime)
@@ -47,12 +48,12 @@ namespace DoAnXNA2.src.sprites
             return direction;
         }
 
-        public void Shoot(Texture2D bulletTexture, float bulletSpeed)
+        public void Shoot()
         {
             if (_shootCooldown <= 0)
             {
-                Bullets.Add(new BulletPlayer(bulletTexture, new Vector2(Position.X, Position.Y), bulletSpeed));
-                _shootCooldown = _shootCooldownTime;
+                _game._allBullets.Add(new BulletPlayer(Textures.textureBulletP, new Vector2(Position.X, Position.Y), _bulletSpeed));
+                _shootCooldown = _shotReloading;
             }
         }
 
@@ -86,7 +87,7 @@ namespace DoAnXNA2.src.sprites
             });
         }
 
-        public void Update(GameTime gameTime, GraphicsDeviceManager graphics, KeyboardState kstate, List<BulletEnemy> enemyBullets, Texture2D bulletTexture, float bulletSpeed)
+        public void Update(GameTime gameTime, GraphicsDeviceManager graphics, KeyboardState kstate)
         {
             float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
@@ -97,11 +98,11 @@ namespace DoAnXNA2.src.sprites
 
             // Xử lý bắn
             if (_shootCooldown > 0) _shootCooldown -= elapsedTime;
-            InputUtilities.HandleKeyPress(Keys.Space, kstate, () => Shoot(bulletTexture, bulletSpeed));
+            InputUtilities.HandleKeyPress(Keys.Space, kstate, () => Shoot());
 
             // Cập nhật vị trí viên đạn
-            foreach (var bullet in Bullets) bullet.Move();
-            Bullets = Bullets.Where(b => b.Position.Y >= 0).ToList();
+            /* foreach (var bullet in Bullets) bullet.Move();
+            Bullets = Bullets.Where(b => b.Position.Y >= 0).ToList(); */
         }
 
         public void Draw(SpriteBatch spriteBatch)

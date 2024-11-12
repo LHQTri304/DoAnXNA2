@@ -15,14 +15,17 @@ namespace DoAnXNA2.src.sprites
         public bool IsAlive { get; set; } = true;
 
         // Quản lý cơ chế bắn đạn
-        public List<BulletEnemy> Bullets { get; set; } = new List<BulletEnemy>();
         private float shootCoolDown;
 
         //Quản lý cơ chế di chuyển
         protected IMovementStrategy MovementStrategy;
 
-        public Enemy(Texture2D texture, Vector2 position, IMovementStrategy movementStrategy)
+        // Thêm tham chiếu đến Game1 --> Phục vụ game over và allBullets
+        private Game1 _game;
+
+        public Enemy(Game1 game, Texture2D texture, Vector2 position, IMovementStrategy movementStrategy)
         {
+            _game = game;
             Texture = texture;
             Position = position;
             MovementStrategy = movementStrategy;
@@ -35,7 +38,7 @@ namespace DoAnXNA2.src.sprites
 
             if (shootCoolDown <= 0)
             {
-                Bullets.Add(new BulletEnemy(Textures.textureBulletE, new Vector2(Position.X, Position.Y), bulletSpeed));
+                _game._allBullets.Add(new BulletEnemy(Textures.textureBulletE, new Vector2(Position.X, Position.Y), bulletSpeed));
                 ResetShootCoolDown();
             }
         }
@@ -45,17 +48,17 @@ namespace DoAnXNA2.src.sprites
             shootCoolDown = (float)(random.NextDouble() * 1.5 + 3); // Giá trị ngẫu nhiên từ 3 đến 4.5 giây
         }
 
-        public void Update(GameTime gameTime, GraphicsDeviceManager graphics, List<BulletPlayer> bullets)
+        public void Update(GameTime gameTime, GraphicsDeviceManager graphics)
         {
             if (!IsAlive) return; // Không cập nhật kẻ địch nếu nó đã bị tiêu diệt
 
             Shoot(gameTime);
-            Bullets = Bullets.Where(b => b.Position.Y <= graphics.PreferredBackBufferHeight)
-                             .Select(b => { b.Move(); return b; }).ToList();
+            /* Bullets = Bullets.Where(b => b.Position.Y <= graphics.PreferredBackBufferHeight)
+                             .Select(b => { b.Move(); return b; }).ToList(); */
 
             Position = MovementStrategy.Move(gameTime, graphics, Position);
 
-            CheckCollisionWithBullets(bullets);
+            CheckCollisionWithBullets(_game._allBullets.OfType<BulletPlayer>().ToList());
         }
 
         private void CheckCollisionWithBullets(List<BulletPlayer> bullets)

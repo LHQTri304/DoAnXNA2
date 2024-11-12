@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using DoAnXNA2.src.strategyMethod;
@@ -6,7 +7,7 @@ namespace DoAnXNA2.src.sprites
 {
     public class EBlue : Enemy
     {
-        public EBlue(Vector2 position)
-            : base(Textures.textureEnemyBlue, position, new StraightDownMovement(2.5f)) { }
+        public EBlue(Game1 game, Vector2 position)
+            : base(game, Textures.textureEnemyBlue, position, new StraightDownMovement(2.5f)) { }
     }
 }

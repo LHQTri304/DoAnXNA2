@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -5,9 +6,15 @@ namespace DoAnXNA2
 {
     public static class Textures
     {
+        //Player
         public static Texture2D texturePlayer;
         public static Texture2D textureBulletP;
-        public static Texture2D textureEnemy;
+
+        //Enemies
+        public static Texture2D textureEnemyYellow;
+        public static Texture2D textureEnemyRed;
+        public static Texture2D textureEnemyGreen;
+        public static Texture2D textureEnemyBlue;
         public static Texture2D textureBulletE;
 
         // For HUD
@@ -22,9 +29,15 @@ namespace DoAnXNA2
 
         public static void LoadTextures(ContentManager content)
         {
+            //Player
             texturePlayer = content.Load<Texture2D>("player");
             textureBulletP = content.Load<Texture2D>("bulletPlayer");
-            textureEnemy = content.Load<Texture2D>("enemyYellow");
+
+            //Enemies
+            textureEnemyYellow = content.Load<Texture2D>("enemyYellow");
+            textureEnemyRed = content.Load<Texture2D>("enemyRed");
+            textureEnemyGreen = content.Load<Texture2D>("enemyGreen");
+            textureEnemyBlue = content.Load<Texture2D>("enemyBlue");
             textureBulletE = content.Load<Texture2D>("bulletEnemy");
 
             //GUI            

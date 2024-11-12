@@ -8,6 +8,9 @@
     <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/hudFontTest1.spritefont</File>
     <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpaceInvaderTest/bulletEnemy.png</File>
     <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpaceInvaderTest/bulletPlayer.png</File>
+    <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpaceInvaderTest/enemyBlue.png</File>
+    <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpaceInvaderTest/enemyGreen.png</File>
+    <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpaceInvaderTest/enemyRed.png</File>
     <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpaceInvaderTest/enemyYellow.png</File>
     <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpaceInvaderTest/player.png</File>
     <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpriteFont/SpriteFontTestSubject.png</File>
@@ -19,6 +22,9 @@
     <File xsi:nil="true" />
     <File>bulletEnemy.png</File>
     <File>bulletPlayer.png</File>
+    <File>enemyBlue.png</File>
+    <File>enemyGreen.png</File>
+    <File>enemyRed.png</File>
     <File>enemyYellow.png</File>
     <File>player.png</File>
     <File>SpriteFontTestSubject.png</File>

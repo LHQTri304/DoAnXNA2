@@ -34,3 +34,6 @@ e:\ADaiHoc\A2_dotNET\DoAnXNA2\bin\Debug\net8.0\Content\TestHP.xnb
 e:\ADaiHoc\A2_dotNET\DoAnXNA2\bin\Debug\net8.0\SimplexNoise.dll
 e:\ADaiHoc\A2_dotNET\DoAnXNA2\bin\Debug\net8.0\Content\enemyYellow.xnb
 e:\ADaiHoc\A2_dotNET\DoAnXNA2\bin\Debug\net8.0\Content\bulletEnemy.xnb
+e:\ADaiHoc\A2_dotNET\DoAnXNA2\bin\Debug\net8.0\Content\enemyBlue.xnb
+e:\ADaiHoc\A2_dotNET\DoAnXNA2\bin\Debug\net8.0\Content\enemyGreen.xnb
+e:\ADaiHoc\A2_dotNET\DoAnXNA2\bin\Debug\net8.0\Content\enemyRed.xnb

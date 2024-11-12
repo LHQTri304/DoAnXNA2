@@ -6,7 +6,7 @@ namespace DoAnXNA2.src.sprites
 {
     public class EBlue : Enemy
     {
-        public EBlue(Texture2D texture, Vector2 position)
-            : base(texture, position, new StraightDownMovement(2.5f)) { }
+        public EBlue(Vector2 position)
+            : base(Textures.textureEnemyBlue, position, new StraightDownMovement(2.5f)) { }
     }
 }

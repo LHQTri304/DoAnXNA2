@@ -61,6 +61,7 @@ namespace DoAnXNA2.src.utilities
  */
 
 using System.Collections.Generic;
+using System.Linq;
 using DoAnXNA2.src.factoryMethod;
 using DoAnXNA2.src.sprites;
 using Microsoft.Xna.Framework;
@@ -90,11 +91,11 @@ namespace DoAnXNA2.src.spawners
 
         public void Update(GameTime gameTime, GraphicsDeviceManager graphics, List<BulletPlayer> bullets)
         {
-            foreach (var enemy in Enemies)
+            Enemies = Enemies.Where(enemy =>
             {
                 enemy.Update(gameTime, graphics, bullets);
-            }
-            Enemies.RemoveAll(e => e.GetPosition().Y > 800); // Remove enemies that go out of bounds
+                return enemy.IsAlive; // Giữ lại kẻ địch còn sống
+            }).ToList();
         }
 
         public void Draw(SpriteBatch spriteBatch)

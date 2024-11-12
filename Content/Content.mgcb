@@ -56,6 +56,42 @@
 /processorParam:TextureFormat=Color
 /build:SpaceInvaderTest/bulletPlayer.png;bulletPlayer.png
 
+#begin SpaceInvaderTest/enemyBlue.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpaceInvaderTest/enemyBlue.png;enemyBlue.png
+
+#begin SpaceInvaderTest/enemyGreen.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpaceInvaderTest/enemyGreen.png;enemyGreen.png
+
+#begin SpaceInvaderTest/enemyRed.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpaceInvaderTest/enemyRed.png;enemyRed.png
+
 #begin SpaceInvaderTest/enemyYellow.png
 /importer:TextureImporter
 /processor:TextureProcessor

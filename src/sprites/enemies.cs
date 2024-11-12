@@ -32,7 +32,7 @@ namespace DoAnXNA2.src.sprites
         private const float wallCollisionCoolDownTime = 0.75f;
 
         //Testing
-        protected IMovementStrategy movementStrategy;
+        protected IMovementStrategy MovementStrategy;
 
         public Enemy(Texture2D texture, Vector2 position, IMovementStrategy movementStrategy)
         {
@@ -42,17 +42,7 @@ namespace DoAnXNA2.src.sprites
             horizontalOffset = perlinNoiseOffset;
             perlinNoiseOffset += 0.03f;
             horizontalSpeed = 55f;
-            movementStrategy = movementStrategy;
-        }
-
-        public Vector2 GetPosition()    //Lấy Position không cần thông qua ref
-        {
-            return Position;
-        }
-
-        public void UpdatePosition(Vector2 newPosition) //Set Position không cần thông qua ref
-        {
-            Position = newPosition;
+            MovementStrategy = movementStrategy;
         }
 
         public void Shoot(GameTime gameTime)
@@ -110,7 +100,7 @@ namespace DoAnXNA2.src.sprites
             Bullets = Bullets.Where(b => b.Position.Y <= graphics.PreferredBackBufferHeight)
                              .Select(b => { b.Move(); return b; }).ToList();
 
-            // Auto di chuyển dọc
+            /* // Auto di chuyển dọc
             Position += new Vector2(0, GoDownSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
 
             // Di chuyển ngang ngẫu nhiên và không vượt ra khỏi màn hình
@@ -123,8 +113,8 @@ namespace DoAnXNA2.src.sprites
             if (Position.Y > graphics.PreferredBackBufferHeight + 50)
             {
                 IsAlive = false;
-            }
-            //movementStrategy.Move(Position);
+            } */
+            Position = MovementStrategy.Move(gameTime, graphics,Position);
 
             CheckCollisionWithBullets(bullets);
         }

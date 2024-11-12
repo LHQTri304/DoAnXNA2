@@ -4,17 +4,17 @@ namespace DoAnXNA2.src.strategyMethod
 {
     public class ZigZagMovement : IMovementStrategy
     {
-        private float speed;
+        private float _Speed;
 
         public ZigZagMovement(float speed)
         {
-            this.speed = speed;
+            _Speed = speed;
         }
 
-        public void Move(Vector2 position)
+        public Vector2 Move(GameTime gameTime, GraphicsDeviceManager graphics, Vector2 position)
         {
-            position.X += speed;
-            position.Y += speed * (float)System.Math.Sin(position.X * 0.1f);
+            position += new Vector2(_Speed, _Speed * (float)System.Math.Sin(position.X * 0.1f));
+            return position;
         }
     }
 }

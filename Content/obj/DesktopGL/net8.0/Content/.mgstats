@@ -1,1 +1,4 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpaceInvaderTest/enemyBlue.png","e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/bin/DesktopGL/Content/enemyBlue.xnb","TextureProcessor","Texture2DContent",185,3285,0.1589665
+"e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpaceInvaderTest/enemyGreen.png","e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/bin/DesktopGL/Content/enemyGreen.xnb","TextureProcessor","Texture2DContent",220,5205,0.0036286
+"e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpaceInvaderTest/enemyRed.png","e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/bin/DesktopGL/Content/enemyRed.xnb","TextureProcessor","Texture2DContent",214,5205,0.0032563

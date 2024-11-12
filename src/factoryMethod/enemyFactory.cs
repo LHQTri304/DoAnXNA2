@@ -10,10 +10,10 @@ namespace DoAnXNA2.src.factoryMethod
         {
             return type switch
             {
-                "Red" => new ERed(Textures.textureEnemy, position),
-                "Yellow" => new EYellow(Textures.textureEnemy, position),
-                "Green" => new EGreen(Textures.textureEnemy, position),
-                "Blue" => new EBlue(Textures.textureEnemy, position),
+                "Red" => new ERed(position),
+                "Yellow" => new EYellow(position),
+                "Green" => new EGreen(position),
+                "Blue" => new EBlue(position),
                 _ => null
             };
         }

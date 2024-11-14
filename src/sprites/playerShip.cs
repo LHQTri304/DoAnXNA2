@@ -36,7 +36,7 @@ namespace DoAnXNA2.src.sprites
             _bulletSpeed = 3.5f;
             _shootCooldown = 0;
             _shotReloading = 0.1f;
-            ShootingStrategy = new StraightShot();
+            ShootingStrategy = new ConicalShot();
         }
         public void ShootWithMouse()
         {

@@ -53,7 +53,7 @@ namespace DoAnXNA2.src.gameState
             // Cập nhật các sprites
             _playerShip.Update(gameTime, game._graphics, kstate, mstate);
             _enemySpawner.Update(gameTime, game._graphics);
-            _game._allBullets = _game._allBullets.Where(b => b.Position.Y >= 0 || b.Position.Y <= game.virtualHeight)
+            _game._allBullets = _game._allBullets.Where(b => b.Position.Y >= 0 && b.Position.Y <= game.virtualHeight)
                                     .Select(b => { b.Move(); return b; }).ToList();
 
             // Cập nhật GUI và HUD

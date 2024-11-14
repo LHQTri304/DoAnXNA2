@@ -89,6 +89,7 @@ public class Game1 : Game
         var kstate = Keyboard.GetState();
         var mstate = Mouse.GetState();
         _currentState.Update(this, _gameTime, kstate, mstate);
+        System.Diagnostics.Debug.WriteLine(_allBullets.Count);
         base.Update(_gameTime);
     }
 

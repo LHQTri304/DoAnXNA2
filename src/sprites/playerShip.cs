@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using DoAnXNA2.src.utilities;
 using System.Diagnostics;
+using DoAnXNA2.src.strategyMethod;
 
 namespace DoAnXNA2.src.sprites
 {
@@ -19,6 +20,8 @@ namespace DoAnXNA2.src.sprites
         private float _bulletSpeed;
         private float _shootCooldown;
         private readonly float _shotReloading;
+        protected IPlayerShootingStrategy ShootingStrategy;
+
 
         // Thêm tham chiếu đến Game1 --> Phục vụ game over và allBullets
         private Game1 _game;
@@ -33,6 +36,7 @@ namespace DoAnXNA2.src.sprites
             _bulletSpeed = 3.5f;
             _shootCooldown = 0;
             _shotReloading = 0.1f;
+            ShootingStrategy = new StraightShot();
         }
         public void ShootWithMouse()
         {
@@ -84,15 +88,16 @@ namespace DoAnXNA2.src.sprites
 
         public void Update(GameTime gameTime, GraphicsDeviceManager graphics, KeyboardState kstate, MouseState mstate)
         {
-            float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-
             // Di chuyển & Giới hạn vị trí player trong cửa sổ
             Position = MovementPlayerUtilities.GetNewPosition(Position, mstate);
             Position = MovementPlayerUtilities.KeepPlayerInsideWindow(graphics, Position, Texture);
 
             // Xử lý bắn
-            if (_shootCooldown > 0) _shootCooldown -= elapsedTime;
-            ShootWithMouse();
+            //if (_shootCooldown > 0) _shootCooldown -= elapsedTime;
+            //ShootWithMouse();
+            float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            ShootingStrategy.Shoot(elapsedTime, mstate, Position, _game._allBullets);
+            
 
             // Xử lý thua
             CheckCollisionWithBullet();

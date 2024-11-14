@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using DoAnXNA2.src.spawners;
 using DoAnXNA2.src.sprites;
@@ -18,7 +17,6 @@ namespace DoAnXNA2.src.gameState
         private bool _isPaused;
 
         //For spawner        
-        private int spawnCounter = 0; // Để kiểm soát thứ tự spawn kẻ địch
         private double spawnTimer = 0; // Để kiểm soát thời gian giữa các lần spawn
         private double spawnInterval = 2.0; // Thời gian (giây) giữa mỗi lần spawn
 
@@ -48,19 +46,8 @@ namespace DoAnXNA2.src.gameState
             spawnTimer += gameTime.ElapsedGameTime.TotalSeconds;
             if (spawnTimer >= spawnInterval)
             {
-                spawnTimer = 0; // Reset lại thời gian đếm ngược
-                // Xác định loại kẻ địch theo thứ tự
-                string enemyType = spawnCounter switch
-                {
-                    0 => "Red",
-                    1 => "Green",
-                    2 => "Yellow",
-                    3 => "Blue",
-                    _ => "Red"
-                };
-                _enemySpawner.SpawnEnemy(enemyType); // Gọi hàm spawn kẻ địch dựa trên loại
-                // Tăng bộ đếm và reset lại nếu đạt đến 4 (để lặp lại thứ tự)
-                spawnCounter = (spawnCounter + 1) % 4;
+                spawnTimer = 0;
+                _enemySpawner.SpawnEnemy();
             }
 
             // Cập nhật các sprites

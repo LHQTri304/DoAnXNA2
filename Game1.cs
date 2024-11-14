@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -7,7 +8,6 @@ using DoAnXNA2.src.utilities;
 using DoAnXNA2.src.components;
 using DoAnXNA2.src.gameState;
 using DoAnXNA2.src.spawners;
-using System.Collections.Generic;
 
 namespace DoAnXNA2;
 public class Game1 : Game
@@ -20,7 +20,7 @@ public class Game1 : Game
     private GameHUD _gameHUD;
 
     //GameState
-    public bool _isGameOver { get; private set; } // Flag game over
+    public bool _isGameOver { get; private set; }
     private IGameState _currentState;
     private MainMenu _mainMenu;
     private Setting _setting;
@@ -57,8 +57,8 @@ public class Game1 : Game
         // Tạo các sprites
         _playerShip = new PlayerShip(this, new Vector2(100, 100), 100f);
 
-        // Khởi tạo vị trí spawn cố định cho kẻ địch
-        _enemySpawner = new EnemySpawner(this);
+        // Khởi tạo spawner
+        _enemySpawner = new RedSpawner(this);
 
 
         base.Initialize();

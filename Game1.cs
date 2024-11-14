@@ -58,8 +58,7 @@ public class Game1 : Game
         _playerShip = new PlayerShip(this, new Vector2(100, 100), 100f);
 
         // Khởi tạo vị trí spawn cố định cho kẻ địch
-        Vector2 spawnPosition = new Vector2(virtualWidth / 2, 50);
-        _enemySpawner = new EnemySpawner(this, spawnPosition);
+        _enemySpawner = new EnemySpawner(this);
 
 
         base.Initialize();

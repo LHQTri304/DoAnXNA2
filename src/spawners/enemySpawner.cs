@@ -1,10 +1,4 @@
-/* using System;
-using System.Collections.Generic;
-using System.Linq;
-using DoAnXNA2.src.sprites;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
+/* 
 namespace DoAnXNA2.src.utilities
 {
     public class EnemySpawner
@@ -71,26 +65,22 @@ namespace DoAnXNA2.src.spawners
 {
     public class EnemySpawner
     {
-        public List<Enemy> Enemies { get; set; } = new List<Enemy>();
+        public List<Enemy> Enemies { get; set; }
         private Vector2 _spawnPosition;
-
-        // Thêm tham chiếu đến Game1 --> Phục vụ game over và allBullets
         private Game1 _game;
 
-        public EnemySpawner(Game1 game, Vector2 spawnPosition)
+        public EnemySpawner(Game1 game)
         {
             _game = game;
-            Enemies = new List<Enemy>();
-            _spawnPosition = spawnPosition;
+            Enemies = [];
+            _spawnPosition = new Vector2(_game.virtualWidth / 2, -50);
         }
 
         public void SpawnEnemy(string type)
         {
             Enemy newEnemy = EnemyFactory.CreateEnemy(_game, type, _spawnPosition);
             if (newEnemy != null)
-            {
                 Enemies.Add(newEnemy);
-            }
         }
 
         public void Update(GameTime gameTime, GraphicsDeviceManager graphics)

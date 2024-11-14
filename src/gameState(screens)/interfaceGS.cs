@@ -6,7 +6,7 @@ namespace DoAnXNA2.src.gameState
 {
     public interface IGameState
     {
-        void Update(Game1 game, GameTime gameTime, KeyboardState kstate);
+        void Update(Game1 game, GameTime gameTime, KeyboardState kstate, MouseState mstate);
         void Draw(Game1 game, SpriteBatch spriteBatch);
     }
 }

@@ -16,7 +16,7 @@ namespace DoAnXNA2.src.gameState
             _font = font;
         }
 
-        public void Update(Game1 game, GameTime gameTime, KeyboardState kstate)
+        public void Update(Game1 game, GameTime gameTime, KeyboardState kstate, MouseState mstate)
         {
             InputUtilities.HandleKeyPress(Keys.X,kstate,()=>game.SetMainMenu());
             InputUtilities.HandleKeyPress(Keys.Left,kstate,()=>_selectedLevel = Math.Max(1, _selectedLevel - 1)); // Di chuyển level

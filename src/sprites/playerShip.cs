@@ -34,36 +34,6 @@ namespace DoAnXNA2.src.sprites
             _shootCooldown = 0;
             _shotReloading = 0.1f;
         }
-
-        private void Move(Vector2 direction, float elapsedTime)
-        {
-            Position += direction * Speed * elapsedTime;
-        }
-
-        private Vector2 GetMovementDirection(KeyboardState kstate)
-        {
-            Vector2 direction = Vector2.Zero;
-            if (kstate.IsKeyDown(Keys.Up) || kstate.IsKeyDown(Keys.W)) direction.Y -= 1;
-            if (kstate.IsKeyDown(Keys.Down) || kstate.IsKeyDown(Keys.S)) direction.Y += 1;
-            if (kstate.IsKeyDown(Keys.Left) || kstate.IsKeyDown(Keys.A)) direction.X -= 1;
-            if (kstate.IsKeyDown(Keys.Right) || kstate.IsKeyDown(Keys.D)) direction.X += 1;
-            return direction;
-        }
-
-        private void MoveToMouse(float elapsedTime)
-        {
-            MouseState mouseState = Mouse.GetState();
-            Vector2 mousePosition = new Vector2(mouseState.X, mouseState.Y);
-
-            /* // Tính hướng từ vị trí hiện tại của PlayerShip đến vị trí chuột
-            Vector2 direction = mousePosition - Position;
-            if (direction.Length() > 0)
-                direction.Normalize(); // Chuẩn hóa vector để di chuyển với tốc độ cố định
-
-            Position += direction * Speed * elapsedTime; */
-            Position = mousePosition;
-        }
-
         public void ShootWithMouse()
         {
             MouseState mouseState = Mouse.GetState();
@@ -72,25 +42,6 @@ namespace DoAnXNA2.src.sprites
                 _game._allBullets.Add(new BulletPlayer(Textures.textureBulletP, Position, _bulletSpeed, 0));
                 _shootCooldown = _shotReloading;
             }
-        }
-
-        public void Shoot()
-        {
-            if (_shootCooldown <= 0)
-            {
-                _game._allBullets.Add(new BulletPlayer(Textures.textureBulletP, new Vector2(Position.X, Position.Y), _bulletSpeed, 0));
-                _shootCooldown = _shotReloading;
-            }
-        }
-
-        private void KeepPlayerInsideWindow(GraphicsDeviceManager graphics)
-        {
-            float windowWidth = graphics.PreferredBackBufferWidth;
-            float windowHeight = graphics.PreferredBackBufferHeight;
-            Position = new Vector2(
-                MathHelper.Clamp(Position.X, 0, windowWidth),
-                MathHelper.Clamp(Position.Y, 0 + Texture.Height / 2, windowHeight - Texture.Height / 2)
-            );
         }
 
         private void CheckCollisionWithBullet()
@@ -131,13 +82,13 @@ namespace DoAnXNA2.src.sprites
             });
         }
 
-        public void Update(GameTime gameTime, GraphicsDeviceManager graphics, KeyboardState kstate)
+        public void Update(GameTime gameTime, GraphicsDeviceManager graphics, KeyboardState kstate, MouseState mstate)
         {
             float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             // Di chuyển & Giới hạn vị trí player trong cửa sổ
-            MoveToMouse(elapsedTime);
-            KeepPlayerInsideWindow(graphics);
+            Position = MovementPlayerUtilities.GetNewPosition(Position, mstate);
+            Position = MovementPlayerUtilities.KeepPlayerInsideWindow(graphics, Position, Texture);
 
             // Xử lý bắn
             if (_shootCooldown > 0) _shootCooldown -= elapsedTime;

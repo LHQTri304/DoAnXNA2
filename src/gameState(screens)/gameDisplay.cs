@@ -31,7 +31,7 @@ namespace DoAnXNA2.src.gameState
             _gameHUD = gameHUD;
         }
 
-        public void Update(Game1 game, GameTime gameTime, KeyboardState kstate)
+        public void Update(Game1 game, GameTime gameTime, KeyboardState kstate, MouseState mstate)
         {
             //Xử lý khi game tạm dừng
             InputUtilities.HandleKeyPress(Keys.Escape, kstate, () => _isPaused = !_isPaused);
@@ -51,7 +51,7 @@ namespace DoAnXNA2.src.gameState
             }
 
             // Cập nhật các sprites
-            _playerShip.Update(gameTime, game._graphics, kstate);
+            _playerShip.Update(gameTime, game._graphics, kstate, mstate);
             _enemySpawner.Update(gameTime, game._graphics);
             _game._allBullets = _game._allBullets.Where(b => b.Position.Y >= 0 || b.Position.Y <= game.virtualHeight)
                                     .Select(b => { b.Move(); return b; }).ToList();

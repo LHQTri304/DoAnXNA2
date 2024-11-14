@@ -86,8 +86,9 @@ public class Game1 : Game
     {
         /* if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit(); */
-        var kstate = Keyboard.GetState();        
-        _currentState.Update(this, _gameTime, kstate);
+        var kstate = Keyboard.GetState();
+        var mstate = Mouse.GetState();
+        _currentState.Update(this, _gameTime, kstate, mstate);
         base.Update(_gameTime);
     }
 

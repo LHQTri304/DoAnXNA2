@@ -14,7 +14,7 @@ namespace DoAnXNA2.src.gameState
             _font = font;
         }
 
-        public void Update(Game1 game, GameTime gameTime, KeyboardState kstate)
+        public void Update(Game1 game, GameTime gameTime, KeyboardState kstate, MouseState mstate)
         {
             InputUtilities.HandleKeyPress(Keys.Space, kstate, () => game.SetMainMenu());
         }

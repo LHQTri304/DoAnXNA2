@@ -13,6 +13,7 @@ namespace DoAnXNA2.src.sprites
         public Texture2D Texture { get; set; }
         public Vector2 Position { get; set; }
         public float Speed { get; set; }
+        public bool IsAlive { get; set; } = true;
 
         // Quản lý bắn đạn
         private float _bulletSpeed;
@@ -67,11 +68,11 @@ namespace DoAnXNA2.src.sprites
             );
         }
 
-        public void CheckCollisionWithBulletEnemy(List<BulletEnemy> bullets)
+        private void CheckCollisionWithBulletEnemy()
         {
             var playerBounds = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
 
-            bullets.RemoveAll(bullet =>
+            _game._allBullets.OfType<BulletEnemy>().ToList().RemoveAll(bullet =>
             {
                 var bulletBounds = new Rectangle((int)bullet.Position.X, (int)bullet.Position.Y, bullet.Texture.Width, bullet.Texture.Height);
 
@@ -100,9 +101,7 @@ namespace DoAnXNA2.src.sprites
             if (_shootCooldown > 0) _shootCooldown -= elapsedTime;
             InputUtilities.HandleKeyPress(Keys.Space, kstate, () => Shoot());
 
-            // Cập nhật vị trí viên đạn
-            /* foreach (var bullet in Bullets) bullet.Move();
-            Bullets = Bullets.Where(b => b.Position.Y >= 0).ToList(); */
+            CheckCollisionWithBulletEnemy();
         }
 
         public void Draw(SpriteBatch spriteBatch)

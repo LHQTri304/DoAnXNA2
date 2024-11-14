@@ -35,13 +35,6 @@ namespace DoAnXNA2.src.gameState
 
         public void Update(Game1 game, GameTime gameTime, KeyboardState kstate)
         {
-            //test
-            /* System.Diagnostics.Debug.WriteLine("Đây là danh dách");
-            System.Diagnostics.Debug.WriteLine(_allBullets.Count);
-            System.Diagnostics.Debug.WriteLine(_playerShip._allBullets.Count);
-            System.Diagnostics.Debug.WriteLine("-----"); */
-
-
             //Xử lý khi game tạm dừng
             InputUtilities.HandleKeyPress(Keys.Escape, kstate, () => _isPaused = !_isPaused);
             if (_isPaused)
@@ -78,12 +71,6 @@ namespace DoAnXNA2.src.gameState
 
             // Cập nhật GUI và HUD
             _gameHUD.Update(gameTime, _enemySpawner.Enemies.Count);
-
-            // Kiểm tra điều kiện thua
-            /* foreach (var _enemy in _enemySpawner.Enemies)
-                _playerShip.CheckCollisionWithBulletEnemy(_enemy.Bullets);
-            if (game._isGameOver)
-                game.SetGameOver(); */
         }
 
         public void Draw(Game1 game, SpriteBatch spriteBatch)

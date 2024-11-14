@@ -13,8 +13,8 @@ namespace DoAnXNA2;
 public class Game1 : Game
 {
     public GraphicsDeviceManager _graphics { get; }
-    public int virtualWidth { get; } = 540; // Chiều rộng cố định của nội dung game
-    public int virtualHeight { get; } = 960;// Chiều cao cố định của nội dung game
+    public int virtualWidth { get; } = 1280; // Chiều rộng cố định của nội dung game
+    public int virtualHeight { get; } = 720;// Chiều cao cố định của nội dung game
     private RenderTarget2D _renderTarget;
     private SpriteBatch _spriteBatch;
     private GameHUD _gameHUD;
@@ -46,7 +46,8 @@ public class Game1 : Game
         _graphics.PreferredBackBufferWidth = virtualWidth;
         _graphics.PreferredBackBufferHeight = virtualHeight;
         _graphics.ApplyChanges();
-        Window.AllowUserResizing = true;    // Cho phép thay đổi kích thước cửa sổ
+        Window.AllowUserResizing = true; // Cho phép Resize
+        IsMouseVisible = false; // Ẩn con trỏ chuột
 
         // Tạo RenderTarget với kích thước cố định
         _renderTarget = new RenderTarget2D(GraphicsDevice, virtualWidth, virtualHeight);

@@ -27,8 +27,8 @@ namespace DoAnXNA2.src.sprites
         {
             _game = game;
             Texture = Textures.texturePlayer;
-            Position = position;
-            Speed = speed;
+            Position = new Vector2(game.virtualWidth / 2, game.virtualHeight / 2);
+            Speed = 1000f;
             IsAlive = true;
             _bulletSpeed = 3.5f;
             _shootCooldown = 0;
@@ -55,12 +55,13 @@ namespace DoAnXNA2.src.sprites
             MouseState mouseState = Mouse.GetState();
             Vector2 mousePosition = new Vector2(mouseState.X, mouseState.Y);
 
-            // Tính hướng từ vị trí hiện tại của PlayerShip đến vị trí chuột
+            /* // Tính hướng từ vị trí hiện tại của PlayerShip đến vị trí chuột
             Vector2 direction = mousePosition - Position;
             if (direction.Length() > 0)
                 direction.Normalize(); // Chuẩn hóa vector để di chuyển với tốc độ cố định
 
-            Position += direction * Speed * elapsedTime;
+            Position += direction * Speed * elapsedTime; */
+            Position = mousePosition;
         }
 
         public void ShootWithMouse()
@@ -135,14 +136,14 @@ namespace DoAnXNA2.src.sprites
             float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             // Di chuyển & Giới hạn vị trí player trong cửa sổ
-            Vector2 direction = GetMovementDirection(kstate);
-            Move(direction, elapsedTime);
+            MoveToMouse(elapsedTime);
             KeepPlayerInsideWindow(graphics);
 
             // Xử lý bắn
             if (_shootCooldown > 0) _shootCooldown -= elapsedTime;
-            InputUtilities.HandleKeyPress(Keys.Space, kstate, () => Shoot());
+            ShootWithMouse();
 
+            // Xử lý thua
             CheckCollisionWithBullet();
             CheckCollisionWithEnemy();
         }

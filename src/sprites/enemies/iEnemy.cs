@@ -33,15 +33,6 @@ namespace DoAnXNA2.src.sprites
             ShootingStrategy = shootingStrategy;
         }
 
-        public void Update(GameTime gameTime, GraphicsDeviceManager graphics)
-        {
-            if (!IsAlive) return; // Không cập nhật kẻ địch nếu nó đã bị tiêu diệt
-
-            ShootingStrategy.Shoot(gameTime, Position, _game._allBullets);
-            Position = MovementStrategy.Move(gameTime, graphics, Position);
-            CheckCollisionWithBullets();
-        }
-
         private void CheckCollisionWithBullets()
         {
             var enemyBounds = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
@@ -57,6 +48,15 @@ namespace DoAnXNA2.src.sprites
                 }
                 return false;
             });
+        }
+
+        public void Update(GameTime gameTime, GraphicsDeviceManager graphics)
+        {
+            if (!IsAlive) return; // Không cập nhật kẻ địch nếu nó đã bị tiêu diệt
+
+            ShootingStrategy.Shoot(gameTime, Position, _game._allBullets);
+            Position = MovementStrategy.Move(gameTime, graphics, Position);
+            CheckCollisionWithBullets();
         }
 
         public void Draw(SpriteBatch spriteBatch)

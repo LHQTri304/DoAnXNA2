@@ -30,7 +30,7 @@ public class Game1 : Game
 
     //the sprites
     private PlayerShip _playerShip;
-    private EnemySpawner _enemySpawner;
+    public EnemySpawner _enemySpawner;
     public List<Bullet> _allBullets { get; set; } = [];
 
     public Game1()

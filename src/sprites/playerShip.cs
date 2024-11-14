@@ -50,6 +50,29 @@ namespace DoAnXNA2.src.sprites
             return direction;
         }
 
+        private void MoveToMouse(float elapsedTime)
+        {
+            MouseState mouseState = Mouse.GetState();
+            Vector2 mousePosition = new Vector2(mouseState.X, mouseState.Y);
+
+            // Tính hướng từ vị trí hiện tại của PlayerShip đến vị trí chuột
+            Vector2 direction = mousePosition - Position;
+            if (direction.Length() > 0)
+                direction.Normalize(); // Chuẩn hóa vector để di chuyển với tốc độ cố định
+
+            Position += direction * Speed * elapsedTime;
+        }
+
+        public void ShootWithMouse()
+        {
+            MouseState mouseState = Mouse.GetState();
+            if (_shootCooldown <= 0 && mouseState.LeftButton == ButtonState.Pressed)
+            {
+                _game._allBullets.Add(new BulletPlayer(Textures.textureBulletP, Position, _bulletSpeed, 0));
+                _shootCooldown = _shotReloading;
+            }
+        }
+
         public void Shoot()
         {
             if (_shootCooldown <= 0)

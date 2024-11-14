@@ -31,7 +31,7 @@ namespace DoAnXNA2
         {
             //Player
             texturePlayer = content.Load<Texture2D>("Space Fighter");
-            textureBulletP = content.Load<Texture2D>("bulletPlayer");
+            textureBulletP = content.Load<Texture2D>("Fire Blaster");
 
             //Enemies
             textureEnemyYellow = content.Load<Texture2D>("enemyYellow");

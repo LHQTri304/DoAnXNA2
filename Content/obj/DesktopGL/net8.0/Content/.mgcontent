@@ -6,6 +6,7 @@
   <SourceFiles>
     <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/GUI/TestHP.png</File>
     <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/hudFontTest1.spritefont</File>
+    <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/PichonArtwork/Fire Blaster.png</File>
     <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/PichonArtwork/Space Fighter.png</File>
     <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpaceInvaderTest/bulletEnemy.png</File>
     <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpaceInvaderTest/bulletPlayer.png</File>
@@ -21,6 +22,7 @@
   <DestFiles>
     <File>TestHP.png</File>
     <File xsi:nil="true" />
+    <File>Fire Blaster.png</File>
     <File>Space Fighter.png</File>
     <File>bulletEnemy.png</File>
     <File>bulletPlayer.png</File>

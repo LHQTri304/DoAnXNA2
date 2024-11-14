@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpriteFont/SpriteFontTestSubject.png</SourceFile>
-  <SourceTime>2024-10-02T10:19:11.5372029+07:00</SourceTime>
-  <DestFile>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/bin/DesktopGL/SpriteFontTestSubject.xnb</DestFile>
-  <DestTime>2024-11-14T23:46:46.999478+07:00</DestTime>
+  <SourceFile>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpriteFont/SpriteFontTestSubject3.png</SourceFile>
+  <SourceTime>2024-10-02T10:54:47.8093106+07:00</SourceTime>
+  <DestFile>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/bin/DesktopGL/SpriteFontTestSubject3.xnb</DestFile>
+  <DestTime>2024-11-14T23:46:47.0373917+07:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2024-08-17T00:05:56+07:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

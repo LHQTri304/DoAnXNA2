@@ -37,7 +37,7 @@ namespace DoAnXNA2.src.sprites
         {
             if (!IsAlive) return; // Không cập nhật kẻ địch nếu nó đã bị tiêu diệt
 
-            ShootingStrategy.Shoot(gameTime, graphics, Position, _game._allBullets);
+            ShootingStrategy.Shoot(gameTime, Position, _game._allBullets);
             Position = MovementStrategy.Move(gameTime, graphics, Position);
             CheckCollisionWithBullets();
         }

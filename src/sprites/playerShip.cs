@@ -53,7 +53,7 @@ namespace DoAnXNA2.src.sprites
         {
             if (_shootCooldown <= 0)
             {
-                _game._allBullets.Add(new BulletPlayer(Textures.textureBulletP, new Vector2(Position.X, Position.Y), _bulletSpeed));
+                _game._allBullets.Add(new BulletPlayer(Textures.textureBulletP, new Vector2(Position.X, Position.Y), _bulletSpeed, 0));
                 _shootCooldown = _shotReloading;
             }
         }

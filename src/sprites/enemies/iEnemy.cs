@@ -14,9 +14,6 @@ namespace DoAnXNA2.src.sprites
         public Vector2 Position { get; set; }
         public bool IsAlive { get; set; } = true;
 
-        // Quản lý cơ chế bắn đạn
-        private float shootCoolDown;
-
         //Quản lý cơ chế di chuyển & bắn
         protected IMovementStrategy MovementStrategy;
         protected IBaseShootingStrategy ShootingStrategy;
@@ -35,18 +32,16 @@ namespace DoAnXNA2.src.sprites
 
         private void CheckCollisionWithBullets()
         {
-            var enemyBounds = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
-
             _game._allBullets.OfType<BulletPlayer>().ToList().RemoveAll(bullet =>
             {
-                var bulletBounds = new Rectangle((int)bullet.Position.X, (int)bullet.Position.Y, bullet.Texture.Width, bullet.Texture.Height);
-
-                if (enemyBounds.Intersects(bulletBounds))
-                {
-                    IsAlive = false; // Kẻ địch bị tiêu diệt
-                    return true;
-                }
-                return false;
+                return CollisionUtilities.CheckCollision(
+                    Position, Texture,
+                    bullet.Position, bullet.Texture,
+                    () =>
+                    {
+                        IsAlive = false; // Kẻ địch bị tiêu diệt
+                    }
+                );
             });
         }
 

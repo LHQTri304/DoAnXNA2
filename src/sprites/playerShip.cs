@@ -72,38 +72,38 @@ namespace DoAnXNA2.src.sprites
         private void CheckCollisionWithBullet()
         {
             var playerBounds = QuickGetUtilities.GetPlayerBounds(Position, Texture);
-
             _game._allBullets.OfType<BulletEnemy>().ToList().RemoveAll(bullet =>
             {
                 var bulletBounds = QuickGetUtilities.GetBounds(bullet.Position, bullet.Texture);
-
-                if (playerBounds.Intersects(bulletBounds))
-                {
-                    System.Diagnostics.Debug.WriteLine("bạn đã bị bắn");
-                    IsAlive = false;
-                    _game.SetGameOver(); //Cập nhật trạng thái game
-                    return true; // Xóa viên đạn
-                }
-                return false;
+                return CollisionUtilities.CheckCollision(
+                    playerBounds,
+                    bulletBounds,
+                    () =>
+                    {
+                        System.Diagnostics.Debug.WriteLine("bạn đã bị bắn");
+                        IsAlive = false;
+                        _game.SetGameOver(); //Cập nhật trạng thái game
+                    }
+                );
             });
         }
 
         private void CheckCollisionWithEnemy()
         {
             var playerBounds = QuickGetUtilities.GetPlayerBounds(Position, Texture);
-
             _game._enemySpawner.Enemies.RemoveAll(enemy =>
             {
                 var enemyBounds = QuickGetUtilities.GetBounds(enemy.Position, enemy.Texture);
-
-                if (playerBounds.Intersects(enemyBounds))
-                {
-                    System.Diagnostics.Debug.WriteLine("bạn đã tông trúng kẻ địch");
-                    IsAlive = false;
-                    _game.SetGameOver(); //Cập nhật trạng thái game
-                    return true; // Xóa viên đạn
-                }
-                return false;
+                return CollisionUtilities.CheckCollision(
+                    playerBounds,
+                    enemyBounds,
+                    () =>
+                    {
+                        System.Diagnostics.Debug.WriteLine("bạn đã tông trúng kẻ địch");
+                        IsAlive = false;
+                        _game.SetGameOver(); //Cập nhật trạng thái game
+                    }
+                );
             });
         }
 

@@ -13,8 +13,7 @@ namespace DoAnXNA2.src.strategyMethod
         private float _VerticalSpeed;
 
         // Quản lý giới hạn di chuyển bên trong màn hình
-        private bool isCollidedWithLeftWall;
-        private bool isCollidedWithRightWall;
+        private bool isCollidedWithWall;
         private float wallCollisionCoolDown;
         private const float wallCollisionCoolDownTime = 0.75f;
 
@@ -49,26 +48,24 @@ namespace DoAnXNA2.src.strategyMethod
         {
             if (position.X < _Texture.Width / 2)
             {
-                isCollidedWithLeftWall = true;
+                isCollidedWithWall = true;
                 wallCollisionCoolDown = wallCollisionCoolDownTime;
             }
             else if (position.X > graphics.PreferredBackBufferWidth - _Texture.Width / 2)
             {
-                isCollidedWithRightWall = true;
                 wallCollisionCoolDown = wallCollisionCoolDownTime;
             }
 
             if (wallCollisionCoolDown > 0)
             {
                 wallCollisionCoolDown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-                return isCollidedWithLeftWall
+                return isCollidedWithWall
                     ? Math.Abs(moveValue)
                     : -Math.Abs(moveValue);
             }
             else
             {
-                isCollidedWithLeftWall = false;
-                isCollidedWithRightWall = false;
+                isCollidedWithWall = false;
                 return moveValue;
             }
         }

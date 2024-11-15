@@ -10,18 +10,11 @@ namespace DoAnXNA2.src.gameState
 {
     public class GameDisplay : IGameState
     {
+        private Game1 _game;
         private PlayerShip _playerShip;
         private EnemySpawner _enemySpawner;
         private GameHUD _gameHUD;
-
         private bool _isPaused;
-
-        //For spawner        
-        private double spawnTimer = 0; // Để kiểm soát thời gian giữa các lần spawn
-        private double spawnInterval = 2.0; // Thời gian (giây) giữa mỗi lần spawn
-
-        // Thêm tham chiếu đến Game1 --> Phục vụ game over và allBullets
-        private Game1 _game;
 
         public GameDisplay(Game1 game, PlayerShip playerShip, EnemySpawner enemySpawner, GameHUD gameHUD)
         {
@@ -41,14 +34,7 @@ namespace DoAnXNA2.src.gameState
                 InputUtilities.HandleKeyPress(Keys.X, kstate, () => { _isPaused = false; game.SetMainMenu(); });
                 return;
             }
-
-            //Xử lý spawner enemies
-            spawnTimer += gameTime.ElapsedGameTime.TotalSeconds;
-            if (spawnTimer >= spawnInterval)
-            {
-                spawnTimer = 0;
-                _enemySpawner.SpawnEnemy();
-            }
+            _enemySpawner.StartAutoSpawn(0.1, 100);
 
             // Cập nhật các sprites
             _playerShip.Update(gameTime, game._graphics, kstate, mstate);

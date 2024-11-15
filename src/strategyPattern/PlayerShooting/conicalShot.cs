@@ -21,7 +21,7 @@ namespace DoAnXNA2.src.strategyMethod
     {
         public ConicalShot()
         {
-            _Level = 10;
+            _Level = 3;
             _Speed = 5.5f;
             newBullets = [];
             ResetShootCoolDown(ref shootCoolDown); // Khởi tạo cooldown ban đầu

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DoAnXNA2.src.sprites;
+using DoAnXNA2.src.utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
@@ -16,13 +17,16 @@ namespace DoAnXNA2.src.strategyMethod
         protected abstract void AddNewBullets(Vector2 position);
         public void Shoot(float elapsedTime, MouseState mstate, Vector2 position, List<Bullet> bullets)
         {
-            if (shootCoolDown > 0) shootCoolDown -= elapsedTime;
-            if (shootCoolDown <= 0 && mstate.LeftButton == ButtonState.Pressed)
-            {
-                AddNewBullets(position);
-                bullets.AddRange(newBullets);
-                ResetShootCoolDown(ref shootCoolDown); // Reset cooldown sau mỗi lần bắn
-            }
+            if (shootCoolDown > 0)
+                shootCoolDown -= elapsedTime;
+            else
+                InputUtilities.HandleMouseClick(mstate.LeftButton, 0, () =>
+                {
+                    AddNewBullets(position);
+                    bullets.AddRange(newBullets);
+                    newBullets.Clear();
+                    ResetShootCoolDown(ref shootCoolDown); // Reset cooldown sau mỗi lần bắn
+                });
         }
         protected void ResetShootCoolDown(ref float shootCoolDown)
         {

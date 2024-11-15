@@ -18,6 +18,7 @@ namespace DoAnXNA2.src.strategyMethod
             {
                 AddNewBullets(position);
                 bullets.AddRange(newBullets);
+                newBullets.Clear();
                 ResetShootCoolDown(ref shootCoolDown); // Reset cooldown sau mỗi lần bắn
             }
         }

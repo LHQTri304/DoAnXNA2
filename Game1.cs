@@ -59,7 +59,7 @@ public class Game1 : Game
         _playerShip = new PlayerShip(this, new Vector2(100, 100), 100f);
 
         // Khởi tạo spawner
-        _enemySpawner = new RedSpawner(this);
+        _enemySpawner = new GreenSpawner(this);
 
 
         base.Initialize();
@@ -89,7 +89,10 @@ public class Game1 : Game
         var kstate = Keyboard.GetState();
         var mstate = Mouse.GetState();
         _currentState.Update(this, _gameTime, kstate, mstate);
+        System.Diagnostics.Debug.WriteLine("---");
         System.Diagnostics.Debug.WriteLine(_allBullets.Count);
+        System.Diagnostics.Debug.WriteLine(_enemySpawner.Enemies.Count);
+        System.Diagnostics.Debug.WriteLine("---");
         base.Update(_gameTime);
     }
 
@@ -130,12 +133,21 @@ public class Game1 : Game
     public void SetMainMenu()
     {
         _currentState = _mainMenu;
-        //_playerShip.Bullets.Clear();
         _allBullets.Clear();
         _enemySpawner.Enemies.Clear();
     }
     public void SetSetting() => _currentState = _setting;
     public void SetChoosingLevels() => _currentState = _choosingLevels;
-    public void SetGameDisplay(int level) => _currentState = _gameDisplay;
-    public void SetGameOver() => _currentState = _gameOver;
+    public void SetGameDisplay(int level)
+    {
+        _currentState = _gameDisplay;
+        _allBullets.Clear();
+        _enemySpawner.Enemies.Clear();
+    }
+    public void SetGameOver()
+    {
+        _currentState = _gameOver;
+        _allBullets.Clear();
+        _enemySpawner.Enemies.Clear();
+    }
 }

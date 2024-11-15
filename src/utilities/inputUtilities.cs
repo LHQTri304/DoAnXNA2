@@ -31,6 +31,7 @@ namespace DoAnXNA2.src.utilities
         // Phương thức tránh lặp lại hành động khi giữ nút chuột
         public static void HandleMouseClick(ButtonState mouseButton, int buttonIndex, Action action)
         {
+            //Note: buttonIndex: 0 = mouseState.LeftButton | 1 = mouseState.RightButton | 2 = mouseState.MiddleButton
             if (!avoidHoldingMouseDict.ContainsKey(buttonIndex))
             {
                 avoidHoldingMouseDict[buttonIndex] = false;

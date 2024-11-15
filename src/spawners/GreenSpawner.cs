@@ -5,18 +5,18 @@ using DoAnXNA2.src.sprites;
 
 namespace DoAnXNA2.src.spawners
 {
-    public class RedSpawner : EnemySpawner
+    public class GreenSpawner : EnemySpawner
     {
         private Random _random;
         private float spawnPointX;
-        public RedSpawner(Game1 game)
+        public GreenSpawner(Game1 game)
             : base(game)
         {
             _spawnPosition = new Vector2(0, 0);
         }
         public override void SpawnEnemy()
         {
-            Enemy newEnemy = EnemyFactory.CreateEnemy(_game, "Red", RandomSpawnPoint());
+            Enemy newEnemy = EnemyFactory.CreateEnemy(_game, "Green", RandomSpawnPoint());
             if (newEnemy != null)
                 Enemies.Add(newEnemy);
         }

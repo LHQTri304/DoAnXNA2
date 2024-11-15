@@ -17,9 +17,6 @@ namespace DoAnXNA2.src.sprites
         public bool IsAlive { get; set; }
 
         // Quản lý bắn đạn
-        private float _bulletSpeed;
-        private float _shootCooldown;
-        private readonly float _shotReloading;
         protected IPlayerShootingStrategy ShootingStrategy;
 
 
@@ -33,19 +30,7 @@ namespace DoAnXNA2.src.sprites
             Position = new Vector2(game.virtualWidth / 2, game.virtualHeight / 2);
             Speed = 1000f;
             IsAlive = true;
-            _bulletSpeed = 3.5f;
-            _shootCooldown = 0;
-            _shotReloading = 0.1f;
             ShootingStrategy = new ConicalShot();
-        }
-        public void ShootWithMouse()
-        {
-            MouseState mouseState = Mouse.GetState();
-            if (_shootCooldown <= 0 && mouseState.LeftButton == ButtonState.Pressed)
-            {
-                _game._allBullets.Add(new BulletPlayer(Textures.textureBulletP, Position, _bulletSpeed, 0));
-                _shootCooldown = _shotReloading;
-            }
         }
 
         private void CheckCollisionWithBullet()

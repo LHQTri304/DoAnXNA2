@@ -59,7 +59,7 @@ public class Game1 : Game
         _playerShip = new PlayerShip(this, new Vector2(100, 100), 100f);
 
         // Khởi tạo spawner
-        _enemySpawner = new GreenSpawner(this);
+        _enemySpawner = new YellowSpawner(this);
 
 
         base.Initialize();

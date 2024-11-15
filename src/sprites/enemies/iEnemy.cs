@@ -45,6 +45,12 @@ namespace DoAnXNA2.src.sprites
             });
         }
 
+        private void CheckOutOfScreen()
+        {
+            if (Position.Y > _game.virtualHeight + 50)
+                IsAlive = false;
+        }
+
         public void Update(GameTime gameTime, GraphicsDeviceManager graphics)
         {
             if (!IsAlive) return; // Không cập nhật kẻ địch nếu nó đã bị tiêu diệt
@@ -52,6 +58,7 @@ namespace DoAnXNA2.src.sprites
             ShootingStrategy.Shoot(gameTime, Position, _game._allBullets);
             Position = MovementStrategy.Move(gameTime, graphics, Position);
             CheckCollisionWithBullets();
+            CheckOutOfScreen();
         }
 
         public void Draw(SpriteBatch spriteBatch)

@@ -44,6 +44,18 @@
 /processorParam:TextureFormat=Color
 /build:PichonArtwork/Fire Blaster.png;Fire Blaster.png
 
+#begin PichonArtwork/Mini Galaxy.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PichonArtwork/Mini Galaxy.png;Mini Galaxy.png
+
 #begin PichonArtwork/Space Fighter.png
 /importer:TextureImporter
 /processor:TextureProcessor

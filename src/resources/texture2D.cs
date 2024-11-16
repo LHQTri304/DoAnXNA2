@@ -38,7 +38,7 @@ namespace DoAnXNA2
             textureEnemyRed = content.Load<Texture2D>("enemyRed");
             textureEnemyGreen = content.Load<Texture2D>("enemyGreen");
             textureEnemyBlue = content.Load<Texture2D>("enemyBlue");
-            textureBulletE = content.Load<Texture2D>("bulletEnemy");
+            textureBulletE = content.Load<Texture2D>("Mini Galaxy");
 
             //GUI            
             textureHP = content.Load<Texture2D>("TestHP");

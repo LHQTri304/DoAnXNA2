@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/PichonArtwork/Space Fighter.png</SourceFile>
-  <SourceTime>2024-11-12T20:03:02.3160935+07:00</SourceTime>
+  <SourceTime>2024-11-14T23:50:46.3253392+07:00</SourceTime>
   <DestFile>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/bin/DesktopGL/Space Fighter.xnb</DestFile>
-  <DestTime>2024-11-14T23:46:46.8002851+07:00</DestTime>
+  <DestTime>2024-11-16T08:23:29.1466851+07:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2024-08-17T00:05:56+07:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

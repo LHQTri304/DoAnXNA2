@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpaceInvaderTest/enemyGreen.png</SourceFile>
+  <SourceFile>E:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpaceInvaderTest/enemyGreen.png</SourceFile>
   <SourceTime>2024-09-23T10:44:22.4250939+07:00</SourceTime>
-  <DestFile>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/bin/DesktopGL/Content/enemyGreen.xnb</DestFile>
-  <DestTime>2024-11-12T13:47:22.3438676+07:00</DestTime>
+  <DestFile>E:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/bin/DesktopGL/Content/enemyGreen.xnb</DestFile>
+  <DestTime>2024-11-16T08:26:38.5887711+07:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2024-08-17T00:05:56+07:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

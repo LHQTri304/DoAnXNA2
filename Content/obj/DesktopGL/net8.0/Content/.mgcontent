@@ -4,25 +4,27 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/GUI/TestHP.png</File>
-    <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/hudFontTest1.spritefont</File>
-    <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/PichonArtwork/Fire Blaster.png</File>
-    <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/PichonArtwork/Space Fighter.png</File>
-    <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpaceInvaderTest/bulletEnemy.png</File>
-    <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpaceInvaderTest/bulletPlayer.png</File>
-    <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpaceInvaderTest/enemyBlue.png</File>
-    <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpaceInvaderTest/enemyGreen.png</File>
-    <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpaceInvaderTest/enemyRed.png</File>
-    <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpaceInvaderTest/enemyYellow.png</File>
-    <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpaceInvaderTest/player.png</File>
-    <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpriteFont/SpriteFontTestSubject.png</File>
-    <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpriteFont/SpriteFontTestSubject2.png</File>
-    <File>e:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpriteFont/SpriteFontTestSubject3.png</File>
+    <File>E:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/GUI/TestHP.png</File>
+    <File>E:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/hudFontTest1.spritefont</File>
+    <File>E:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/PichonArtwork/Fire Blaster.png</File>
+    <File>E:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/PichonArtwork/Mini Galaxy.png</File>
+    <File>E:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/PichonArtwork/Space Fighter.png</File>
+    <File>E:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpaceInvaderTest/bulletEnemy.png</File>
+    <File>E:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpaceInvaderTest/bulletPlayer.png</File>
+    <File>E:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpaceInvaderTest/enemyBlue.png</File>
+    <File>E:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpaceInvaderTest/enemyGreen.png</File>
+    <File>E:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpaceInvaderTest/enemyRed.png</File>
+    <File>E:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpaceInvaderTest/enemyYellow.png</File>
+    <File>E:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpaceInvaderTest/player.png</File>
+    <File>E:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpriteFont/SpriteFontTestSubject.png</File>
+    <File>E:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpriteFont/SpriteFontTestSubject2.png</File>
+    <File>E:/ADaiHoc/A2_dotNET/DoAnXNA2/Content/SpriteFont/SpriteFontTestSubject3.png</File>
   </SourceFiles>
   <DestFiles>
     <File>TestHP.png</File>
     <File xsi:nil="true" />
     <File>Fire Blaster.png</File>
+    <File>Mini Galaxy.png</File>
     <File>Space Fighter.png</File>
     <File>bulletEnemy.png</File>
     <File>bulletPlayer.png</File>

@@ -12,6 +12,7 @@ namespace DoAnXNA2.src.sprites
     {
         public Texture2D Texture { get; set; }
         public Vector2 Position { get; set; }
+        protected int ScoreKilled { get; set; }
         public bool IsAlive { get; set; } = true;
 
         //Quản lý cơ chế di chuyển & bắn
@@ -21,11 +22,12 @@ namespace DoAnXNA2.src.sprites
         // Thêm tham chiếu đến Game1 --> Phục vụ game over và allBullets
         private Game1 _game;
 
-        public Enemy(Game1 game, Texture2D texture, Vector2 position, IMovementStrategy movementStrategy, IBaseShootingStrategy shootingStrategy)
+        public Enemy(Game1 game, Texture2D texture, Vector2 position, int scoreKilled, IMovementStrategy movementStrategy, IBaseShootingStrategy shootingStrategy)
         {
             _game = game;
             Texture = texture;
             Position = position;
+            ScoreKilled = scoreKilled;
             MovementStrategy = movementStrategy;
             ShootingStrategy = shootingStrategy;
         }
@@ -39,6 +41,7 @@ namespace DoAnXNA2.src.sprites
                     bullet.Position, bullet.Texture,
                     () =>
                     {
+                        _game._currentScore += ScoreKilled;
                         IsAlive = false; // Kẻ địch bị tiêu diệt
                     }
                 );

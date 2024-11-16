@@ -5,25 +5,25 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace DoAnXNA2.src.UI
 {
-    public class GameTimeHUD : I_HUD
+    public class GameScoreHUD : I_HUD
     {
-        private TimeSpan _gameTimeElapsed;
+        private double _gameScore;
 
-        public GameTimeHUD(Game1 game, SpriteFont font)
+        public GameScoreHUD(Game1 game, SpriteFont font)
             : base(game, font)
         {
-            _gameTimeElapsed = TimeSpan.Zero;
+            _gameScore = 0;
         }
 
         public override void Update(GameTime gameTime)
         {
-            _gameTimeElapsed += gameTime.ElapsedGameTime;
+            _gameScore = _game._currentScore;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            string timeText = $"Time: {_gameTimeElapsed.TotalSeconds:F2}";
-            spriteBatch.DrawString(Font, timeText, new Vector2(10, 10), Color.White);
+            string scoreText = $"Score: {_gameScore}";
+            spriteBatch.DrawString(Font, scoreText, new Vector2(10, 80), Color.White);
             //SimplifyDrawing.HandleCenteredText(spriteBatch, Font, timeText, new Vector2(100, 10));
         }
     }

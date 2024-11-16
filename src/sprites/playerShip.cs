@@ -13,7 +13,7 @@ namespace DoAnXNA2.src.sprites
     {
         public Texture2D Texture { get; set; }
         public Vector2 Position { get; set; }
-        //public float Speed { get; set; }
+        public int CurrentLevel { get; set; }
         public bool IsAlive { get; set; }
 
         // Quản lý bắn đạn
@@ -27,14 +27,20 @@ namespace DoAnXNA2.src.sprites
         {
             _game = game;
             Texture = null;
-            Position = new(0,0);
+            Position = new(0, 0);
+            CurrentLevel = 1;
             IsAlive = true;
-            ShootingStrategy = new ConicalShot();
+            SetShootingStrategy();
         }
 
         public void ReloadTexture()
         {
             Texture = Textures.texturePlayer;
+        }
+
+        public void SetShootingStrategy()
+        {
+            ShootingStrategy = new ConicalShot(CurrentLevel);
         }
 
         private void CheckCollisionWithBullet()
@@ -78,13 +84,18 @@ namespace DoAnXNA2.src.sprites
 
         public void Update(GameTime gameTime, GraphicsDeviceManager graphics, KeyboardState kstate, MouseState mstate)
         {
+            // Level up khi đạt Milestone
+            if (CurrentLevel < 10 && _game._currentScore == ScoreTable.MilestoneLv0to10[CurrentLevel + 1])
+            {
+                CurrentLevel++;
+                SetShootingStrategy();
+            }
+
             // Di chuyển & Giới hạn vị trí player trong cửa sổ
             Position = MovementPlayerUtilities.GetNewPosition(Position, mstate);
             Position = MovementPlayerUtilities.KeepPlayerInsideWindow(graphics, Position, Texture);
 
             // Xử lý bắn
-            //if (_shootCooldown > 0) _shootCooldown -= elapsedTime;
-            //ShootWithMouse();
             float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             ShootingStrategy.Shoot(elapsedTime, mstate, Position, _game._allBullets);
 

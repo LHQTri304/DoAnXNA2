@@ -24,8 +24,8 @@ namespace DoAnXNA2.src.UI
         public override void Draw(SpriteBatch spriteBatch)
         {
             string enemyText = $"Enemies: {_enemyCount}";
-            //spriteBatch.DrawString(Font, enemyText, new Vector2(10, 40), Color.White);
-            SimplifyDrawing.HandleCenteredText(spriteBatch, Font, enemyText, new Vector2(10, 40));
+            spriteBatch.DrawString(Font, enemyText, new Vector2(10, 40), Color.White);
+            //SimplifyDrawing.HandleCenteredText(spriteBatch, Font, enemyText, new Vector2(100, 40));
         }
     }
 }

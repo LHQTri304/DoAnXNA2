@@ -37,6 +37,9 @@ public class Game1 : Game
     // UI
     public List<I_HUD> _gameHUD { get; set; }
 
+    // Level system
+    public int _currentScore { get; set; }
+
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
@@ -99,6 +102,7 @@ public class Game1 : Game
 
         // UI
         _gameHUD = [
+            new GameScoreHUD(this, font),
             new GameTimeHUD(this, font),
             new EnemyCountHUD(this, font)
         ];

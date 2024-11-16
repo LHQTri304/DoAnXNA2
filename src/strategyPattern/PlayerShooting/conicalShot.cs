@@ -19,9 +19,9 @@ namespace DoAnXNA2.src.strategyMethod
 
     public class ConicalShot : IPlayerShootingStrategy
     {
-        public ConicalShot()
+        public ConicalShot(int level)
         {
-            _Level = 3;
+            _Level = level;
             _Speed = 5.5f;
             newBullets = [];
             ResetShootCoolDown(ref shootCoolDown); // Khởi tạo cooldown ban đầu

@@ -55,7 +55,8 @@ namespace DoAnXNA2.src.sprites
         private void CheckCollisionWithEnemy()
         {
             var playerBounds = QuickGetUtilities.GetPlayerBounds(Position, Texture);
-            _game._enemySpawner.Enemies.RemoveAll(enemy =>
+            _game._allSpawners.SelectMany(spawner => spawner.Enemies).ToList()  //Lấy ra tất cả enemy ở tất cả spawner
+                .RemoveAll(enemy =>
             {
                 var enemyBounds = QuickGetUtilities.GetBounds(enemy.Position, enemy.Texture);
                 return CollisionUtilities.CheckCollision(
@@ -82,7 +83,7 @@ namespace DoAnXNA2.src.sprites
             //ShootWithMouse();
             float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             ShootingStrategy.Shoot(elapsedTime, mstate, Position, _game._allBullets);
-            
+
 
             // Xử lý thua
             CheckCollisionWithBullet();

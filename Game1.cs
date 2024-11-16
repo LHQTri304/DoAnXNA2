@@ -30,7 +30,7 @@ public class Game1 : Game
 
     //the sprites
     private PlayerShip _playerShip;
-    public EnemySpawner _enemySpawner;
+    public List<EnemySpawner> _allSpawners { get; set; }
     public List<Bullet> _allBullets { get; set; } = [];
 
     public Game1()
@@ -59,7 +59,11 @@ public class Game1 : Game
         _playerShip = new PlayerShip(this, new Vector2(100, 100), 100f);
 
         // Khởi tạo spawner
-        _enemySpawner = new YellowSpawner(this);
+        _allSpawners = [
+            new YellowSpawner(this),
+            new RedSpawner(this),
+            new GreenSpawner(this)
+        ];
 
 
         base.Initialize();
@@ -77,7 +81,7 @@ public class Game1 : Game
         _mainMenu = new MainMenu(font);
         _setting = new Setting(font);
         _choosingLevels = new ChoosingLevels(font);
-        _gameDisplay = new GameDisplay(this, _playerShip, _enemySpawner, _gameHUD);
+        _gameDisplay = new GameDisplay(this, _playerShip, _allSpawners, _gameHUD);
         _gameOver = new GameOver(font);
         _currentState = _mainMenu;
     }
@@ -91,7 +95,10 @@ public class Game1 : Game
         _currentState.Update(this, _gameTime, kstate, mstate);
         System.Diagnostics.Debug.WriteLine("---");
         System.Diagnostics.Debug.WriteLine(_allBullets.Count);
-        System.Diagnostics.Debug.WriteLine(_enemySpawner.Enemies.Count);
+        int _enemyCount = 0;
+        foreach (var item in _allSpawners)
+            _enemyCount += item.Enemies.Count;
+        System.Diagnostics.Debug.WriteLine(_enemyCount);
         System.Diagnostics.Debug.WriteLine("---");
         base.Update(_gameTime);
     }
@@ -130,24 +137,26 @@ public class Game1 : Game
 
         base.Draw(_gameTime);
     }
-    public void SetMainMenu()
-    {
-        _currentState = _mainMenu;
-        _allBullets.Clear();
-        _enemySpawner.Enemies.Clear();
-    }
+    public void SetMainMenu() => _currentState = _mainMenu;
     public void SetSetting() => _currentState = _setting;
     public void SetChoosingLevels() => _currentState = _choosingLevels;
     public void SetGameDisplay(int level)
     {
+        _gameDisplay._Level = level;
+        _allBullets.Clear();
+        foreach (var item in _allSpawners)
+            item.Enemies.Clear();
         _currentState = _gameDisplay;
-        _allBullets.Clear();
-        _enemySpawner.Enemies.Clear();
     }
-    public void SetGameOver()
+    public void SetGameOver() => _currentState = _gameOver;
+    /* public void SetSpawner(int level)
     {
-        _currentState = _gameOver;
-        _allBullets.Clear();
-        _enemySpawner.Enemies.Clear();
-    }
+        _enemySpawner = level switch
+        {
+            1 => new YellowSpawner(this),
+            2 => new RedSpawner(this),
+            3 => new GreenSpawner(this),
+            _ => null,
+        };
+    } */
 }

@@ -5,25 +5,25 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace DoAnXNA2.src.UI
 {
-    public class GameScoreHUD : I_HUD
+    public class NextLevelMilestoneHUD : I_HUD
     {
-        private double _gameScore;
+        private int _playerCurrentLevel;
 
-        public GameScoreHUD(Game1 game, SpriteFont font)
+        public NextLevelMilestoneHUD(Game1 game, SpriteFont font)
             : base(game, font)
         {
-            _gameScore = 0;
+            _playerCurrentLevel = 1;
         }
 
         public override void Update(GameTime gameTime)
         {
-            _gameScore = _game._currentScore;
+            _playerCurrentLevel = _game._playerShip.CurrentLevel;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            string text = $"Score: {_gameScore}";
-            spriteBatch.DrawString(Font, text, new Vector2(10, _game.virtualHeight - 70), Color.White);
+            string text = $"To next LV: {ScoreTable.MilestoneLv0to10[_playerCurrentLevel + 1]}";
+            spriteBatch.DrawString(Font, text, new Vector2(10, _game.virtualHeight - 40), Color.White);
             //SimplifyDrawing.HandleCenteredText(spriteBatch, Font, timeText, new Vector2(100, 10));
         }
     }

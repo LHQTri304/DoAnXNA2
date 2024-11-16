@@ -28,14 +28,19 @@ namespace DoAnXNA2.src.sprites
             _game = game;
             Texture = null;
             Position = new(0, 0);
-            CurrentLevel = 1;
             IsAlive = true;
-            SetShootingStrategy();
+            ResetLevel();            
         }
 
         public void ReloadTexture()
         {
             Texture = Textures.texturePlayer;
+        }
+
+        public void ResetLevel()
+        {
+            CurrentLevel = 1;
+            SetShootingStrategy();
         }
 
         public void SetShootingStrategy()

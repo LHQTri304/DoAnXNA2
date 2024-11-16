@@ -29,5 +29,9 @@ namespace DoAnXNA2.src.utilities
             // Vẽ đoạn text với origin ở trung tâm
             _spriteBatch.DrawString(_spriteFont, _text, _position, Color.White, 0f, origin, 1.0f, SpriteEffects.None, 0.5f);
         }
+        public static void HandleLeftStartText(SpriteBatch _spriteBatch, SpriteFont _spriteFont, string _text, Vector2 _position)
+        {
+            _spriteBatch.DrawString(_spriteFont, _text, _position, Color.White);
+        }
     }
 }

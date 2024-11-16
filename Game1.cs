@@ -102,9 +102,10 @@ public class Game1 : Game
 
         // UI
         _gameHUD = [
+            new NextLevelMilestoneHUD(this, font),
             new GameScoreHUD(this, font),
-            new GameTimeHUD(this, font),
-            new EnemyCountHUD(this, font)
+            //new GameTimeHUD(this, font),
+            //new EnemyCountHUD(this, font)
         ];
     }
 
@@ -138,6 +139,8 @@ public class Game1 : Game
     public void SetGameDisplay(int level)
     {
         _gameDisplay._Level = level;
+        _currentScore = 0;
+        _playerShip.ResetLevel();
         _allBullets.Clear();
         foreach (var item in _allSpawners)
             item.Enemies.Clear();

@@ -13,7 +13,7 @@ namespace DoAnXNA2.src.sprites
     {
         public Texture2D Texture { get; set; }
         public Vector2 Position { get; set; }
-        public float Speed { get; set; }
+        //public float Speed { get; set; }
         public bool IsAlive { get; set; }
 
         // Quản lý bắn đạn
@@ -23,14 +23,18 @@ namespace DoAnXNA2.src.sprites
         // Thêm tham chiếu đến Game1 --> Phục vụ game over và allBullets
         private Game1 _game;
 
-        public PlayerShip(Game1 game, Vector2 position, float speed)
+        public PlayerShip(Game1 game)
         {
             _game = game;
-            Texture = Textures.texturePlayer;
-            Position = new Vector2(game.virtualWidth / 2, game.virtualHeight / 2);
-            Speed = 1000f;
+            Texture = null;
+            Position = new(0,0);
             IsAlive = true;
             ShootingStrategy = new ConicalShot();
+        }
+
+        public void ReloadTexture()
+        {
+            Texture = Textures.texturePlayer;
         }
 
         private void CheckCollisionWithBullet()

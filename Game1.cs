@@ -8,6 +8,8 @@ using DoAnXNA2.src.utilities;
 using DoAnXNA2.src.components;
 using DoAnXNA2.src.gameState;
 using DoAnXNA2.src.spawners;
+using DoAnXNA2.src.UI;
+using Microsoft.Xna.Framework.Content;
 
 namespace DoAnXNA2;
 public class Game1 : Game
@@ -17,7 +19,6 @@ public class Game1 : Game
     public int virtualHeight { get; } = 720;// Chiều cao cố định của nội dung game
     private RenderTarget2D _renderTarget;
     private SpriteBatch _spriteBatch;
-    private GameHUD _gameHUD;
 
     //GameState
     public bool _isGameOver { get; private set; }
@@ -29,9 +30,12 @@ public class Game1 : Game
     private GameOver _gameOver;
 
     //the sprites
-    private PlayerShip _playerShip;
+    public PlayerShip _playerShip { get; set; }
     public List<EnemySpawner> _allSpawners { get; set; }
     public List<Bullet> _allBullets { get; set; } = [];
+
+    // UI
+    public List<I_HUD> _gameHUD { get; set; }
 
     public Game1()
     {
@@ -56,7 +60,7 @@ public class Game1 : Game
         _isGameOver = false;
 
         // Tạo các sprites
-        _playerShip = new PlayerShip(this, new Vector2(100, 100), 100f);
+        _playerShip = new PlayerShip(this);
 
         // Khởi tạo spawner
         _allSpawners = [
@@ -65,7 +69,6 @@ public class Game1 : Game
             new GreenSpawner(this)
         ];
 
-
         base.Initialize();
     }
 
@@ -73,67 +76,55 @@ public class Game1 : Game
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice); //Tạo sprite batch        
         Textures.LoadTextures(Content); // Load tất cả các texture trong file texture2D.cs
+        _playerShip.ReloadTexture(); //tránh lỗi null khi run
 
-        _playerShip.Texture = Textures.texturePlayer; //Thêm Texture sau khi load, tránh lỗi null khi  và run
+        // Cài font SVN-Dumpling, nếu không được --> dùng luôn Arial
+        var font = Content.Load<SpriteFont>("hudFontArial");
+        try
+        {
+            font = Content.Load<SpriteFont>("hudFontSVN-Dumpling");
+        }
+        catch (ContentLoadException)
+        {
+            System.Diagnostics.Debug.WriteLine("Cài font đẹp thất bại");
+        }
 
-        var font = Content.Load<SpriteFont>("hudFontTest1");
-        _gameHUD = new GameHUD(font);
+        // GameState (Screen)
         _mainMenu = new MainMenu(font);
         _setting = new Setting(font);
         _choosingLevels = new ChoosingLevels(font);
-        _gameDisplay = new GameDisplay(this, _playerShip, _allSpawners, _gameHUD);
+        _gameDisplay = new GameDisplay(this);
         _gameOver = new GameOver(font);
         _currentState = _mainMenu;
+
+        // UI
+        _gameHUD = [
+            new GameTimeHUD(this, font),
+            new EnemyCountHUD(this, font)
+        ];
     }
 
     protected override void Update(GameTime _gameTime)
     {
-        /* if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-            Exit(); */
         var kstate = Keyboard.GetState();
         var mstate = Mouse.GetState();
         _currentState.Update(this, _gameTime, kstate, mstate);
-        System.Diagnostics.Debug.WriteLine("---");
-        System.Diagnostics.Debug.WriteLine(_allBullets.Count);
-        int _enemyCount = 0;
-        foreach (var item in _allSpawners)
-            _enemyCount += item.Enemies.Count;
-        System.Diagnostics.Debug.WriteLine(_enemyCount);
-        System.Diagnostics.Debug.WriteLine("---");
         base.Update(_gameTime);
     }
 
     protected override void Draw(GameTime _gameTime)
     {
-        GraphicsDevice.SetRenderTarget(_renderTarget);   // Set RenderTarget để vẽ nội dung vào đó
+        //Dùng RenderTarget vẽ màn hình theo kích thước tùy ý
+        GraphicsDevice.SetRenderTarget(_renderTarget);
         GraphicsDevice.Clear(Color.Indigo);
 
+        //Nội dung màn hình
         _spriteBatch.Begin();
         _currentState.Draw(this, _spriteBatch);
         _spriteBatch.End();
 
-        GraphicsDevice.SetRenderTarget(null);   // Kết thúc RenderTarget. Quay trở lại vẽ vào màn hình chính
-
-        //#### SCALING SCREEN FLEXIBLE - BEGIN ####//
-        // Tính toán tỷ lệ để phóng lớn nội dung theo kích thước cửa sổ
-        float scaleX = (float)Window.ClientBounds.Width / virtualWidth;
-        float scaleY = (float)Window.ClientBounds.Height / virtualHeight;
-        float scale = Math.Min(scaleX, scaleY); // Giữ nguyên tỷ lệ khung hình
-
-        // Tính toán vị trí để vẽ nội dung ở giữa cửa sổ
-        int scaledWidth = (int)(virtualWidth * scale);
-        int scaledHeight = (int)(virtualHeight * scale);
-
-        int offsetX = (Window.ClientBounds.Width - scaledWidth) / 2; // Khoảng trống bên trái và phải
-        int offsetY = (Window.ClientBounds.Height - scaledHeight) / 2; // Khoảng trống bên trên và dưới
-
-        // Vẽ nội dung của RenderTarget vào cửa sổ với tỷ lệ đã tính
-        _spriteBatch.Begin();
-        _spriteBatch.Draw(_renderTarget,
-                         new Rectangle(offsetX, offsetY, (int)(virtualWidth * scale), (int)(virtualHeight * scale)),
-                         Color.White);
-        _spriteBatch.End();
-        //#### SCALING SCREEN FLEXIBLE - END ####//
+        GraphicsDevice.SetRenderTarget(null);
+        DrawScaledScreen(_spriteBatch, _renderTarget, virtualWidth, virtualHeight);
 
         base.Draw(_gameTime);
     }
@@ -149,14 +140,26 @@ public class Game1 : Game
         _currentState = _gameDisplay;
     }
     public void SetGameOver() => _currentState = _gameOver;
-    /* public void SetSpawner(int level)
+    private void DrawScaledScreen(SpriteBatch spriteBatch, RenderTarget2D renderTarget, int virtualWidth, int virtualHeight)
     {
-        _enemySpawner = level switch
-        {
-            1 => new YellowSpawner(this),
-            2 => new RedSpawner(this),
-            3 => new GreenSpawner(this),
-            _ => null,
-        };
-    } */
+        // Tính toán tỷ lệ để phóng lớn nội dung theo kích thước cửa sổ
+        float scaleX = (float)Window.ClientBounds.Width / virtualWidth;
+        float scaleY = (float)Window.ClientBounds.Height / virtualHeight;
+        float scale = Math.Min(scaleX, scaleY); // Giữ nguyên tỷ lệ khung hình
+
+        // Tính toán vị trí để vẽ nội dung ở giữa cửa sổ
+        int scaledWidth = (int)(virtualWidth * scale);
+        int scaledHeight = (int)(virtualHeight * scale);
+
+        int offsetX = (Window.ClientBounds.Width - scaledWidth) / 2; // Khoảng trống bên trái và phải
+        int offsetY = (Window.ClientBounds.Height - scaledHeight) / 2; // Khoảng trống bên trên và dưới
+
+        // Vẽ nội dung của RenderTarget vào cửa sổ với tỷ lệ đã tính
+        spriteBatch.Begin();
+        spriteBatch.Draw(renderTarget,
+                         new Rectangle(offsetX, offsetY, scaledWidth, scaledHeight),
+                         Color.White);
+        spriteBatch.End();
+    }
+
 }

@@ -18,7 +18,6 @@ namespace DoAnXNA2
         public static Texture2D textureBulletE;
 
         // For HUD
-        private static Texture2D fontTexture;
         public static CustomBitmapFont customFont;
         public static Texture2D textureHP;
 
@@ -42,8 +41,6 @@ namespace DoAnXNA2
 
             //GUI            
             textureHP = content.Load<Texture2D>("TestHP");
-            fontTexture = content.Load<Texture2D>("SpriteFontTestSubject3");
-            customFont = new CustomBitmapFont(fontTexture);
 
             //Button
             startButton = content.Load<Texture2D>("enemyYellow");

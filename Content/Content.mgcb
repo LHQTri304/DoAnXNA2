@@ -25,13 +25,6 @@
 /processorParam:TextureFormat=Color
 /build:GUI/TestHP.png;TestHP.png
 
-#begin hudFontTest1.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:hudFontTest1.spritefont
-
 #begin PichonArtwork/Fire Blaster.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -152,39 +145,17 @@
 /processorParam:TextureFormat=Color
 /build:SpaceInvaderTest/player.png;player.png
 
-#begin SpriteFont/SpriteFontTestSubject.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
+#begin SpriteFont/hudFontArial.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:SpriteFont/SpriteFontTestSubject.png;SpriteFontTestSubject.png
+/processorParam:TextureFormat=Compressed
+/build:SpriteFont/hudFontArial.spritefont;hudFontArial.spritefont
 
-#begin SpriteFont/SpriteFontTestSubject2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
+#begin SpriteFont/hudFontSVN-Dumpling.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:SpriteFont/SpriteFontTestSubject2.png;SpriteFontTestSubject2.png
-
-#begin SpriteFont/SpriteFontTestSubject3.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:SpriteFont/SpriteFontTestSubject3.png;SpriteFontTestSubject3.png
+/processorParam:TextureFormat=Compressed
+/build:SpriteFont/hudFontSVN-Dumpling.spritefont;hudFontSVN-Dumpling.spritefont
 

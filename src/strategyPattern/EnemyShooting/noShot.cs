@@ -9,6 +9,7 @@ namespace DoAnXNA2.src.strategyMethod
         public NoShot()
         {
             _Speed = 3.5f;
+            ShotSound = null;
             newBullets = [];
             ResetShootCoolDown(ref shootCoolDown); // Khởi tạo cooldown ban đầu
         }

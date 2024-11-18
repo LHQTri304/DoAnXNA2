@@ -13,6 +13,72 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin Soundtrack/BG Song/Boss Theme CI3.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Soundtrack/BG Song/Boss Theme CI3.mp3;Boss Theme CI3.mp3
+
+#begin Soundtrack/BG Song/Combat Theme 1 CI3.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Soundtrack/BG Song/Combat Theme 1 CI3.mp3;Combat Theme 1 CI3.mp3
+
+#begin Soundtrack/BG Song/Combat Theme 2 CI3.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Soundtrack/BG Song/Combat Theme 2 CI3.mp3;Combat Theme 2 CI3.mp3
+
+#begin Soundtrack/BG Song/Combat Theme 3 CI3.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Soundtrack/BG Song/Combat Theme 3 CI3.mp3;Combat Theme 3 CI3.mp3
+
+#begin Soundtrack/BG Song/Combat Theme 4 CI3.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Soundtrack/BG Song/Combat Theme 4 CI3.mp3;Combat Theme 4 CI3.mp3
+
+#begin Soundtrack/BG Song/Game Over CI3.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Soundtrack/BG Song/Game Over CI3.mp3;Game Over CI3.mp3
+
+#begin Soundtrack/BG Song/Stage Clear CI3.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Soundtrack/BG Song/Stage Clear CI3.mp3;Stage Clear CI3.mp3
+
+#begin Soundtrack/BG Song/Title Theme CI3.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Soundtrack/BG Song/Title Theme CI3.mp3;Title Theme CI3.mp3
+
+#begin Soundtrack/Sound Effect/Enemy Killed.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Soundtrack/Sound Effect/Enemy Killed.mp3;Enemy Killed.mp3
+
+#begin Soundtrack/Sound Effect/Enemy Shot.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Soundtrack/Sound Effect/Enemy Shot.mp3;Enemy Shot.mp3
+
+#begin Soundtrack/Sound Effect/Player Shot.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Soundtrack/Sound Effect/Player Shot.mp3;Player Shot.mp3
+
 #begin SpaceInvaderTest/bulletEnemy.png
 /importer:TextureImporter
 /processor:TextureProcessor

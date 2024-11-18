@@ -9,6 +9,7 @@ namespace DoAnXNA2.src.strategyMethod
         public StraightSingleShot()
         {
             _Speed = 3.5f;
+            ShotSound = Soundtrack.EnemyShot;
             newBullets = [];
             ResetShootCoolDown(ref shootCoolDown); // Khởi tạo cooldown ban đầu
         }

@@ -22,6 +22,7 @@ namespace DoAnXNA2.src.strategyMethod
             else
                 InputUtilities.HandleMouseClick(mstate.LeftButton, 0, () =>
                 {
+                    Soundtrack.PlayerShot.Play();
                     AddNewBullets(position);
                     bullets.AddRange(newBullets);
                     newBullets.Clear();

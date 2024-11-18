@@ -20,7 +20,6 @@ namespace DoAnXNA2.src.gameState
 
         protected override void SubDraw(SpriteBatch spriteBatch)
         {
-            //SimplifyDrawing.HandleTopLeft(spriteBatch, Textures.BackgroundStuff[0], new Vector2(0, 0));
             SimplifyDrawing.HandleCenteredText(spriteBatch, _font, "MAIN MENU", CommonPotion[0] + new Vector2(0, -200));
             SimplifyDrawing.HandleCenteredText(spriteBatch, _font, "Press Space to Start\nPress X to Setting", CommonPotion[0]);
         }

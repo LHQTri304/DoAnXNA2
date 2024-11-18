@@ -8,25 +8,25 @@ namespace DoAnXNA2
     public static class Textures
     {
         //Player
-        public static Texture2D Player;
-        public static Texture2D BulletP;
+        public static Texture2D Player { get; private set; }
+        public static Texture2D BulletP { get; private set; }
 
         //Enemies
-        public static Texture2D EnemyYellow;
-        public static Texture2D EnemyRed;
-        public static Texture2D EnemyGreen;
-        public static Texture2D EnemyBlue;
-        public static Texture2D BulletE;
+        public static Texture2D EnemyYellow { get; private set; }
+        public static Texture2D EnemyRed { get; private set; }
+        public static Texture2D EnemyGreen { get; private set; }
+        public static Texture2D EnemyBlue { get; private set; }
+        public static Texture2D BulletE { get; private set; }
 
         // For UI
-        public static List<Texture2D> BackgroundStuff;
+        public static List<Texture2D> BackgroundStuff { get; private set; }
 
         //Button
-        public static Texture2D StartButton;
-        public static Texture2D ReturnButton;
+        public static Texture2D StartButton { get; private set; }
+        public static Texture2D ReturnButton { get; private set; }
 
 
-        public static void LoadTextures(ContentManager content)
+        public static void LoadAll(ContentManager content)
         {
             //Player
             Player = content.Load<Texture2D>("Space Fighter");

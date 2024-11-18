@@ -10,13 +10,16 @@ using DoAnXNA2.src.gameState;
 using DoAnXNA2.src.spawners;
 using DoAnXNA2.src.UI;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Audio;
 
 namespace DoAnXNA2;
 public class Game1 : Game
 {
-    public GraphicsDeviceManager _graphics { get; }
-    public int virtualWidth { get; } = 1280; // Chiều rộng cố định của nội dung game
-    public int virtualHeight { get; } = 720;// Chiều cao cố định của nội dung game
+    public GraphicsDeviceManager _graphics { get; private set; }
+    public int virtualWidth { get; private set; } = 1280; // Chiều rộng cố định của nội dung game
+    public int virtualHeight { get; private set; } = 720;// Chiều cao cố định của nội dung game
+    public Song _backgroundMusic { get; set; }
     private RenderTarget2D _renderTarget;
     private SpriteBatch _spriteBatch;
 
@@ -79,7 +82,8 @@ public class Game1 : Game
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice); //Tạo sprite batch        
-        Textures.LoadTextures(Content); // Load tất cả các texture trong file texture2D.cs
+        Textures.LoadAll(Content); // Load tất cả các texture trong file texture2D.cs
+        Soundtrack.LoadAll(Content); // Load tất cả các soundtrack trong file soundtrack.cs
         _font = SpriteFonts.LoadSpriteFonts(Content); // Load tất cả các font hiện có (1 cái duy nhất)
         _playerShip.ReloadTexture(); //tránh lỗi null khi run
 
@@ -96,6 +100,15 @@ public class Game1 : Game
             new NextLevelMilestoneHUD(this, _font),
             new GameScoreHUD(this, _font),
         ];
+
+        //Background music
+        _backgroundMusic = Soundtrack.TitleTheme;
+        if (MediaPlayer.State != MediaState.Playing)
+        {
+            MediaPlayer.Play(_backgroundMusic);
+            MediaPlayer.IsRepeating = true;
+            //MediaPlayer.Volume = 0.5f;  // Điều chỉnh âm lượng (0.0 đến 1.0)
+        }
     }
 
     protected override void Update(GameTime _gameTime)
@@ -120,11 +133,24 @@ public class Game1 : Game
 
         base.Draw(_gameTime);
     }
-    public void SetMainMenu() => _currentState = _mainMenu;
-    public void SetSetting() => _currentState = _setting;
-    public void SetChoosingLevels() => _currentState = _choosingLevels;
+    public void SetMainMenu()
+    {
+        _backgroundMusic = Soundtrack.TitleTheme;
+        _currentState = _mainMenu;
+    }
+    public void SetSetting()
+    {
+        _backgroundMusic = Soundtrack.TitleTheme;
+        _currentState = _setting;
+    }
+    public void SetChoosingLevels()
+    {
+        _backgroundMusic = Soundtrack.TitleTheme;
+        _currentState = _choosingLevels;
+    }
     public void SetGameDisplay(int level)
     {
+        _backgroundMusic = RandomCombatTheme();
         _gameDisplay._Level = level;
         _currentScore = 0;
         _playerShip.ResetLevel();
@@ -133,7 +159,23 @@ public class Game1 : Game
             item.Enemies.Clear();
         _currentState = _gameDisplay;
     }
-    public void SetGameOver() => _currentState = _gameOver;
+    public void SetGameOver()
+    {
+        _backgroundMusic = Soundtrack.GameOver;
+        _currentState = _gameOver;
+    }
+    private Song RandomCombatTheme()
+    {
+        int index = new Random().Next(1,5);
+        return index switch
+        {
+            1 => Soundtrack.CombatTheme1,
+            2 => Soundtrack.CombatTheme2,
+            3 => Soundtrack.CombatTheme3,
+            4 => Soundtrack.CombatTheme4,
+            _ => Soundtrack.CombatTheme1,
+        };
+    }
     private void DrawScaledScreen(SpriteBatch spriteBatch, RenderTarget2D renderTarget, int virtualWidth, int virtualHeight)
     {
         // Tính toán tỷ lệ để phóng lớn nội dung theo kích thước cửa sổ

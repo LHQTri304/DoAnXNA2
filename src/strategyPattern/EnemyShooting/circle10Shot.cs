@@ -10,6 +10,7 @@ namespace DoAnXNA2.src.strategyMethod
         public Circle10Shot()
         {
             _Speed = 3.5f;
+            ShotSound = Soundtrack.EnemyShot;
             newBullets = [];
             ResetShootCoolDown(ref shootCoolDown); // Khởi tạo cooldown ban đầu
         }

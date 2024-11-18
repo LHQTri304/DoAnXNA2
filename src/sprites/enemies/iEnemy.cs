@@ -41,6 +41,7 @@ namespace DoAnXNA2.src.sprites
                     bullet.Position, bullet.Texture,
                     () =>
                     {
+                        Soundtrack.EnemyKilled.Play(0.1f, 0f, 0f);
                         _game._currentScore += ScoreKilled;
                         IsAlive = false; // Kẻ địch bị tiêu diệt
                     }

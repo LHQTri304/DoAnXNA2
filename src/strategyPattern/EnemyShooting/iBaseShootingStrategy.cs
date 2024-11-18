@@ -2,12 +2,14 @@ using System;
 using System.Collections.Generic;
 using DoAnXNA2.src.sprites;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 
 namespace DoAnXNA2.src.strategyMethod
 {
     public abstract class IBaseShootingStrategy
     {
         protected float _Speed;
+        protected SoundEffect ShotSound;
         protected float shootCoolDown;
         protected List<Bullet> newBullets;
         protected abstract void AddNewBullets(Vector2 position);
@@ -16,6 +18,7 @@ namespace DoAnXNA2.src.strategyMethod
             shootCoolDown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (shootCoolDown <= 0)
             {
+                ShotSound?.Play();
                 AddNewBullets(position);
                 bullets.AddRange(newBullets);
                 newBullets.Clear();

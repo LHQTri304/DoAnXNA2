@@ -75,7 +75,7 @@ namespace DoAnXNA2.src.gameState
                 SimplifyDrawing.HandleCenteredText(spriteBatch, _font, item.Text, item.Position);
             foreach (var item in _contentImg)
                 SimplifyDrawing.HandleCentered(spriteBatch, item.Texture, item.Position);
-            SimplifyDrawing.HandleLeftStartText(spriteBatch, _font, "Press ESC to return to Main Menu", new Vector2(10, 10));
+            SimplifyDrawing.HandleTopLeftText(spriteBatch, _font, "Press ESC to return to Main Menu", new Vector2(10, 10));
         }
     }
 }

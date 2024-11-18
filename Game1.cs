@@ -81,16 +81,7 @@ public class Game1 : Game
         Textures.LoadTextures(Content); // Load tất cả các texture trong file texture2D.cs
         _playerShip.ReloadTexture(); //tránh lỗi null khi run
 
-        // Cài font SVN-Dumpling, nếu không được --> dùng luôn Arial
-        var font = Content.Load<SpriteFont>("hudFontArial");
-        try
-        {
-            font = Content.Load<SpriteFont>("hudFontSVN-Dumpling");
-        }
-        catch (ContentLoadException)
-        {
-            System.Diagnostics.Debug.WriteLine("Cài font đẹp thất bại");
-        }
+        SpriteFont font = SpriteFonts.LoadSpriteFonts(Content);
 
         // GameState (Screen)
         _mainMenu = new MainMenu(font);
@@ -104,8 +95,6 @@ public class Game1 : Game
         _gameHUD = [
             new NextLevelMilestoneHUD(this, font),
             new GameScoreHUD(this, font),
-            //new GameTimeHUD(this, font),
-            //new EnemyCountHUD(this, font)
         ];
     }
 

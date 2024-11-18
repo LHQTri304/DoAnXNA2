@@ -1,28 +1,26 @@
-using DoAnXNA2.src.utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using DoAnXNA2.src.utilities;
 
 namespace DoAnXNA2.src.gameState
 {
-    public class Setting : IGameState
+    public class Setting : GameState
     {
-        private SpriteFont _font;
+        public Setting(Game1 _game) :
+            base(_game)
+        { }
 
-        public Setting(SpriteFont font)
+        protected override void SubUpdate(GameTime gameTime)
         {
-            _font = font;
+            backgroundManager.IsDisableDecorations = false;
+            InputUtilities.HandleKeyPress(Keys.X, kstate, () => _game.SetMainMenu());
         }
 
-        public void Update(Game1 game, GameTime gameTime, KeyboardState kstate, MouseState mstate)
+        protected override void SubDraw(SpriteBatch spriteBatch)
         {
-            InputUtilities.HandleKeyPress(Keys.X,kstate,()=>game.SetMainMenu());
-        }
-
-        public void Draw(Game1 game, SpriteBatch spriteBatch)
-        {
-            SimplifyDrawing.HandleCenteredText(spriteBatch, _font, "SETTINGS", new Vector2(game.virtualWidth / 2, game.virtualHeight / 2 - 200));
-            SimplifyDrawing.HandleCenteredText(spriteBatch, _font, "Press X to Return to Main Menu", new Vector2(game.virtualWidth / 2, game.virtualHeight / 2));
+            SimplifyDrawing.HandleCenteredText(spriteBatch, _font, "SETTINGS", CommonPotion[0] + new Vector2(0, -200));
+            SimplifyDrawing.HandleCenteredText(spriteBatch, _font, "Press X to Return to Main Menu", CommonPotion[0]);
         }
     }
 }

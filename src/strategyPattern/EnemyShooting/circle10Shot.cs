@@ -17,7 +17,7 @@ namespace DoAnXNA2.src.strategyMethod
         protected override void AddNewBullets(Vector2 position)
         {
             foreach (var shotR in shotsRotate)
-                newBullets.Add(new BulletEnemy(Textures.textureBulletE, new Vector2(position.X, position.Y), _Speed, shotR));
+                newBullets.Add(new BulletEnemy(Textures.BulletE, new Vector2(position.X, position.Y), _Speed, shotR));
         }
     }
 }

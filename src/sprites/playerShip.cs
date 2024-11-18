@@ -29,12 +29,12 @@ namespace DoAnXNA2.src.sprites
             Texture = null;
             Position = new(0, 0);
             IsAlive = true;
-            ResetLevel();            
+            ResetLevel();
         }
 
         public void ReloadTexture()
         {
-            Texture = Textures.texturePlayer;
+            Texture = Textures.Player;
         }
 
         public void ResetLevel()
@@ -112,7 +112,7 @@ namespace DoAnXNA2.src.sprites
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            SimplifyDrawing.HandleCentered(spriteBatch, Texture, Position);
+            SimplifyDrawing.HandleRotatingTexture(spriteBatch, Texture, Position, 1000f);
         }
     }
 }

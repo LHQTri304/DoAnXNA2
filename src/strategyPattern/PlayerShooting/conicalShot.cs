@@ -66,7 +66,7 @@ namespace DoAnXNA2.src.strategyMethod
 
 
             foreach (var item in bulletInfos)
-                newBullets.Add(new BulletPlayer(Textures.textureBulletP, new Vector2(position.X + item.Position.X, position.Y + item.Position.Y), _Speed, item.Rotate));
+                newBullets.Add(new BulletPlayer(Textures.BulletP, new Vector2(position.X + item.Position.X, position.Y + item.Position.Y), _Speed, item.Rotate));
         }
     }
 }

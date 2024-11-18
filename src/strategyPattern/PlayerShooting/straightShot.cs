@@ -32,7 +32,7 @@ namespace DoAnXNA2.src.strategyMethod
             };
 
             foreach (var p in pDiff)
-                newBullets.Add(new BulletPlayer(Textures.textureBulletP, new Vector2(position.X + p.X, position.Y + p.Y), _Speed, 0));
+                newBullets.Add(new BulletPlayer(Textures.BulletP, new Vector2(position.X + p.X, position.Y + p.Y), _Speed, 0));
         }
     }
 }

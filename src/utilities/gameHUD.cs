@@ -37,7 +37,7 @@ namespace DoAnXNA2.src.utilities
         {
             // Hiển thị đồng hồ thời gian
             string timeText = $"Time: {_gameTimeElapsed.TotalSeconds:F2}";
-            Textures.customFont.DrawText(spriteBatch, timeText, new Vector2(10, 10), Color.White);
+            //Textures.customFont.DrawText(spriteBatch, timeText, new Vector2(10, 10), Color.White);
 
             // Hiển thị số lượng kẻ địch
             string enemyText = $"Enemies: {_enemyCount}";

@@ -22,7 +22,7 @@ public class Game1 : Game
 
     //GameState
     public bool _isGameOver { get; private set; }
-    private IGameState _currentState;
+    private GameState _currentState;
     private MainMenu _mainMenu;
     private Setting _setting;
     private ChoosingLevels _choosingLevels;
@@ -36,6 +36,7 @@ public class Game1 : Game
 
     // UI
     public List<I_HUD> _gameHUD { get; set; }
+    public SpriteFont _font { get; set; }
 
     // Level system
     public int _currentScore { get; set; }
@@ -79,30 +80,27 @@ public class Game1 : Game
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice); //Tạo sprite batch        
         Textures.LoadTextures(Content); // Load tất cả các texture trong file texture2D.cs
+        _font = SpriteFonts.LoadSpriteFonts(Content); // Load tất cả các font hiện có (1 cái duy nhất)
         _playerShip.ReloadTexture(); //tránh lỗi null khi run
 
-        SpriteFont font = SpriteFonts.LoadSpriteFonts(Content);
-
         // GameState (Screen)
-        _mainMenu = new MainMenu(font);
-        _setting = new Setting(font);
-        _choosingLevels = new ChoosingLevels(font);
+        _mainMenu = new MainMenu(this);
+        _setting = new Setting(this);
+        _choosingLevels = new ChoosingLevels(this);
         _gameDisplay = new GameDisplay(this);
-        _gameOver = new GameOver(font);
+        _gameOver = new GameOver(this);
         _currentState = _mainMenu;
 
         // UI
         _gameHUD = [
-            new NextLevelMilestoneHUD(this, font),
-            new GameScoreHUD(this, font),
+            new NextLevelMilestoneHUD(this, _font),
+            new GameScoreHUD(this, _font),
         ];
     }
 
     protected override void Update(GameTime _gameTime)
     {
-        var kstate = Keyboard.GetState();
-        var mstate = Mouse.GetState();
-        _currentState.Update(this, _gameTime, kstate, mstate);
+        _currentState.Update(_gameTime);
         base.Update(_gameTime);
     }
 
@@ -114,7 +112,7 @@ public class Game1 : Game
 
         //Nội dung màn hình
         _spriteBatch.Begin();
-        _currentState.Draw(this, _spriteBatch);
+        _currentState.Draw(_spriteBatch);
         _spriteBatch.End();
 
         GraphicsDevice.SetRenderTarget(null);

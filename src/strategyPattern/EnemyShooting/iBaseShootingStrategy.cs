@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DoAnXNA2.src.factoryMethod;
 using DoAnXNA2.src.sprites;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
@@ -29,6 +30,10 @@ namespace DoAnXNA2.src.strategyMethod
         {
             Random random = new Random();
             shootCoolDown = (float)(random.NextDouble() * 1.5 + 3);
+        }
+        protected void QuickAddBullet(Vector2 position, float speed, float rotateAngle)
+        {
+            newBullets.Add(BulletFactory.CreateBullet("Enemy", position, speed, rotateAngle));
         }
     }
 }

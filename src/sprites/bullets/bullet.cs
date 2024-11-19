@@ -20,7 +20,7 @@ namespace DoAnXNA2.src.sprites
             Rotate = MathHelper.ToRadians(rotate - 90);
         }
 
-        public void Move()
+        public void Move()  //Update()
         {
             var direction = new Vector2((float)Math.Cos(Rotate), (float)Math.Sin(Rotate));
             Position += direction * Speed;

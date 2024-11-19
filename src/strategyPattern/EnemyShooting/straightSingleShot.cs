@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using DoAnXNA2.src.sprites;
 using Microsoft.Xna.Framework;
 
 namespace DoAnXNA2.src.strategyMethod
@@ -16,7 +14,7 @@ namespace DoAnXNA2.src.strategyMethod
 
         protected override void AddNewBullets(Vector2 position)
         {
-            newBullets.Add(new BulletEnemy(Textures.BulletE, new Vector2(position.X, position.Y), _Speed, 0));
+            QuickAddBullet(new Vector2(position.X, position.Y), _Speed, 0);
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DoAnXNA2.src.factoryMethod;
 using DoAnXNA2.src.sprites;
 using DoAnXNA2.src.utilities;
 using Microsoft.Xna.Framework;
@@ -33,15 +34,9 @@ namespace DoAnXNA2.src.strategyMethod
         {
             shootCoolDown = shotReloading;
         }
-        protected void LevelUp()
+        protected void QuickAddBullet(Vector2 position, float speed, float rotateAngle)
         {
-            if (_Level < 10)
-                _Level++;
-        }
-        protected void LevelDown()
-        {
-            if (_Level > 1)
-                _Level--;
+            newBullets.Add(BulletFactory.CreateBullet("Player", position, speed, rotateAngle));
         }
     }
 }

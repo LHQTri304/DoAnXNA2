@@ -1,9 +1,5 @@
-using System;
-using System.Linq;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using DoAnXNA2;
 using DoAnXNA2.src.strategyMethod;
 
 namespace DoAnXNA2
@@ -32,21 +28,14 @@ namespace DoAnXNA2
             ShootingStrategy = shootingStrategy;
         }
 
-        private void CheckCollisionWithBullets()
+        private void CheckCollisions()
         {
-            _game._allBullets.OfType<BulletPlayer>().ToList().RemoveAll(bullet =>
-            {
-                return CollisionUtilities.CheckCollision(
-                    Position, Texture,
-                    bullet.Position, bullet.Texture,
-                    () =>
+            CheckCollisionQuick.EnemyVsBulletPlayer(this, _game._allBullets, () =>
                     {
                         Soundtrack.EnemyKilled.Play(0.1f, 0f, 0f);
                         _game._currentScore += ScoreKilled;
                         IsAlive = false; // Kẻ địch bị tiêu diệt
-                    }
-                );
-            });
+                    });
         }
 
         private void CheckOutOfScreen()
@@ -61,7 +50,7 @@ namespace DoAnXNA2
 
             ShootingStrategy.Shoot(gameTime, Position, _game._allBullets);
             Position = MovementStrategy.Move(gameTime, graphics, Position);
-            CheckCollisionWithBullets();
+            CheckCollisions();
             CheckOutOfScreen();
         }
 

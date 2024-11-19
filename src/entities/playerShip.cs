@@ -1,10 +1,7 @@
-using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using DoAnXNA2;
-using System.Diagnostics;
 using DoAnXNA2.src.strategyMethod;
 
 namespace DoAnXNA2
@@ -48,43 +45,21 @@ namespace DoAnXNA2
             ShootingStrategy = new ConicalShot(CurrentLevel);
         }
 
-        private void CheckCollisionWithBullet()
+        private void CheckCollisions()
         {
-            var playerBounds = QuickGetUtilities.GetPlayerBounds(Position, Texture);
-            _game._allBullets.OfType<BulletEnemy>().ToList().RemoveAll(bullet =>
-            {
-                var bulletBounds = QuickGetUtilities.GetBounds(bullet.Position, bullet.Texture);
-                return CollisionUtilities.CheckCollision(
-                    playerBounds,
-                    bulletBounds,
-                    () =>
+            CheckCollisionQuick.PlayerVsBulletEnemy(this, _game._allBullets, () =>
                     {
                         System.Diagnostics.Debug.WriteLine("bạn đã bị bắn");
                         IsAlive = false;
                         _game.SetGameOver(); //Cập nhật trạng thái game
-                    }
-                );
-            });
-        }
+                    });
 
-        private void CheckCollisionWithEnemy()
-        {
-            var playerBounds = QuickGetUtilities.GetPlayerBounds(Position, Texture);
-            _game._allSpawners.SelectMany(spawner => spawner.Enemies).ToList()  //Lấy ra tất cả enemy ở tất cả spawner
-                .RemoveAll(enemy =>
-            {
-                var enemyBounds = QuickGetUtilities.GetBounds(enemy.Position, enemy.Texture);
-                return CollisionUtilities.CheckCollision(
-                    playerBounds,
-                    enemyBounds,
-                    () =>
+            CheckCollisionQuick.PlayerVsEnemy(this, _game._allSpawners, () =>
                     {
-                        System.Diagnostics.Debug.WriteLine("bạn đã tông trúng kẻ địch");
+                        System.Diagnostics.Debug.WriteLine("bạn đã bị bắn");
                         IsAlive = false;
                         _game.SetGameOver(); //Cập nhật trạng thái game
-                    }
-                );
-            });
+                    });
         }
 
         public void Update(GameTime gameTime, GraphicsDeviceManager graphics, KeyboardState kstate, MouseState mstate)
@@ -104,10 +79,8 @@ namespace DoAnXNA2
             float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             ShootingStrategy.Shoot(elapsedTime, mstate, Position, _game._allBullets);
 
-
-            // Xử lý thua
-            CheckCollisionWithBullet();
-            CheckCollisionWithEnemy();
+            // Xử lý va chạm
+            CheckCollisions();
         }
 
         public void Draw(SpriteBatch spriteBatch)

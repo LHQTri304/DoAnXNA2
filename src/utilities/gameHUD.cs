@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace DoAnXNA2.src.utilities
+namespace DoAnXNA2
 {
     public class GameHUD
     {

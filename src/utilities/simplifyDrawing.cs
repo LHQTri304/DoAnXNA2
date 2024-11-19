@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace DoAnXNA2.src.utilities
+namespace DoAnXNA2
 {
     public static class SimplifyDrawing
     {

@@ -1,0 +1,19 @@
+using System.Collections.Generic;
+using DoAnXNA2;
+using Microsoft.Xna.Framework;
+
+namespace DoAnXNA2.src.strategyMethod
+{
+    public class NoShot : IBaseShootingStrategy
+    {
+        public NoShot()
+        {
+            _Speed = 3.5f;
+            ShotSound = null;
+            newBullets = [];
+            ResetShootCoolDown(ref shootCoolDown); // Khởi tạo cooldown ban đầu
+        }
+
+        protected override void AddNewBullets(Vector2 position) { }
+    }
+}

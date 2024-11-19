@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace DoAnXNA2.src.utilities
+namespace DoAnXNA2
 {
     public static class MovementPlayerUtilities
     {

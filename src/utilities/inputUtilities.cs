@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 
-namespace DoAnXNA2.src.utilities
+namespace DoAnXNA2
 {
     public static class InputUtilities
     {

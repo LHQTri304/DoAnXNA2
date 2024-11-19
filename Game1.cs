@@ -2,16 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using DoAnXNA2.src.sprites;
-using DoAnXNA2.src.utilities;
-using DoAnXNA2.src.components;
-using DoAnXNA2.src.gameState;
-using DoAnXNA2.src.spawners;
-using DoAnXNA2.src.UI;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Media;
-using Microsoft.Xna.Framework.Audio;
 
 namespace DoAnXNA2;
 public class Game1 : Game

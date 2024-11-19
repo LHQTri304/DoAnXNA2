@@ -17,7 +17,7 @@ namespace DoAnXNA2
 
         protected override void SubUpdate(GameTime gameTime)
         {
-            backgroundManager.IsDisableDecorations = true;
+            backgroundManager.IsDecorationsDisplayed = true;
 
             //Xử lý khi _game tạm dừng
             InputUtilities.HandleKeyPress(Keys.Escape, kstate, () => _isPaused = !_isPaused);

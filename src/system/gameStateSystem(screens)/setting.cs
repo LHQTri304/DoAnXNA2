@@ -9,18 +9,21 @@ namespace DoAnXNA2
     {
         public Setting(Game1 _game) :
             base(_game)
-        { }
+        { 
+            IsBGDecorDisplayed = true;
+            IsCursorDisplayed = true;
+        }
 
         protected override void SubUpdate(GameTime gameTime)
         {
-            backgroundManager.IsDisableDecorations = false;
-            InputUtilities.HandleKeyPress(Keys.X, kstate, () => _game.SetMainMenu());
+            ReadyMadeBtn.BackwardButton.Update(mstate, CommonPotion[0] + new Vector2(0, 200));
         }
 
         protected override void SubDraw(SpriteBatch spriteBatch)
         {
             SimplifyDrawing.HandleCenteredText(spriteBatch, _font, "SETTINGS", CommonPotion[0] + new Vector2(0, -200));
-            SimplifyDrawing.HandleCenteredText(spriteBatch, _font, "Press X to Return to Main Menu", CommonPotion[0]);
+            ReadyMadeBtn.BackwardButton.Draw(spriteBatch);
+            //SimplifyDrawing.HandleCenteredText(spriteBatch, _font, "Press X to Return to Main Menu", CommonPotion[0]);
         }
     }
 }

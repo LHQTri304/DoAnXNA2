@@ -13,7 +13,7 @@ namespace DoAnXNA2
 
         protected override void SubUpdate(GameTime gameTime)
         {
-            backgroundManager.IsDisableDecorations = false;
+            backgroundManager.IsDecorationsDisplayed = false;
             InputUtilities.HandleKeyPress(Keys.Space, kstate, () => _game.SetMainMenu());
         }
 

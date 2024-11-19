@@ -26,7 +26,7 @@ namespace DoAnXNA2
         private float TheLastRandomX = 0;
 
         //When in battle
-        public bool IsDisableDecorations { get; set; }
+        public bool IsDecorationsDisplayed { get; set; }
 
 
         public BackgroundManager(Game1 game)
@@ -39,7 +39,7 @@ namespace DoAnXNA2
             nextSpawnTime = 0f;
             backgroundTexture = Textures.BackgroundStuff[0];
             decorationTextures = Textures.BackgroundStuff.Where(x => x != backgroundTexture).ToList();
-            IsDisableDecorations = false;
+            IsDecorationsDisplayed = true;
         }
 
         public void Update(GameTime gameTime)
@@ -52,7 +52,7 @@ namespace DoAnXNA2
                 backgroundYPosition = 0f;
 
             // Handle when disable --> Not update the decorations
-            if (IsDisableDecorations)
+            if (!IsDecorationsDisplayed)
                 return;
 
             // Update spawn timer
@@ -87,7 +87,7 @@ namespace DoAnXNA2
             SimplifyDrawing.HandleTopLeft(spriteBatch, backgroundTexture, new Vector2(0, backgroundYPosition - backgroundTexture.Height));
 
             // Draw decorations
-            if (IsDisableDecorations)
+            if (!IsDecorationsDisplayed)
                 return;
             foreach (var decoration in decorations)
             {

@@ -7,37 +7,37 @@ namespace DoAnXNA2
     public static class SimplifyDrawing
     {
         #region Handle Draw Base On Origin
-        private static void DrawBaseOnOrigin(SpriteBatch _spriteBatch, Texture2D texture, Vector2 position, Vector2 origin)
+        private static void DrawBaseOnOrigin(SpriteBatch _spriteBatch, Texture2D texture, Vector2 position, Vector2 origin, float scale)
         {
             _spriteBatch.Draw(texture, position,
                 null, Color.White, 0f,
-                origin,
-                1f, SpriteEffects.None, 0f
+                origin, scale,
+                SpriteEffects.None, 0f
             );
         }
-        public static void HandleCentered(SpriteBatch _spriteBatch, Texture2D texture, Vector2 position)
+        public static void HandleCentered(SpriteBatch _spriteBatch, Texture2D texture, Vector2 position, float scale = 1f)
         {
-            DrawBaseOnOrigin(_spriteBatch, texture, position, new Vector2(texture.Width / 2, texture.Height / 2));
+            DrawBaseOnOrigin(_spriteBatch, texture, position, new Vector2(texture.Width / 2, texture.Height / 2), scale);
         }
 
-        public static void HandleTopLeft(SpriteBatch _spriteBatch, Texture2D texture, Vector2 position)
+        public static void HandleTopLeft(SpriteBatch _spriteBatch, Texture2D texture, Vector2 position, float scale = 1f)
         {
-            DrawBaseOnOrigin(_spriteBatch, texture, position, Vector2.Zero);
+            DrawBaseOnOrigin(_spriteBatch, texture, position, Vector2.Zero, scale);
         }
 
-        public static void HandleTopRight(SpriteBatch _spriteBatch, Texture2D texture, Vector2 position)
+        public static void HandleTopRight(SpriteBatch _spriteBatch, Texture2D texture, Vector2 position, float scale = 1f)
         {
-            DrawBaseOnOrigin(_spriteBatch, texture, position, new Vector2(texture.Width, 0));
+            DrawBaseOnOrigin(_spriteBatch, texture, position, new Vector2(texture.Width, 0), scale);
         }
 
-        public static void HandleBottomLeft(SpriteBatch _spriteBatch, Texture2D texture, Vector2 position)
+        public static void HandleBottomLeft(SpriteBatch _spriteBatch, Texture2D texture, Vector2 position, float scale = 1f)
         {
-            DrawBaseOnOrigin(_spriteBatch, texture, position, new Vector2(0, texture.Height));
+            DrawBaseOnOrigin(_spriteBatch, texture, position, new Vector2(0, texture.Height), scale);
         }
 
-        public static void HandleBottomRight(SpriteBatch _spriteBatch, Texture2D texture, Vector2 position)
+        public static void HandleBottomRight(SpriteBatch _spriteBatch, Texture2D texture, Vector2 position, float scale = 1f)
         {
-            DrawBaseOnOrigin(_spriteBatch, texture, position, new Vector2(texture.Width, texture.Height));
+            DrawBaseOnOrigin(_spriteBatch, texture, position, new Vector2(texture.Width, texture.Height), scale);
         }
         #endregion
 

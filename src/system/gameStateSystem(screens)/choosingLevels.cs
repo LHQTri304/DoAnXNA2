@@ -46,7 +46,7 @@ namespace DoAnXNA2
 
         protected override void SubUpdate(GameTime gameTime)
         {
-            backgroundManager.IsDisableDecorations = false;
+            backgroundManager.IsDecorationsDisplayed = false;
             InputUtilities.HandleKeyPress(Keys.Escape, kstate, () => _game.SetMainMenu());
             InputUtilities.HandleMouseClick(mstate.LeftButton, 0, () => _selectedLevel = Math.Max(1, _selectedLevel - 1)); //Lv min = 1
             InputUtilities.HandleMouseClick(mstate.RightButton, 1, () => _selectedLevel = Math.Min(3, _selectedLevel + 1)); // Lv max = 3

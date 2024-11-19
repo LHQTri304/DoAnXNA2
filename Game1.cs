@@ -17,6 +17,7 @@ public class Game1 : Game
     //GameState
     public bool _isGameOver { get; private set; }
     private GameState _currentState;
+    private GameState _previousState;
     private MainMenu _mainMenu;
     private Setting _setting;
     private ChoosingLevels _choosingLevels;
@@ -77,6 +78,7 @@ public class Game1 : Game
         _spriteBatch = new SpriteBatch(GraphicsDevice); //Tạo sprite batch        
         Textures.LoadAll(Content); // Load tất cả các texture trong file texture2D.cs
         Soundtrack.LoadAll(Content); // Load tất cả các soundtrack trong file soundtrack.cs
+        ReadyMadeBtn.InitAndLoad(this); // Load tất cả các Button thường dùng
         _font = SpriteFonts.LoadSpriteFonts(Content); // Load tất cả các font hiện có (1 cái duy nhất)
 
         //tránh lỗi null khi run
@@ -131,21 +133,25 @@ public class Game1 : Game
     }
     public void SetMainMenu()
     {
+        _previousState = _currentState;
         _backgroundMusic = Soundtrack.TitleTheme;
         _currentState = _mainMenu;
     }
     public void SetSetting()
     {
+        _previousState = _currentState;
         _backgroundMusic = Soundtrack.TitleTheme;
         _currentState = _setting;
     }
     public void SetChoosingLevels()
     {
+        _previousState = _currentState;
         _backgroundMusic = Soundtrack.TitleTheme;
         _currentState = _choosingLevels;
     }
     public void SetGameDisplay(int level)
     {
+        _previousState = _currentState;
         _backgroundMusic = RandomCombatTheme();
         _gameDisplay._Level = level;
         _currentScore = 0;
@@ -157,8 +163,13 @@ public class Game1 : Game
     }
     public void SetGameOver()
     {
+        _previousState = _currentState;
         _backgroundMusic = Soundtrack.GameOver;
         _currentState = _gameOver;
+    }
+    public void SetStateBackward()
+    {
+        _currentState = _previousState;
     }
     private Song RandomCombatTheme()
     {

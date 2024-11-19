@@ -9,22 +9,22 @@ namespace DoAnXNA2
     {
         public MainMenu(Game1 game) :
             base(game)
-        { }
+        { 
+            IsBGDecorDisplayed = true;
+            IsCursorDisplayed = true;
+        }
 
         protected override void SubUpdate(GameTime gameTime)
         {
-            backgroundManager.IsDisableDecorations = false;
-            _game._cursor.Update(mstate);
-
-            //InputUtilities.HandleKeyPress(Keys.Space, kstate, () => _game.SetChoosingLevels());
-            //InputUtilities.HandleKeyPress(Keys.X, kstate, () => _game.SetSetting());
+            ReadyMadeBtn.PlayButton.Update(mstate, CommonPotion[0] + new Vector2(100, 200));
+            ReadyMadeBtn.SettingsButton.Update(mstate, CommonPotion[0] + new Vector2(-100, 200));
         }
 
         protected override void SubDraw(SpriteBatch spriteBatch)
         {
-            _game._cursor.Draw(spriteBatch);
-            //SimplifyDrawing.HandleCenteredText(spriteBatch, _font, "MAIN MENU", CommonPotion[0] + new Vector2(0, -200));
-            //SimplifyDrawing.HandleCenteredText(spriteBatch, _font, "Press Space to Start\nPress X to Setting", CommonPotion[0]);
+            SimplifyDrawing.HandleCentered(spriteBatch, Textures.TitleGame, CommonPotion[0] + new Vector2(0, -100), 0.3f);
+            ReadyMadeBtn.PlayButton.Draw(spriteBatch);
+            ReadyMadeBtn.SettingsButton.Draw(spriteBatch);
         }
     }
 }

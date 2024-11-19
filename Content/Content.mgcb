@@ -515,6 +515,18 @@
 /processorParam:TextureFormat=Color
 /build:SpriteStuff/Comet.png;Comet.png
 
+#begin SpriteStuff/Cursor.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Cursor.png;Cursor.png
+
 #begin SpriteStuff/Fire Blaster.png
 /importer:TextureImporter
 /processor:TextureProcessor

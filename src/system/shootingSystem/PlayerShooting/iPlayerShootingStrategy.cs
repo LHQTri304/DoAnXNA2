@@ -1,8 +1,5 @@
-using System;
 using System.Collections.Generic;
 using DoAnXNA2.src.factoryMethod;
-using DoAnXNA2;
-using DoAnXNA2;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 

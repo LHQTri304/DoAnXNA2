@@ -20,6 +20,7 @@ namespace DoAnXNA2
 
         // For UI
         public static List<Texture2D> BackgroundStuff { get; private set; }
+        public static Texture2D Cursor { get; private set; }
 
         //Button
         public static Texture2D StartButton { get; private set; }
@@ -60,6 +61,7 @@ namespace DoAnXNA2
                 content.Load<Texture2D>("Mini Galaxy"),
                 content.Load<Texture2D>("Space Fighter"),
             ];
+            Cursor = content.Load<Texture2D>("Cursor");
 
             //Button
             StartButton = content.Load<Texture2D>("enemyYellow");

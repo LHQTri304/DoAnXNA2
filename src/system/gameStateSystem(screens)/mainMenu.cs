@@ -14,14 +14,17 @@ namespace DoAnXNA2
         protected override void SubUpdate(GameTime gameTime)
         {
             backgroundManager.IsDisableDecorations = false;
-            InputUtilities.HandleKeyPress(Keys.Space, kstate, () => _game.SetChoosingLevels());
-            InputUtilities.HandleKeyPress(Keys.X, kstate, () => _game.SetSetting());
+            _game._cursor.Update(mstate);
+
+            //InputUtilities.HandleKeyPress(Keys.Space, kstate, () => _game.SetChoosingLevels());
+            //InputUtilities.HandleKeyPress(Keys.X, kstate, () => _game.SetSetting());
         }
 
         protected override void SubDraw(SpriteBatch spriteBatch)
         {
-            SimplifyDrawing.HandleCenteredText(spriteBatch, _font, "MAIN MENU", CommonPotion[0] + new Vector2(0, -200));
-            SimplifyDrawing.HandleCenteredText(spriteBatch, _font, "Press Space to Start\nPress X to Setting", CommonPotion[0]);
+            _game._cursor.Draw(spriteBatch);
+            //SimplifyDrawing.HandleCenteredText(spriteBatch, _font, "MAIN MENU", CommonPotion[0] + new Vector2(0, -200));
+            //SimplifyDrawing.HandleCenteredText(spriteBatch, _font, "Press Space to Start\nPress X to Setting", CommonPotion[0]);
         }
     }
 }

@@ -28,7 +28,8 @@ public class Game1 : Game
     public List<EnemySpawner> _allSpawners { get; set; }
     public List<Bullet> _allBullets { get; set; } = [];
 
-    // UI
+    // UI - UX
+    public Cursor _cursor { get; set; }
     public List<I_HUD> _gameHUD { get; set; }
     public SpriteFont _font { get; set; }
 
@@ -59,6 +60,7 @@ public class Game1 : Game
 
         // Tạo các sprites
         _playerShip = new PlayerShip(this);
+        _cursor = new Cursor();
 
         // Khởi tạo spawner
         _allSpawners = [
@@ -76,7 +78,10 @@ public class Game1 : Game
         Textures.LoadAll(Content); // Load tất cả các texture trong file texture2D.cs
         Soundtrack.LoadAll(Content); // Load tất cả các soundtrack trong file soundtrack.cs
         _font = SpriteFonts.LoadSpriteFonts(Content); // Load tất cả các font hiện có (1 cái duy nhất)
-        _playerShip.ReloadTexture(); //tránh lỗi null khi run
+
+        //tránh lỗi null khi run
+        _playerShip.ReloadTexture();
+        _cursor.ReloadTexture();
 
         // GameState (Screen)
         _mainMenu = new MainMenu(this);
@@ -157,7 +162,7 @@ public class Game1 : Game
     }
     private Song RandomCombatTheme()
     {
-        int index = new Random().Next(1,5);
+        int index = new Random().Next(1, 5);
         return index switch
         {
             1 => Soundtrack.CombatTheme1,

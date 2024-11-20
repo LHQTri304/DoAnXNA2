@@ -2,9 +2,9 @@ using Microsoft.Xna.Framework;
 
 namespace DoAnXNA2
 {
-    public class StraightDualShot : IBaseShootingStrategy
+    public class StraightDoubleShot : IBaseShootingStrategy
     {
-        public StraightDualShot()
+        public StraightDoubleShot()
         {
             _Speed = 3.5f;
             ShotSound = Soundtrack.EnemyShot;

@@ -32,11 +32,11 @@ namespace DoAnXNA2
 
             // Thêm kẻ địch liên tục
             int[] limit = [4,3,2];
-            if(_game1._allEnemies.OfType<EYellow>().ToList().Count <= limit[0])
+            /* if(_game1._allEnemies.OfType<EYellow>().ToList().Count <= limit[0])
                 _game1._allSpawners[0].SpawnEnemy();
             if(_game1._allEnemies.OfType<ERed>().ToList().Count <= limit[1])
-                _game1._allSpawners[1].SpawnEnemy();
-            if(_game1._allEnemies.OfType<EGreen>().ToList().Count <= limit[2])
+                _game1._allSpawners[1].SpawnEnemy(); */
+            if(_game1._allEnemies.OfType<EGreen>().ToList().Count <= limit[0])
                 _game1._allSpawners[2].SpawnEnemy();
 
 

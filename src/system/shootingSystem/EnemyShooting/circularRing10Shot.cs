@@ -2,10 +2,10 @@ using Microsoft.Xna.Framework;
 
 namespace DoAnXNA2
 {
-    public class Circle10Shot : IBaseShootingStrategy
+    public class CircularRing10Shot : IBaseShootingStrategy
     {
         private float[] shotsRotate = [0, 36, 72, 108, 144, 180, 216, 252, 288, 324];
-        public Circle10Shot()
+        public CircularRing10Shot()
         {
             _Speed = 3.5f;
             ShotSound = Soundtrack.EnemyShot;

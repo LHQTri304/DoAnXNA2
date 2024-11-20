@@ -7,6 +7,7 @@ namespace DoAnXNA2
 {
     public abstract class IBaseShootingStrategy
     {
+        protected GameTime _GameTime;
         protected float _Speed;
         protected SoundEffect ShotSound;
         protected float shootCoolDown;
@@ -14,6 +15,7 @@ namespace DoAnXNA2
         protected abstract void AddNewBullets(Vector2 position);
         public void Shoot(GameTime gameTime, Vector2 position, List<Bullet> bullets)
         {
+            _GameTime = gameTime;
             shootCoolDown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (shootCoolDown <= 0)
             {

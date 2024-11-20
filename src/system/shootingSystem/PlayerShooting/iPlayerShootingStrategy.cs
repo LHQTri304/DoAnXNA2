@@ -1,9 +1,8 @@
 using System.Collections.Generic;
-using DoAnXNA2.src.factoryMethod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace DoAnXNA2.src.strategyMethod
+namespace DoAnXNA2
 {
     public abstract class IPlayerShootingStrategy
     {

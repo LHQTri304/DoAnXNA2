@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 
-namespace DoAnXNA2.src.strategyMethod
+namespace DoAnXNA2
 {
     public interface IMovementStrategy
     {

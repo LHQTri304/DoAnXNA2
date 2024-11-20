@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using DoAnXNA2.src.strategyMethod;
 
 
 namespace DoAnXNA2

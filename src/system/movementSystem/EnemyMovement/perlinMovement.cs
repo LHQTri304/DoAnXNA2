@@ -2,7 +2,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace DoAnXNA2.src.strategyMethod
+namespace DoAnXNA2
 {
     public class PerlinMovement : IMovementStrategy
     {

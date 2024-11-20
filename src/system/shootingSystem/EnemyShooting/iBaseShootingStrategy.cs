@@ -1,11 +1,9 @@
 using System;
 using System.Collections.Generic;
-using DoAnXNA2.src.factoryMethod;
-using DoAnXNA2;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 
-namespace DoAnXNA2.src.strategyMethod
+namespace DoAnXNA2
 {
     public abstract class IBaseShootingStrategy
     {

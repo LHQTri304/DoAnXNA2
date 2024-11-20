@@ -1,9 +1,6 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using DoAnXNA2;
-using System.Collections.Generic;
 
-namespace DoAnXNA2.src.factoryMethod
+namespace DoAnXNA2
 {
     public static class EnemyFactory
     {

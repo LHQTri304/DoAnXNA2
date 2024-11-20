@@ -1,8 +1,7 @@
 using System.Collections.Generic;
-using DoAnXNA2;
 using Microsoft.Xna.Framework;
 
-namespace DoAnXNA2.src.strategyMethod
+namespace DoAnXNA2
 {
     public class StraightShot : IPlayerShootingStrategy
     {

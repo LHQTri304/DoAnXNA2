@@ -25,29 +25,55 @@ namespace DoAnXNA2
 
         // Buttons
         public static Texture2D Backward_BTN { get; private set; }
+        public static Texture2D Backward_BTN_Active { get; private set; }
+        public static Texture2D Blank_BTN { get; private set; }
+        public static Texture2D Blank_BTN_Active { get; private set; }
         public static Texture2D Close_BTN { get; private set; }
+        public static Texture2D Close_BTN_Active { get; private set; }
         public static Texture2D Replay_BTN { get; private set; }
+        public static Texture2D Replay_BTN_Active { get; private set; }
         public static Texture2D Settings_BTN { get; private set; }
+        public static Texture2D Settings_BTN_Active { get; private set; }
         public static Texture2D Facebook_BTN { get; private set; }
+        public static Texture2D Facebook_BTN_Active { get; private set; }
         public static Texture2D Shop_BTN { get; private set; }
+        public static Texture2D Shop_BTN_Active { get; private set; }
         public static Texture2D FAQ_BTN { get; private set; }
+        public static Texture2D FAQ_BTN_Active { get; private set; }
         public static Texture2D Forward_BTN { get; private set; }
+        public static Texture2D Forward_BTN_Active { get; private set; }
         public static Texture2D Sound_BTN { get; private set; }
+        public static Texture2D Sound_BTN_Active { get; private set; }
         public static Texture2D Twitter_BTN { get; private set; }
+        public static Texture2D Twitter_BTN_Active { get; private set; }
         public static Texture2D Google_BTN { get; private set; }
+        public static Texture2D Google_BTN_Active { get; private set; }
         public static Texture2D Upgrade_BTN { get; private set; }
+        public static Texture2D Upgrade_BTN_Active { get; private set; }
         public static Texture2D Vibration_BTN { get; private set; }
+        public static Texture2D Vibration_BTN_Active { get; private set; }
         public static Texture2D VK_BTN { get; private set; }
+        public static Texture2D VK_BTN_Active { get; private set; }
         public static Texture2D Hangar_BTN { get; private set; }
+        public static Texture2D Hangar_BTN_Active { get; private set; }
         public static Texture2D Info_BTN { get; private set; }
+        public static Texture2D Info_BTN_Active { get; private set; }
         public static Texture2D Menu_BTN { get; private set; }
+        public static Texture2D Menu_BTN_Active { get; private set; }
         public static Texture2D More_Games_BTN { get; private set; }
+        public static Texture2D More_Games_BTN_Active { get; private set; }
         public static Texture2D Music_BTN { get; private set; }
+        public static Texture2D Music_BTN_Active { get; private set; }
         public static Texture2D Notifications_BTN { get; private set; }
+        public static Texture2D Notifications_BTN_Active { get; private set; }
         public static Texture2D Ok_BTN { get; private set; }
+        public static Texture2D Ok_BTN_Active { get; private set; }
         public static Texture2D Pause_BTN { get; private set; }
+        public static Texture2D Pause_BTN_Active { get; private set; }
         public static Texture2D Play_BTN { get; private set; }
+        public static Texture2D Play_BTN_Active { get; private set; }
         public static Texture2D Rating_BTN { get; private set; }
+        public static Texture2D Rating_BTN_Active { get; private set; }
 
 
         public static void LoadAll(ContentManager content)
@@ -89,29 +115,55 @@ namespace DoAnXNA2
 
             // Buttons
             Backward_BTN = content.Load<Texture2D>("Backward_BTN");
+            Backward_BTN_Active = content.Load<Texture2D>("Backward_BTN_Active");
+            Blank_BTN = content.Load<Texture2D>("Blank_BTN");
+            Blank_BTN_Active = content.Load<Texture2D>("Blank_BTN_Active");
             Close_BTN = content.Load<Texture2D>("Close_BTN");
+            Close_BTN_Active = content.Load<Texture2D>("Close_BTN_Active");
             Replay_BTN = content.Load<Texture2D>("Replay_BTN");
+            Replay_BTN_Active = content.Load<Texture2D>("Replay_BTN_Active");
             Settings_BTN = content.Load<Texture2D>("Settings_BTN");
+            Settings_BTN_Active = content.Load<Texture2D>("Settings_BTN_Active");
             Facebook_BTN = content.Load<Texture2D>("Facebook_BTN");
+            Facebook_BTN_Active = content.Load<Texture2D>("Facebook_BTN_Active");
             Shop_BTN = content.Load<Texture2D>("Shop_BTN");
+            Shop_BTN_Active = content.Load<Texture2D>("Shop_BTN_Active");
             FAQ_BTN = content.Load<Texture2D>("FAQ_BTN");
+            FAQ_BTN_Active = content.Load<Texture2D>("FAQ_BTN_Active");
             Forward_BTN = content.Load<Texture2D>("Forward_BTN");
+            Forward_BTN_Active = content.Load<Texture2D>("Forward_BTN_Active");
             Sound_BTN = content.Load<Texture2D>("Sound_BTN");
+            Sound_BTN_Active = content.Load<Texture2D>("Sound_BTN_Active");
             Twitter_BTN = content.Load<Texture2D>("Twitter_BTN");
+            Twitter_BTN_Active = content.Load<Texture2D>("Twitter_BTN_Active");
             Google_BTN = content.Load<Texture2D>("Google_BTN");
+            Google_BTN_Active = content.Load<Texture2D>("Google_BTN_Active");
             Upgrade_BTN = content.Load<Texture2D>("Upgrade_BTN");
+            Upgrade_BTN_Active = content.Load<Texture2D>("Upgrade_BTN_Active");
             Vibration_BTN = content.Load<Texture2D>("Vibration_BTN");
+            Vibration_BTN_Active = content.Load<Texture2D>("Vibration_BTN_Active");
             VK_BTN = content.Load<Texture2D>("VK_BTN");
+            VK_BTN_Active = content.Load<Texture2D>("VK_BTN_Active");
             Hangar_BTN = content.Load<Texture2D>("Hangar_BTN");
+            Hangar_BTN_Active = content.Load<Texture2D>("Hangar_BTN_Active");
             Info_BTN = content.Load<Texture2D>("Info_BTN");
+            Info_BTN_Active = content.Load<Texture2D>("Info_BTN_Active");
             Menu_BTN = content.Load<Texture2D>("Menu_BTN");
+            Menu_BTN_Active = content.Load<Texture2D>("Menu_BTN_Active");
             More_Games_BTN = content.Load<Texture2D>("More_Games_BTN");
+            More_Games_BTN_Active = content.Load<Texture2D>("More_Games_BTN_Active");
             Music_BTN = content.Load<Texture2D>("Music_BTN");
+            Music_BTN_Active = content.Load<Texture2D>("Music_BTN_Active");
             Notifications_BTN = content.Load<Texture2D>("Notifications_BTN");
+            Notifications_BTN_Active = content.Load<Texture2D>("Notifications_BTN_Active");
             Ok_BTN = content.Load<Texture2D>("Ok_BTN");
+            Ok_BTN_Active = content.Load<Texture2D>("Ok_BTN_Active");
             Pause_BTN = content.Load<Texture2D>("Pause_BTN");
+            Pause_BTN_Active = content.Load<Texture2D>("Pause_BTN_Active");
             Play_BTN = content.Load<Texture2D>("Play_BTN");
+            Play_BTN_Active = content.Load<Texture2D>("Play_BTN_Active");
             Rating_BTN = content.Load<Texture2D>("Rating_BTN");
+            Rating_BTN_Active = content.Load<Texture2D>("Rating_BTN_Active");
         }
     }
 }

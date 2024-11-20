@@ -10,8 +10,8 @@ namespace DoAnXNA2
         public Setting(Game1 _game) :
             base(_game)
         { 
-            IsBGDecorDisplayed = true;
-            IsCursorDisplayed = true;
+            _isBGDecorDisplayed = true;
+            _isCursorDisplayed = true;
         }
 
         protected override void SubUpdate(GameTime gameTime)

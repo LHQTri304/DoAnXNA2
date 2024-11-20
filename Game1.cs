@@ -67,7 +67,7 @@ public class Game1 : Game
         _allSpawners = [
             new YellowSpawner(this),
             new RedSpawner(this),
-            new GreenSpawner(this)
+            new GreenSpawner(this),
         ];
 
         base.Initialize();

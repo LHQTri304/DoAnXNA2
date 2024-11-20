@@ -13,14 +13,14 @@ namespace DoAnXNA2
 
         protected override void SubUpdate(GameTime gameTime)
         {
-            backgroundManager.IsDecorationsDisplayed = false;
-            InputUtilities.HandleKeyPress(Keys.Space, kstate, () => _game.SetMainMenu());
+            _backgroundManager.IsDecorationsDisplayed = false;
+            InputUtilities.HandleKeyPress(Keys.Space, kstate, () => _game1.SetMainMenu());
         }
 
         protected override void SubDraw(SpriteBatch spriteBatch)
         {
-            SimplifyDrawing.HandleCenteredText(spriteBatch, _font, "GAME OVER", new Vector2(_game.virtualWidth / 2, _game.virtualHeight / 2 - 200));
-            SimplifyDrawing.HandleCenteredText(spriteBatch, _font, "Press Space to Return Main Menu", new Vector2(_game.virtualWidth / 2, _game.virtualHeight / 2));
+            SimplifyDrawing.HandleCenteredText(spriteBatch, _font, "GAME OVER", new Vector2(_game1.virtualWidth / 2, _game1.virtualHeight / 2 - 200));
+            SimplifyDrawing.HandleCenteredText(spriteBatch, _font, "Press Space to Return Main Menu", new Vector2(_game1.virtualWidth / 2, _game1.virtualHeight / 2));
         }
     }
 }

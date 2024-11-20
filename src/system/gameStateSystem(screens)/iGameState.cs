@@ -10,24 +10,24 @@ namespace DoAnXNA2
 {
     public abstract class GameState
     {
-        protected Game1 _game;
+        protected Game1 _game1;
         protected SpriteFont _font;
         protected KeyboardState kstate;
         protected MouseState mstate;
-        protected BackgroundManager backgroundManager;
-        protected bool IsBGDecorDisplayed = true;
-        protected bool IsCursorDisplayed = true;
+        protected BackgroundManager _backgroundManager;
+        protected bool _isBGDecorDisplayed = true;
+        protected bool _isCursorDisplayed = true;
         protected Dictionary<int, Vector2> CommonPotion = [];
         // 0 = Center | 1 = TopLeft | 2 = TopRight | 3 = BottomLeft | 4 = BottomRight
 
 
         public GameState(Game1 game)
         {
-            _game = game;
+            _game1 = game;
             _font = game._font;
             GetKeyStateMouseState();
-            backgroundManager = new BackgroundManager(_game);
-            IsCursorDisplayed = true;
+            _backgroundManager = new BackgroundManager(_game1);
+            _isCursorDisplayed = true;
             CommonPotion.Add(0, new Vector2(game.virtualWidth / 2, game.virtualHeight / 2));
             CommonPotion.Add(1, new Vector2(0, 0));
             CommonPotion.Add(2, new Vector2(game.virtualWidth, 0));
@@ -41,19 +41,19 @@ namespace DoAnXNA2
         }
         public void Update(GameTime gameTime)
         {
-            if (IsCursorDisplayed)
-                _game._cursor.Update(mstate);
-            backgroundManager.IsDecorationsDisplayed = IsBGDecorDisplayed;
-            backgroundManager.Update(gameTime);
+            if (_isCursorDisplayed)
+                _game1._cursor.Update(mstate);
+            _backgroundManager.IsDecorationsDisplayed = _isBGDecorDisplayed;
+            _backgroundManager.Update(gameTime);
             GetKeyStateMouseState();
             SubUpdate(gameTime);
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            backgroundManager.Draw(spriteBatch);
+            _backgroundManager.Draw(spriteBatch);
             SubDraw(spriteBatch);
-            if (IsCursorDisplayed)
-                _game._cursor.Draw(spriteBatch);
+            if (_isCursorDisplayed)
+                _game1._cursor.Draw(spriteBatch);
         }
         protected abstract void SubUpdate(GameTime gameTime);
         protected abstract void SubDraw(SpriteBatch spriteBatch);

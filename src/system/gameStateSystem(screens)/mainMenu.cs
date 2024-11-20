@@ -9,10 +9,7 @@ namespace DoAnXNA2
     {
         public MainMenu(Game1 game) :
             base(game)
-        { 
-            IsBGDecorDisplayed = true;
-            IsCursorDisplayed = true;
-        }
+        { }
 
         protected override void SubUpdate(GameTime gameTime)
         {

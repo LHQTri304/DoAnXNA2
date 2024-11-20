@@ -503,6 +503,306 @@
 /processorParam:TextureFormat=Color
 /build:SpriteStuff/Asteroid.png;Asteroid.png
 
+#begin SpriteStuff/Buttons/BTNs_Active/Backward_BTN_Active.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Buttons/BTNs_Active/Backward_BTN_Active.png;Backward_BTN_Active.png
+
+#begin SpriteStuff/Buttons/BTNs_Active/Blank_BTN_Active.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Buttons/BTNs_Active/Blank_BTN_Active.png;Blank_BTN_Active.png
+
+#begin SpriteStuff/Buttons/BTNs_Active/Close_BTN_Active.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Buttons/BTNs_Active/Close_BTN_Active.png;Close_BTN_Active.png
+
+#begin SpriteStuff/Buttons/BTNs_Active/Facebook_BTN_Active.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Buttons/BTNs_Active/Facebook_BTN_Active.png;Facebook_BTN_Active.png
+
+#begin SpriteStuff/Buttons/BTNs_Active/FAQ_BTN_Active.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Buttons/BTNs_Active/FAQ_BTN_Active.png;FAQ_BTN_Active.png
+
+#begin SpriteStuff/Buttons/BTNs_Active/Forward_BTN_Active.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Buttons/BTNs_Active/Forward_BTN_Active.png;Forward_BTN_Active.png
+
+#begin SpriteStuff/Buttons/BTNs_Active/Google_BTN_Active.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Buttons/BTNs_Active/Google_BTN_Active.png;Google_BTN_Active.png
+
+#begin SpriteStuff/Buttons/BTNs_Active/Hangar_BTN_Active.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Buttons/BTNs_Active/Hangar_BTN_Active.png;Hangar_BTN_Active.png
+
+#begin SpriteStuff/Buttons/BTNs_Active/Info_BTN_Active.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Buttons/BTNs_Active/Info_BTN_Active.png;Info_BTN_Active.png
+
+#begin SpriteStuff/Buttons/BTNs_Active/Menu_BTN_Active.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Buttons/BTNs_Active/Menu_BTN_Active.png;Menu_BTN_Active.png
+
+#begin SpriteStuff/Buttons/BTNs_Active/More_Games_BTN_Active.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Buttons/BTNs_Active/More_Games_BTN_Active.png;More_Games_BTN_Active.png
+
+#begin SpriteStuff/Buttons/BTNs_Active/Music_BTN_Active.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Buttons/BTNs_Active/Music_BTN_Active.png;Music_BTN_Active.png
+
+#begin SpriteStuff/Buttons/BTNs_Active/Notifications_BTN_Active.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Buttons/BTNs_Active/Notifications_BTN_Active.png;Notifications_BTN_Active.png
+
+#begin SpriteStuff/Buttons/BTNs_Active/Ok_BTN_Active.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Buttons/BTNs_Active/Ok_BTN_Active.png;Ok_BTN_Active.png
+
+#begin SpriteStuff/Buttons/BTNs_Active/Pause_BTN_Active.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Buttons/BTNs_Active/Pause_BTN_Active.png;Pause_BTN_Active.png
+
+#begin SpriteStuff/Buttons/BTNs_Active/Play_BTN_Active.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Buttons/BTNs_Active/Play_BTN_Active.png;Play_BTN_Active.png
+
+#begin SpriteStuff/Buttons/BTNs_Active/Rating_BTN_Active.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Buttons/BTNs_Active/Rating_BTN_Active.png;Rating_BTN_Active.png
+
+#begin SpriteStuff/Buttons/BTNs_Active/Replay_BTN_Active.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Buttons/BTNs_Active/Replay_BTN_Active.png;Replay_BTN_Active.png
+
+#begin SpriteStuff/Buttons/BTNs_Active/Settings_BTN_Active.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Buttons/BTNs_Active/Settings_BTN_Active.png;Settings_BTN_Active.png
+
+#begin SpriteStuff/Buttons/BTNs_Active/Shop_BTN_Active.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Buttons/BTNs_Active/Shop_BTN_Active.png;Shop_BTN_Active.png
+
+#begin SpriteStuff/Buttons/BTNs_Active/Sound_BTN_Active.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Buttons/BTNs_Active/Sound_BTN_Active.png;Sound_BTN_Active.png
+
+#begin SpriteStuff/Buttons/BTNs_Active/Twitter_BTN_Active.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Buttons/BTNs_Active/Twitter_BTN_Active.png;Twitter_BTN_Active.png
+
+#begin SpriteStuff/Buttons/BTNs_Active/Upgrade_BTN_Active.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Buttons/BTNs_Active/Upgrade_BTN_Active.png;Upgrade_BTN_Active.png
+
+#begin SpriteStuff/Buttons/BTNs_Active/Vibration_BTN_Active.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Buttons/BTNs_Active/Vibration_BTN_Active.png;Vibration_BTN_Active.png
+
+#begin SpriteStuff/Buttons/BTNs_Active/VK_BTN_Active.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Buttons/BTNs_Active/VK_BTN_Active.png;VK_BTN_Active.png
+
 #begin SpriteStuff/Buttons/BTNs/Backward_BTN.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -514,6 +814,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:SpriteStuff/Buttons/BTNs/Backward_BTN.png;Backward_BTN.png
+
+#begin SpriteStuff/Buttons/BTNs/Blank_BTN.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Buttons/BTNs/Blank_BTN.png;Blank_BTN.png
 
 #begin SpriteStuff/Buttons/BTNs/Close_BTN.png
 /importer:TextureImporter
@@ -802,6 +1114,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:SpriteStuff/Comet.png;Comet.png
+
+#begin SpriteStuff/Cursor.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Cursor.png;Cursor.png
 
 #begin SpriteStuff/Cursor.png
 /importer:TextureImporter

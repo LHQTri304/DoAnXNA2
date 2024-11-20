@@ -8,30 +8,32 @@ namespace DoAnXNA2
     public class Button
     {
         private Game1 _game1;
-        private Texture2D Texture;
-        private Vector2 Position;
-        private Action OnClick;
-        private bool IsPressed;
+        private Texture2D _defaultTexture;
+        private Texture2D _hoverTexture;
+        private Vector2 _position;
+        private Action _onClick;
+        private bool _isPressed;
         public float Scale { get; set; }
 
-        public Button(Game1 game1, Texture2D texture, Action onClick)
+        public Button(Game1 game1, Texture2D defaultTexture, Texture2D hoverTexture, Action onClick)
         {
             _game1 = game1;
-            Texture = texture;
-            Position = new Vector2(0, 0);
-            OnClick = onClick;
-            IsPressed = false;
+            _defaultTexture = defaultTexture;
+            _hoverTexture = hoverTexture;
+            _position = new Vector2(0, 0);
+            _onClick = onClick;
+            _isPressed = false;
             Scale = 0.5f;
         }
 
         public void SetPosition(Vector2 newPosition)
         {
-            Position = newPosition;
+            _position = newPosition;
         }
 
-        public bool CheckReady()
+        public bool CheckHovered()
         {
-            var btnBounds = QuickGetUtilities.GetBounds(Position, Texture);
+            var btnBounds = QuickGetUtilities.GetBounds(_position, _defaultTexture);
             Rectangle realBtnBounds = new(
                 (int)(btnBounds.X + btnBounds.Width * (1 - Scale) / 2),
                 (int)(btnBounds.Y + btnBounds.Height * (1 - Scale) / 2),
@@ -44,18 +46,19 @@ namespace DoAnXNA2
         public void Update(MouseState mstate, Vector2 newPosition)
         {
             if (mstate.LeftButton == ButtonState.Released)
-                IsPressed = false;
+                _isPressed = false;
             SetPosition(newPosition);
-            if (CheckReady() && !IsPressed && mstate.LeftButton == ButtonState.Pressed)
+            if (CheckHovered() && !_isPressed && mstate.LeftButton == ButtonState.Pressed)
             {
-                IsPressed = true;
-                OnClick?.Invoke();
+                _isPressed = true;
+                _onClick?.Invoke();
             }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            SimplifyDrawing.HandleCentered(spriteBatch, Texture, Position, Scale);
+            var currentTexture = CheckHovered() ? _hoverTexture : _defaultTexture;
+            SimplifyDrawing.HandleCentered(spriteBatch, currentTexture, _position, Scale);
         }
     }
 }

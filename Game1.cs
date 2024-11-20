@@ -27,6 +27,7 @@ public class Game1 : Game
     //the sprites
     public PlayerShip _playerShip { get; set; }
     public List<EnemySpawner> _allSpawners { get; set; }
+    public List<Enemy> _allEnemies { get; set; } = [];
     public List<Bullet> _allBullets { get; set; } = [];
 
     // UI - UX
@@ -155,10 +156,9 @@ public class Game1 : Game
         _backgroundMusic = RandomCombatTheme();
         _gameDisplay._Level = level;
         _currentScore = 0;
-        _playerShip.ResetLevel();
+        _playerShip.ResetStats();
         _allBullets.Clear();
-        foreach (var item in _allSpawners)
-            item.Enemies.Clear();
+        _allEnemies.Clear();
         _currentState = _gameDisplay;
     }
     public void SetGameOver()

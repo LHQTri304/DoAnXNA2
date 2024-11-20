@@ -16,11 +16,11 @@ namespace DoAnXNA2
         protected IBaseShootingStrategy ShootingStrategy;
 
         // Thêm tham chiếu đến Game1 --> Phục vụ game over và allBullets
-        private Game1 _game;
+        private Game1 _game1;
 
         public Enemy(Game1 game, Texture2D texture, Vector2 position, int scoreKilled, IMovementStrategy movementStrategy, IBaseShootingStrategy shootingStrategy)
         {
-            _game = game;
+            _game1 = game;
             Texture = texture;
             Position = position;
             ScoreKilled = scoreKilled;
@@ -30,17 +30,17 @@ namespace DoAnXNA2
 
         private void CheckCollisions()
         {
-            CheckCollisionQuick.EnemyVsBulletPlayer(this, _game._allBullets, () =>
+            CheckCollisionQuick.EnemyVsBulletPlayer(this, _game1._allBullets, () =>
                     {
                         Soundtrack.EnemyKilled.Play(0.1f, 0f, 0f);
-                        _game._currentScore += ScoreKilled;
+                        _game1._currentScore += ScoreKilled;
                         IsAlive = false; // Kẻ địch bị tiêu diệt
                     });
         }
 
         private void CheckOutOfScreen()
         {
-            if (Position.Y > _game.virtualHeight + 50)
+            if (Position.Y > _game1.virtualHeight + 50)
                 IsAlive = false;
         }
 
@@ -48,7 +48,7 @@ namespace DoAnXNA2
         {
             if (!IsAlive) return; // Không cập nhật kẻ địch nếu nó đã bị tiêu diệt
 
-            ShootingStrategy.Shoot(gameTime, Position, _game._allBullets);
+            ShootingStrategy.Shoot(gameTime, Position, _game1._allBullets);
             Position = MovementStrategy.Move(gameTime, graphics, Position);
             CheckCollisions();
             CheckOutOfScreen();

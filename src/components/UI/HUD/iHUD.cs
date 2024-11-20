@@ -7,11 +7,11 @@ namespace DoAnXNA2
     public abstract class I_HUD   //Heads-Up Display
     {
         protected SpriteFont Font { get; set; }
-        protected Game1 _game;
+        protected Game1 _game1;
 
         public I_HUD(Game1 game, SpriteFont font)
         {
-            _game = game;
+            _game1 = game;
             Font = font;
         }
         

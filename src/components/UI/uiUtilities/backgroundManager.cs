@@ -9,7 +9,7 @@ namespace DoAnXNA2
 {
     public class BackgroundManager
     {
-        private Game1 _game;
+        private Game1 _game1;
         private Texture2D backgroundTexture;
         private List<Texture2D> decorationTextures;
         private List<Decoration> decorations;
@@ -31,7 +31,7 @@ namespace DoAnXNA2
 
         public BackgroundManager(Game1 game)
         {
-            _game = game;
+            _game1 = game;
             decorations = new List<Decoration>();
             maxDecorations = 10;
             backgroundYPosition = 0f;
@@ -72,7 +72,7 @@ namespace DoAnXNA2
                 decorations[i].Position += new Vector2(0, decorations[i].Speed * elapsed);
 
                 // Remove decorations off-screen
-                float YOffScreen = _game.virtualHeight + decorations[i].Texture.Height * decorations[i].Scale;
+                float YOffScreen = _game1.virtualHeight + decorations[i].Texture.Height * decorations[i].Scale;
                 if (decorations[i].Position.Y > YOffScreen)
                 {
                     decorations.RemoveAt(i);
@@ -119,8 +119,8 @@ namespace DoAnXNA2
         }
         private float GetRanPositionX(Texture2D texture, float scale)
         {
-            float x = random.Next(0, _game.virtualWidth - (int)(texture.Width * scale));
-            if (Math.Abs(x - TheLastRandomX) <= _game.virtualWidth / 5)
+            float x = random.Next(0, _game1.virtualWidth - (int)(texture.Width * scale));
+            if (Math.Abs(x - TheLastRandomX) <= _game1.virtualWidth / 5)
                 return GetRanPositionX(texture, scale); // Gọi lại đệ quy nếu không thỏa mãn
             TheLastRandomX = x;
             return x;

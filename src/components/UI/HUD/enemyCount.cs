@@ -18,7 +18,7 @@ namespace DoAnXNA2
 
         public override void Update(GameTime gameTime)
         {
-            _enemyCount = _game._allSpawners.SelectMany(spawner => spawner.Enemies).ToList().Count;
+            _enemyCount = _game1._allEnemies.Count;
         }
 
         public override void Draw(SpriteBatch spriteBatch)

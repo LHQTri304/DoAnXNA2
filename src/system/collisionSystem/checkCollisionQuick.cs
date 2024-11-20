@@ -19,30 +19,50 @@ namespace DoAnXNA2
                 );
             });
         }
-        public static void PlayerVsBulletEnemy(PlayerShip player, List<Bullet> allBullets, Action onCollision)
+
+        public static void PlayerVsBulletEnemy(Game1 game1, Action onCollisionBonusAction = null)
         {
+            var player = game1._playerShip;
             var playerBounds = QuickGetUtilities.GetPlayerBounds(player.Position, player.Texture);
-            allBullets.OfType<BulletEnemy>().ToList().RemoveAll(bullet =>
+            game1._allBullets.RemoveAll(bullet =>
             {
-                var bulletBounds = QuickGetUtilities.GetBounds(bullet.Position, bullet.Texture);
-                return CheckCollision.CheckBounds(
-                    playerBounds,
-                    bulletBounds,
-                    onCollision
-                );
+                if (bullet is BulletEnemy bulletEnemy)
+                {
+                    var bulletBounds = QuickGetUtilities.GetBounds(bulletEnemy.Position, bulletEnemy.Texture);
+                    return CheckCollision.CheckBounds(
+                        playerBounds,
+                        bulletBounds,
+                        () =>
+                        {
+                            player.TakeDamage(bulletEnemy.Damage);
+                            System.Diagnostics.Debug.WriteLine($"bạn đã bị bắn\nHP còn: {player.HP}");
+                        }
+                    );
+                }
+                return false;
             });
         }
-        public static void PlayerVsEnemy(PlayerShip player, List<EnemySpawner> allEnemySpawners, Action onCollision)
+
+        public static void PlayerVsEnemy(Game1 game1, Action onCollisionBonusAction = null)
         {
+            var player = game1._playerShip;
             var playerBounds = QuickGetUtilities.GetPlayerBounds(player.Position, player.Texture);
-            allEnemySpawners.SelectMany(spawner => spawner.Enemies).ToList().RemoveAll(enemy =>
+            game1._allEnemies.RemoveAll(bullet =>
             {
-            var enemyBounds = QuickGetUtilities.GetBounds(enemy.Position, enemy.Texture);
-            return CheckCollision.CheckBounds(
-                    playerBounds,
-                    enemyBounds,
-                    onCollision
-                );
+                if (bullet is Enemy Enemy)
+                {
+                    var bulletBounds = QuickGetUtilities.GetBounds(Enemy.Position, Enemy.Texture);
+                    return CheckCollision.CheckBounds(
+                        playerBounds,
+                        bulletBounds,
+                        () =>
+                        {
+                            player.TakeDamage(DMGStatsManager.InstantKill);
+                            System.Diagnostics.Debug.WriteLine($"bạn đã bị bắn\nHP còn: {player.HP}");
+                        }
+                    );
+                }
+                return false;
             });
         }
     }

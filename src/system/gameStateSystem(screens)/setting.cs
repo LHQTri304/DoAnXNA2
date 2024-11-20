@@ -7,8 +7,8 @@ namespace DoAnXNA2
 {
     public class Setting : GameState
     {
-        public Setting(Game1 _game) :
-            base(_game)
+        public Setting(Game1 _game1) :
+            base(_game1)
         { 
             _isBGDecorDisplayed = true;
             _isCursorDisplayed = true;

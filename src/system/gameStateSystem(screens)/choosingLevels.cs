@@ -14,8 +14,8 @@ namespace DoAnXNA2
         private readonly List<Vector2> _levelPositions = [];
         private readonly List<Button> _levelButtons = [];
 
-        public ChoosingLevels(Game1 _game) :
-            base(_game)
+        public ChoosingLevels(Game1 _game1) :
+            base(_game1)
         {
             SetPositions();
             SetLevels();
@@ -77,10 +77,6 @@ namespace DoAnXNA2
             ReadyMadeBtn.BackwardButton.Update(mstate, CommonPotion[0] + new Vector2(0, 200));
             foreach (var (position, button) in _levelPositions.Zip(_levelButtons, (p, b) => (p, b)))
                 button.Update(mstate, position);
-            //InputUtilities.HandleKeyPress(Keys.Escape, kstate, () => _game.SetMainMenu());
-            //InputUtilities.HandleMouseClick(mstate.LeftButton, 0, () => _selectedLevel = Math.Max(1, _selectedLevel - 1)); //Lv min = 1
-            //InputUtilities.HandleMouseClick(mstate.RightButton, 1, () => _selectedLevel = Math.Min(3, _selectedLevel + 1)); // Lv max = 3
-            //InputUtilities.HandleKeyPress(Keys.Space, kstate, () => _game.SetGameDisplay(_selectedLevel));
         }
 
         protected override void SubDraw(SpriteBatch spriteBatch)

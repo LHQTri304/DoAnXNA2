@@ -7,8 +7,8 @@ namespace DoAnXNA2
 {
     public class GameOver : GameState
     {       
-        public GameOver(Game1 _game) :
-            base(_game)
+        public GameOver(Game1 _game1) :
+            base(_game1)
         { }
 
         protected override void SubUpdate(GameTime gameTime)

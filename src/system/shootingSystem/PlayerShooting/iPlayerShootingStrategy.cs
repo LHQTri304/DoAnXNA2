@@ -23,10 +23,10 @@ namespace DoAnXNA2
                     AddNewBullets(position);
                     bullets.AddRange(newBullets);
                     newBullets.Clear();
-                    ResetShootCoolDown(ref shootCoolDown); // Reset cooldown sau mỗi lần bắn
+                    ResetShootCoolDown(); // Reset cooldown sau mỗi lần bắn
                 });
         }
-        protected void ResetShootCoolDown(ref float shootCoolDown)
+        protected void ResetShootCoolDown()
         {
             shootCoolDown = shotReloading;
         }

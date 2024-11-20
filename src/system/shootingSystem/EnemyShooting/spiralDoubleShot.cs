@@ -13,7 +13,7 @@ namespace DoAnXNA2
             _Speed = 3.5f;
             ShotSound = Soundtrack.EnemyShot;
             newBullets = new List<Bullet>();
-            ResetShootCoolDown(ref shootCoolDown);
+            SetShootCoolDown(0.25, 0.25);
         }
 
         protected override void AddNewBullets(Vector2 position)
@@ -21,7 +21,7 @@ namespace DoAnXNA2
             QuickAddBullet(position, _Speed, angle1);
             QuickAddBullet(position, _Speed, angle2);
             angle1 = (angle1 + 20) % 360;
-            angle2 = (angle2 - 20) % 360;
+            angle2 = (angle2 + 20) % 360;
         }
     }
 }

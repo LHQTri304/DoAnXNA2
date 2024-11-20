@@ -10,7 +10,7 @@ namespace DoAnXNA2
             _Level = 10;
             _Speed = 5.5f;
             newBullets = [];
-            ResetShootCoolDown(ref shootCoolDown); // Khởi tạo cooldown ban đầu
+            ResetShootCoolDown(); // Khởi tạo cooldown ban đầu
         }
 
         protected override void AddNewBullets(Vector2 position)

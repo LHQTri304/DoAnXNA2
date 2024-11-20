@@ -15,7 +15,7 @@ namespace DoAnXNA2
             _Speed = 3.5f;
             ShotSound = Soundtrack.EnemyShot;
             newBullets = new List<Bullet>();
-            ResetShootCoolDown(ref shootCoolDown);
+            SetShootCoolDown();
         }
 
         protected override void AddNewBullets(Vector2 position)

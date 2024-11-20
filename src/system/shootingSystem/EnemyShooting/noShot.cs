@@ -9,7 +9,7 @@ namespace DoAnXNA2
             _Speed = 3.5f;
             ShotSound = null;
             newBullets = [];
-            ResetShootCoolDown(ref shootCoolDown); // Khởi tạo cooldown ban đầu
+            SetShootCoolDown(); // Khởi tạo cooldown ban đầu
         }
 
         protected override void AddNewBullets(Vector2 position) { }

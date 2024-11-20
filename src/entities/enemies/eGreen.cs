@@ -10,7 +10,7 @@ namespace DoAnXNA2
                 game, Textures.EnemyGreen, position,
                 ScoreTable.TenPoints,
                 new StraightDownMovement(1.0f),
-                new ZigzagShot()
+                new CircularRing10Shot()
             )
         { }
     }

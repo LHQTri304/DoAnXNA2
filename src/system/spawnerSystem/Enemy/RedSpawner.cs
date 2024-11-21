@@ -16,12 +16,12 @@ namespace DoAnXNA2
         {
             Enemy newEnemy = EnemyFactory.CreateEnemy(_game1, "Red", RandomSpawnPoint());
             if (newEnemy != null)
-                _game1._allEnemies.Add(newEnemy);
+                _game1.AllEnemies.Add(newEnemy);
         }
         private Vector2 RandomSpawnPoint()
         {
             _random = new Random();
-            spawnPointX = _random.Next(50, _game1.virtualWidth - 50);
+            spawnPointX = _random.Next(50, _game1.VirtualWidth - 50);
             return new Vector2(spawnPointX, -50);
         }
     }

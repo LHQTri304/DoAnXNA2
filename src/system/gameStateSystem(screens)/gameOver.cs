@@ -19,8 +19,8 @@ namespace DoAnXNA2
 
         protected override void SubDraw(SpriteBatch spriteBatch)
         {
-            SimplifyDrawing.HandleCenteredText(spriteBatch, _font, "GAME OVER", new Vector2(_game1.virtualWidth / 2, _game1.virtualHeight / 2 - 200));
-            SimplifyDrawing.HandleCenteredText(spriteBatch, _font, "Press Space to Return Main Menu", new Vector2(_game1.virtualWidth / 2, _game1.virtualHeight / 2));
+            SimplifyDrawing.HandleCenteredText(spriteBatch, _font, "GAME OVER", new Vector2(_game1.VirtualWidth / 2, _game1.VirtualHeight / 2 - 200));
+            SimplifyDrawing.HandleCenteredText(spriteBatch, _font, "Press Space to Return Main Menu", new Vector2(_game1.VirtualWidth / 2, _game1.VirtualHeight / 2));
         }
     }
 }

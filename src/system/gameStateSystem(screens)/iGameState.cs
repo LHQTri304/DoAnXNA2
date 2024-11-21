@@ -24,15 +24,15 @@ namespace DoAnXNA2
         public GameState(Game1 game)
         {
             _game1 = game;
-            _font = game._font;
+            _font = game.Font;
             GetKeyStateMouseState();
             _backgroundManager = new BackgroundManager(_game1);
             _isCursorDisplayed = true;
-            CommonPotion.Add(0, new Vector2(game.virtualWidth / 2, game.virtualHeight / 2));
+            CommonPotion.Add(0, new Vector2(game.VirtualWidth / 2, game.VirtualHeight / 2));
             CommonPotion.Add(1, new Vector2(0, 0));
-            CommonPotion.Add(2, new Vector2(game.virtualWidth, 0));
-            CommonPotion.Add(3, new Vector2(0, game.virtualHeight));
-            CommonPotion.Add(4, new Vector2(game.virtualWidth, game.virtualHeight));
+            CommonPotion.Add(2, new Vector2(game.VirtualWidth, 0));
+            CommonPotion.Add(3, new Vector2(0, game.VirtualHeight));
+            CommonPotion.Add(4, new Vector2(game.VirtualWidth, game.VirtualHeight));
         }
         protected void GetKeyStateMouseState()
         {
@@ -42,7 +42,7 @@ namespace DoAnXNA2
         public void Update(GameTime gameTime)
         {
             if (_isCursorDisplayed)
-                _game1._cursor.Update(mstate);
+                _game1.Cursor.Update(mstate);
             _backgroundManager.IsDecorationsDisplayed = _isBGDecorDisplayed;
             _backgroundManager.Update(gameTime);
             GetKeyStateMouseState();
@@ -53,7 +53,7 @@ namespace DoAnXNA2
             _backgroundManager.Draw(spriteBatch);
             SubDraw(spriteBatch);
             if (_isCursorDisplayed)
-                _game1._cursor.Draw(spriteBatch);
+                _game1.Cursor.Draw(spriteBatch);
         }
         protected abstract void SubUpdate(GameTime gameTime);
         protected abstract void SubDraw(SpriteBatch spriteBatch);

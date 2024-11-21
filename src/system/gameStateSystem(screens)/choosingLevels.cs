@@ -1,9 +1,6 @@
-using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using DoAnXNA2;
 using System.Linq;
 #nullable enable
 
@@ -36,7 +33,8 @@ namespace DoAnXNA2
         {
             for (int level = 1; level <= _levelPositions.Count; level++)
             {
-                _levelButtons.Add(new Button(_game1, Textures.Blank_BTN, Textures.Blank_BTN_Active, () => _game1.SetGameDisplay(level)));
+                int currentLevel = level;
+                _levelButtons.Add(new Button(_game1, Textures.Blank_BTN, Textures.Blank_BTN_Active, () => _game1.SetGameDisplay(currentLevel)));
             }
         }
 
@@ -44,8 +42,8 @@ namespace DoAnXNA2
         {
             int columns = 7;
             int rows = 3;
-            float screenWidth = _game1.virtualWidth;
-            float screenHeight = _game1.virtualHeight;
+            float screenWidth = _game1.VirtualWidth;
+            float screenHeight = _game1.VirtualHeight;
 
             // Centered region dimensions
             float regionWidth = (float)(screenWidth * 0.75);

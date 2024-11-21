@@ -40,7 +40,7 @@ namespace DoAnXNA2
                 (int)(btnBounds.Width * Scale),
                 (int)(btnBounds.Height * Scale)
             );
-            return realBtnBounds.Contains(_game1._cursor.Position);
+            return realBtnBounds.Contains(_game1.Cursor.Position);
         }
 
         public void Update(MouseState mstate, Vector2 newPosition)

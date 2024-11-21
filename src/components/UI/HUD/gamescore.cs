@@ -23,7 +23,7 @@ namespace DoAnXNA2
         public override void Draw(SpriteBatch spriteBatch)
         {
             string text = $"Score: {_gameScore}";
-            spriteBatch.DrawString(Font, text, new Vector2(10, _game1.virtualHeight - 70), Color.White);
+            spriteBatch.DrawString(Font, text, new Vector2(10, _game1.VirtualHeight - 70), Color.White);
             //SimplifyDrawing.HandleCenteredText(spriteBatch, Font, timeText, new Vector2(100, 10));
         }
     }

@@ -21,7 +21,7 @@ namespace DoAnXNA2
             shootCoolDown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (shootCoolDown <= 0)
             {
-                ShotSound?.Play();
+                //ShotSound?.Play();
                 AddNewBullets(position);
                 bullets.AddRange(newBullets);
                 newBullets.Clear();

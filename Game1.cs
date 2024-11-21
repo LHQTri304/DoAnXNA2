@@ -7,10 +7,10 @@ using Microsoft.Xna.Framework.Media;
 namespace DoAnXNA2;
 public class Game1 : Game
 {
-    public GraphicsDeviceManager _graphics { get; private set; }
-    public int virtualWidth { get; private set; } = 1280; // Chiều rộng cố định của nội dung game
-    public int virtualHeight { get; private set; } = 720;// Chiều cao cố định của nội dung game
-    public Song _backgroundMusic { get; set; }
+    public GraphicsDeviceManager Graphics { get; private set; }
+    public int VirtualWidth { get; private set; } = 1280; // Chiều rộng cố định của nội dung game
+    public int VirtualHeight { get; private set; } = 720;// Chiều cao cố định của nội dung game
+    public Song BackgroundMusic { get; set; }
     private RenderTarget2D _renderTarget;
     private SpriteBatch _spriteBatch;
 
@@ -25,22 +25,23 @@ public class Game1 : Game
     private GameOver _gameOver;
 
     //the sprites
-    public PlayerShip _playerShip { get; set; }
-    public List<EnemySpawner> _allSpawners { get; set; }
-    public List<Enemy> _allEnemies { get; set; } = [];
-    public List<Bullet> _allBullets { get; set; } = [];
+    public PlayerShip PlayerShip { get; set; }
+    //public List<EnemySpawner> _allSpawners { get; set; }
+    public Dictionary<string, EnemySpawner> AllSpawners { get; set; } = [];
+    public List<Enemy> AllEnemies { get; set; } = [];
+    public List<Bullet> AllBullets { get; set; } = [];
 
     // UI - UX
-    public Cursor _cursor { get; set; }
-    public List<I_HUD> _gameHUD { get; set; }
-    public SpriteFont _font { get; set; }
+    public Cursor Cursor { get; set; }
+    public List<I_HUD> GameHUD { get; set; }
+    public SpriteFont Font { get; set; }
 
     // Level system
     public int _currentScore { get; set; }
 
     public Game1()
     {
-        _graphics = new GraphicsDeviceManager(this);
+        Graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
     }
@@ -48,28 +49,26 @@ public class Game1 : Game
     protected override void Initialize()
     {
         // Thiết lập kích thước của cửa sổ
-        _graphics.PreferredBackBufferWidth = virtualWidth;
-        _graphics.PreferredBackBufferHeight = virtualHeight;
-        _graphics.ApplyChanges();
+        Graphics.PreferredBackBufferWidth = VirtualWidth;
+        Graphics.PreferredBackBufferHeight = VirtualHeight;
+        Graphics.ApplyChanges();
         Window.AllowUserResizing = true; // Cho phép Resize
         IsMouseVisible = false; // Ẩn con trỏ chuột
 
         // Tạo RenderTarget với kích thước cố định
-        _renderTarget = new RenderTarget2D(GraphicsDevice, virtualWidth, virtualHeight);
+        _renderTarget = new RenderTarget2D(GraphicsDevice, VirtualWidth, VirtualHeight);
 
         //Flags
         _isGameOver = false;
 
         // Tạo các sprites
-        _playerShip = new PlayerShip(this);
-        _cursor = new Cursor();
+        PlayerShip = new PlayerShip(this);
+        Cursor = new Cursor();
 
         // Khởi tạo spawner
-        _allSpawners = [
-            new YellowSpawner(this),
-            new RedSpawner(this),
-            new GreenSpawner(this),
-        ];
+        AllSpawners.Add("Yellow", new YellowSpawner(this));
+        AllSpawners.Add("Red", new RedSpawner(this));
+        AllSpawners.Add("Green", new GreenSpawner(this));
 
         base.Initialize();
     }
@@ -80,11 +79,11 @@ public class Game1 : Game
         Textures.LoadAll(Content); // Load tất cả các texture trong file texture2D.cs
         Soundtrack.LoadAll(Content); // Load tất cả các soundtrack trong file soundtrack.cs
         ReadyMadeBtn.InitAndLoad(this); // Load tất cả các Button thường dùng
-        _font = SpriteFonts.LoadSpriteFonts(Content); // Load tất cả các font hiện có (1 cái duy nhất)
+        Font = SpriteFonts.LoadSpriteFonts(Content); // Load tất cả các font hiện có (1 cái duy nhất)
 
         //tránh lỗi null khi run
-        _playerShip.ReloadTexture();
-        _cursor.ReloadTexture();
+        PlayerShip.ReloadTexture();
+        Cursor.ReloadTexture();
 
         // GameState (Screen)
         _mainMenu = new MainMenu(this);
@@ -95,16 +94,16 @@ public class Game1 : Game
         _currentState = _mainMenu;
 
         // UI
-        _gameHUD = [
-            new NextLevelMilestoneHUD(this, _font),
-            new GameScoreHUD(this, _font),
+        GameHUD = [
+            new NextLevelMilestoneHUD(this, Font),
+            new GameScoreHUD(this, Font),
         ];
 
         //Background music
-        _backgroundMusic = Soundtrack.TitleTheme;
+        BackgroundMusic = Soundtrack.TitleTheme;
         if (MediaPlayer.State != MediaState.Playing)
         {
-            MediaPlayer.Play(_backgroundMusic);
+            MediaPlayer.Play(BackgroundMusic);
             MediaPlayer.IsRepeating = true;
             //MediaPlayer.Volume = 0.5f;  // Điều chỉnh âm lượng (0.0 đến 1.0)
         }
@@ -128,43 +127,43 @@ public class Game1 : Game
         _spriteBatch.End();
 
         GraphicsDevice.SetRenderTarget(null);
-        DrawScaledScreen(_spriteBatch, _renderTarget, virtualWidth, virtualHeight);
+        DrawScaledScreen(_spriteBatch, _renderTarget, VirtualWidth, VirtualHeight);
 
         base.Draw(_gameTime);
     }
     public void SetMainMenu()
     {
         _previousState = _currentState;
-        _backgroundMusic = Soundtrack.TitleTheme;
+        BackgroundMusic = Soundtrack.TitleTheme;
         _currentState = _mainMenu;
     }
     public void SetSetting()
     {
         _previousState = _currentState;
-        _backgroundMusic = Soundtrack.TitleTheme;
+        BackgroundMusic = Soundtrack.TitleTheme;
         _currentState = _setting;
     }
     public void SetChoosingLevels()
     {
         _previousState = _currentState;
-        _backgroundMusic = Soundtrack.TitleTheme;
+        BackgroundMusic = Soundtrack.TitleTheme;
         _currentState = _choosingLevels;
     }
     public void SetGameDisplay(int level)
     {
         _previousState = _currentState;
-        _backgroundMusic = RandomCombatTheme();
-        _gameDisplay._Level = level;
+        BackgroundMusic = RandomCombatTheme();
+        _gameDisplay.CurrentLevel = level;
         _currentScore = 0;
-        _playerShip.ResetStats();
-        _allBullets.Clear();
-        _allEnemies.Clear();
+        PlayerShip.ResetStats();
+        AllBullets.Clear();
+        AllEnemies.Clear();
         _currentState = _gameDisplay;
     }
     public void SetGameOver()
     {
         _previousState = _currentState;
-        _backgroundMusic = Soundtrack.GameOver;
+        BackgroundMusic = Soundtrack.GameOver;
         _currentState = _gameOver;
     }
     public void SetStateBackward()

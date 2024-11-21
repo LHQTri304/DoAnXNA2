@@ -23,7 +23,7 @@ namespace DoAnXNA2
         public PerlinMovement(float horizontalSpeed, float verticalSpeed, Texture2D texture)
         {
             horizontalOffset = perlinNoiseOffset;
-            perlinNoiseOffset += 0.03f;
+            perlinNoiseOffset += (float)(new Random().NextDouble() * 999);
             _HorizontalSpeed = horizontalSpeed;
             _VerticalSpeed = verticalSpeed;
             _Texture = texture;

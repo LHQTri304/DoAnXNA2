@@ -35,7 +35,7 @@ namespace DoAnXNA2
             _elapsedTime += gameTime.ElapsedGameTime.TotalSeconds;
 
             // Nếu đủ thời gian và số lượng kẻ địch chưa đạt max
-            if (_elapsedTime >= _spawnInterval && _game1._allEnemies.Count < _maxEnemies)
+            if (_elapsedTime >= _spawnInterval && _game1.AllEnemies.Count < _maxEnemies)
             {
                 SpawnEnemy();
                 _elapsedTime = 0; // Reset thời gian

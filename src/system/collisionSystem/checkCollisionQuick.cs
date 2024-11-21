@@ -22,9 +22,9 @@ namespace DoAnXNA2
 
         public static void PlayerVsBulletEnemy(Game1 game1, Action onCollisionBonusAction = null)
         {
-            var player = game1._playerShip;
+            var player = game1.PlayerShip;
             var playerBounds = QuickGetUtilities.GetPlayerBounds(player.Position, player.Texture);
-            game1._allBullets.RemoveAll(bullet =>
+            game1.AllBullets.RemoveAll(bullet =>
             {
                 if (bullet is BulletEnemy bulletEnemy)
                 {
@@ -45,9 +45,9 @@ namespace DoAnXNA2
 
         public static void PlayerVsEnemy(Game1 game1, Action onCollisionBonusAction = null)
         {
-            var player = game1._playerShip;
+            var player = game1.PlayerShip;
             var playerBounds = QuickGetUtilities.GetPlayerBounds(player.Position, player.Texture);
-            game1._allEnemies.RemoveAll(bullet =>
+            game1.AllEnemies.RemoveAll(bullet =>
             {
                 if (bullet is Enemy Enemy)
                 {

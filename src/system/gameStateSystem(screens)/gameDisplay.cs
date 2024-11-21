@@ -1,15 +1,16 @@
+using System.Collections.Generic;
 using System.Linq;
+using DoAnXNA2.src.levels;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using DoAnXNA2;
-using System.Collections.Generic;
 
 namespace DoAnXNA2
 {
     public class GameDisplay : GameState
     {
-        public int _Level { get; set; }
+        public int CurrentLevel { get; set; }
+        private List<Level> ListLevels = [];
         private bool _isPaused;
 
         public GameDisplay(Game1 _game1) :
@@ -17,6 +18,29 @@ namespace DoAnXNA2
         {
             _isBGDecorDisplayed = false;
             _isCursorDisplayed = false;
+            ListLevels = [
+                new Level01(),
+                new Level02(),
+                new Level03(),
+                new Level01(),
+                new Level02(),
+                new Level03(),
+                new Level01(),
+                new Level02(),
+                new Level03(),
+                new Level01(),
+                new Level02(),
+                new Level03(),
+                new Level01(),
+                new Level02(),
+                new Level03(),
+                new Level01(),
+                new Level02(),
+                new Level03(),
+                new Level01(),
+                new Level02(),
+                new Level03(),
+            ];
         }
 
         protected override void SubUpdate(GameTime gameTime)
@@ -31,38 +55,33 @@ namespace DoAnXNA2
             }
 
             // Thêm kẻ địch liên tục
-            int[] limit = [4,3,2];
-            /* if(_game1._allEnemies.OfType<EYellow>().ToList().Count <= limit[0])
-                _game1._allSpawners[0].SpawnEnemy();
-            if(_game1._allEnemies.OfType<ERed>().ToList().Count <= limit[1])
-                _game1._allSpawners[1].SpawnEnemy(); */
-            if(_game1._allEnemies.OfType<EGreen>().ToList().Count <= 1)
-                _game1._allSpawners[2].SpawnEnemy();
+            Level SelectedLevel = ListLevels[CurrentLevel - 1];
+            SelectedLevel.Update(_game1, gameTime);
 
 
             // Cập nhật các sprites
-            _game1._playerShip.Update(gameTime, _game1._graphics, kstate, mstate);
-            _game1._allEnemies.RemoveAll(enemy =>
+            _game1.PlayerShip.Update(gameTime, _game1.Graphics, kstate, mstate);
+            _game1.AllEnemies.RemoveAll(enemy =>
             {
-                enemy.Update(gameTime, _game1._graphics);
+                enemy.Update(gameTime, _game1.Graphics);
                 return !enemy.IsAlive; // Giữ lại kẻ địch còn sống
             });
-            _game1._allBullets = _game1._allBullets.Where(b => b.Position.Y >= 0 && b.Position.Y <= _game1.virtualHeight)
+            _game1.AllBullets = _game1.AllBullets.Where(b => b.Position.Y >= 0 && b.Position.Y <= _game1.VirtualHeight)
                                     .Select(b => { b.Move(); return b; }).ToList();
 
             // Cập nhật GUI và HUD
-            foreach (var item in _game1._gameHUD)
+            foreach (var item in _game1.GameHUD)
                 item.Update(gameTime);
         }
 
         protected override void SubDraw(SpriteBatch spriteBatch)
         {
-            _game1._playerShip.Draw(spriteBatch);
-            foreach (var bullet in _game1._allBullets)
+            _game1.PlayerShip.Draw(spriteBatch);
+            foreach (var bullet in _game1.AllBullets)
                 bullet.Draw(spriteBatch);
-            foreach (var enemy in _game1._allEnemies)
+            foreach (var enemy in _game1.AllEnemies)
                 enemy.Draw(spriteBatch);
-            foreach (var item in _game1._gameHUD)
+            foreach (var item in _game1.GameHUD)
                 item.Draw(spriteBatch);
             if (_isPaused)
                 SimplifyDrawing.HandleCenteredText(spriteBatch, _font, "PAUSED\nPress Space to Continue\nPress X to Main Menu", CommonPotion[0]);

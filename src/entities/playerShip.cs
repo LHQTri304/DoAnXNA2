@@ -72,7 +72,7 @@ namespace DoAnXNA2
 
             // Xử lý bắn
             float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            ShootingStrategy.Shoot(elapsedTime, mstate, Position, _game1._allBullets);
+            ShootingStrategy.Shoot(elapsedTime, mstate, Position, _game1.AllBullets);
 
             // Xử lý va chạm
             CheckCollisions();

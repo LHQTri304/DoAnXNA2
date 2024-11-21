@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -11,13 +13,14 @@ namespace DoAnXNA2
         public bool IsAlive { get; set; } = true;
 
         //Quản lý cơ chế di chuyển & bắn
-        protected IMovementStrategy MovementStrategy;
-        protected IBaseShootingStrategy ShootingStrategy;
+        protected Random RandomIndex;
+        protected List<IMovementStrategy> MovementStrategy;
+        protected List<IBaseShootingStrategy> ShootingStrategy;
 
         // Thêm tham chiếu đến Game1 --> Phục vụ game over và allBullets
         private Game1 _game1;
 
-        public Enemy(Game1 game, Texture2D texture, Vector2 position, int scoreKilled, IMovementStrategy movementStrategy, IBaseShootingStrategy shootingStrategy)
+        public Enemy(Game1 game, Texture2D texture, Vector2 position, int scoreKilled, List<IMovementStrategy> movementStrategy, List<IBaseShootingStrategy> shootingStrategy)
         {
             _game1 = game;
             Texture = texture;
@@ -25,6 +28,7 @@ namespace DoAnXNA2
             ScoreKilled = scoreKilled;
             MovementStrategy = movementStrategy;
             ShootingStrategy = shootingStrategy;
+            RandomIndex = new Random();
         }
 
         private void CheckCollisions()
@@ -47,8 +51,8 @@ namespace DoAnXNA2
         {
             if (!IsAlive) return; // Không cập nhật kẻ địch nếu nó đã bị tiêu diệt
 
-            ShootingStrategy.Shoot(gameTime, Position, _game1.AllBullets);
-            Position = MovementStrategy.Move(gameTime, graphics, Position);
+            ShootingStrategy[RandomIndex.Next(ShootingStrategy.Count)].Shoot(gameTime, Position, _game1.AllBullets);
+            Position = MovementStrategy[RandomIndex.Next(MovementStrategy.Count)].Move(gameTime, graphics, Position);
             CheckCollisions();
             CheckOutOfScreen();
         }

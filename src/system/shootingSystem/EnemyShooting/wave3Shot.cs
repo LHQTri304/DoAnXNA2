@@ -3,11 +3,11 @@ using Microsoft.Xna.Framework;
 
 namespace DoAnXNA2
 {
-    public class WaveShot : IBaseShootingStrategy
+    public class Wave3Shot : IBaseShootingStrategy
     {
         private int waveStep = 0;
 
-        public WaveShot()
+        public Wave3Shot()
         {
             _Speed = 3.5f;
             ShotSound = Soundtrack.EnemyShot;

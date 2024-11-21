@@ -11,7 +11,7 @@ namespace DoAnXNA2
         private float _SmoothMoveX;
         private Random _Random;
 
-        public TeleportMovement(float speed = 100f)
+        public TeleportMovement(float speed = 50f)
         {
             _Speed = speed;
             _TimeSinceLastTeleport = 0;

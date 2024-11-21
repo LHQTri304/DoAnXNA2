@@ -8,7 +8,7 @@ namespace DoAnXNA2
         private float _Speed;
         private float _Gravity;
 
-        public GravityFallMovement(float initialSpeed, float gravity)
+        public GravityFallMovement(float initialSpeed = 100f, float gravity = 1f)
         {
             _Speed = initialSpeed;
             _Gravity = gravity;

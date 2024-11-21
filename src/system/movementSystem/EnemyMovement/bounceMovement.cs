@@ -9,7 +9,7 @@ namespace DoAnXNA2
         private float _SpeedY;
         private bool _GoingRight;
 
-        public BounceMovement(float speedX, float speedY)
+        public BounceMovement(float speedX = 66.6f, float speedY = 100f)
         {
             _SpeedX = speedX;
             _SpeedY = speedY;

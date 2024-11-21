@@ -16,6 +16,20 @@ namespace DoAnXNA2
         public static Texture2D EnemyRed { get; private set; }
         public static Texture2D EnemyGreen { get; private set; }
         public static Texture2D EnemyBlue { get; private set; }
+        public static Texture2D EnemyOrange { get; private set; }
+        public static Texture2D EnemyPurple { get; private set; }
+        public static Texture2D EnemyGray { get; private set; }
+        public static Texture2D EnemyCyan { get; private set; }
+        public static Texture2D EnemyLime { get; private set; }
+        public static Texture2D EnemyPink { get; private set; }
+        public static Texture2D EnemyBrown { get; private set; }
+        public static Texture2D EnemyTeal { get; private set; }
+        public static Texture2D EnemyBlack { get; private set; }
+        public static Texture2D EnemyWhite { get; private set; }
+        public static Texture2D EnemyGold { get; private set; }
+        public static Texture2D EnemySilver { get; private set; }
+        public static Texture2D EnemyMaroon { get; private set; }
+        public static Texture2D EnemyNavy { get; private set; }
         public static Texture2D BulletE { get; private set; }
 
         // For UI
@@ -86,7 +100,21 @@ namespace DoAnXNA2
             EnemyYellow = content.Load<Texture2D>("Reman Warbird Scimitar");
             EnemyRed = content.Load<Texture2D>("Gquan Class Heavy Cruiser");
             EnemyGreen = content.Load<Texture2D>("Star Trek Romulan Ship");
-            EnemyBlue = content.Load<Texture2D>("enemyBlue");
+            EnemyBlue = content.Load<Texture2D>("Sharlin Class Warcruiser");
+            EnemyOrange = content.Load<Texture2D>("Babylon 5 Centauri Ship Orange");
+            EnemyPurple = content.Load<Texture2D>("Babylon 5 Interstellar Alliance Ship");
+            EnemyGray = content.Load<Texture2D>("Romulan Warbird Valdore");
+            EnemyCyan = content.Load<Texture2D>("Jem Hadar Battlecruiser");
+            EnemyLime = content.Load<Texture2D>("Upsilon-class Command Shuttle");
+            EnemyPink = content.Load<Texture2D>("Star Trek Kumari Ship");
+            EnemyBrown = content.Load<Texture2D>("Star Trek Vulcans Ship");
+            EnemyTeal = content.Load<Texture2D>("Tie Fighter");
+            EnemyBlack = content.Load<Texture2D>("Star Wars Rebellion Ship");
+            EnemyWhite = content.Load<Texture2D>("Deep Space 9");
+            EnemyGold = content.Load<Texture2D>("Species 8472 Bioship");
+            EnemySilver = content.Load<Texture2D>("Spacedock");
+            EnemyMaroon = content.Load<Texture2D>("Babylon 5 Federal Ship");
+            EnemyNavy = content.Load<Texture2D>("Star Trek Deep Space Nine");
             BulletE = content.Load<Texture2D>("Mini Galaxy");
 
             //UI            

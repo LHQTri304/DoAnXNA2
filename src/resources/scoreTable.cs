@@ -11,6 +11,8 @@ namespace DoAnXNA2
         public static int SinglePoint { get; set; } = 1;
         public static int FivePoints { get; set; } = 5;
         public static int TenPoints { get; set; } = 10;
+        public static int TwentyPoints { get; set; } = 20;
+        public static int ThirtyPoints { get; set; } = 30;
 
         //Milestone level 0-10
         public static int MilestoneLv0 { get; set; } = 0;

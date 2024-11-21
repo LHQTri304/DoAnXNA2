@@ -9,8 +9,8 @@ namespace DoAnXNA2
             : base(
                 game, Textures.EnemyYellow, position,
                 ScoreTable.TenPoints,
-                new StraightDownMovement(1.5f),
-                new CircularRing10Shot()
+                new TeleportMovement(),
+                new NoShot()
             )
         { }
     }

@@ -8,7 +8,7 @@ namespace DoAnXNA2
             : base(
                 game, Textures.EnemyRed, position,
                 ScoreTable.TenPoints,
-                new PerlinMovement(100f, 20f, Textures.EnemyRed),
+                new PerlinMovement(Textures.EnemyRed, 100f, 20f),
                 new StraightDoubleShot()
             )
         { }

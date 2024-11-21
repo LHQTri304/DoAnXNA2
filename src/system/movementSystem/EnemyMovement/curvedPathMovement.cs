@@ -8,7 +8,7 @@ namespace DoAnXNA2
         private float _Speed;
         private float _Curvature;
 
-        public CurvedPathMovement(float speed, float curvature)
+        public CurvedPathMovement(float speed = 100f, float curvature = 0.01f)
         {
             _Speed = speed;
             _Curvature = curvature;

@@ -8,7 +8,7 @@ namespace DoAnXNA2
         private float _Speed;
         private float _Friction;
 
-        public SlowStopMovement(float speed, float friction)
+        public SlowStopMovement(float speed = 100f, float friction = 6.6f)
         {
             _Speed = speed;
             _Friction = friction;

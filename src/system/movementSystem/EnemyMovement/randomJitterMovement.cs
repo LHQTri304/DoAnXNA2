@@ -8,7 +8,7 @@ namespace DoAnXNA2
         private float _Speed;
         private Random _Random;
 
-        public RandomJitterMovement(float speed)
+        public RandomJitterMovement(float speed = 100f)
         {
             _Speed = speed;
             _Random = new Random();
@@ -16,7 +16,7 @@ namespace DoAnXNA2
 
         public Vector2 Move(GameTime gameTime, GraphicsDeviceManager graphics, Vector2 position)
         {
-            float jitterX = (float)(_Random.NextDouble() - 0.5) * 10; // Nhảy ngẫu nhiên trong khoảng [-5, 5]
+            float jitterX = (float)(_Random.NextDouble() - 0.5) * 100; // Nhảy ngẫu nhiên trong khoảng [-50, 50]
             position += new Vector2(jitterX, _Speed * (float)gameTime.ElapsedGameTime.TotalSeconds);
             return position;
         }

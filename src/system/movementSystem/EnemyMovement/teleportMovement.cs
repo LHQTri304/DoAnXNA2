@@ -8,14 +8,21 @@ namespace DoAnXNA2
         private float _Speed;
         private float _TeleportInterval;
         private float _TimeSinceLastTeleport;
+        private float _SmoothMoveX;
         private Random _Random;
 
-        public TeleportMovement(float speed, float teleportInterval)
+        public TeleportMovement(float speed = 100f)
         {
             _Speed = speed;
-            _TeleportInterval = teleportInterval;
             _TimeSinceLastTeleport = 0;
+            _SmoothMoveX = 0;
             _Random = new Random();
+            RenewTeleportInterval();
+        }
+
+        private void RenewTeleportInterval()
+        {
+            _TeleportInterval = (float)_Random.NextDouble() * 10;
         }
 
         public Vector2 Move(GameTime gameTime, GraphicsDeviceManager graphics, Vector2 position)
@@ -25,10 +32,12 @@ namespace DoAnXNA2
             {
                 _TimeSinceLastTeleport = 0;
                 position.X = _Random.Next(0, graphics.PreferredBackBufferWidth);
+                RenewTeleportInterval();
             }
+            else
+                position.X += (float)Math.Cos(_SmoothMoveX += _TimeSinceLastTeleport);
             position += new Vector2(0, _Speed * (float)gameTime.ElapsedGameTime.TotalSeconds);
             return position;
         }
     }
-
 }

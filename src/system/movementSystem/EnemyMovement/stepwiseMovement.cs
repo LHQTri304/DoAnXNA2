@@ -9,7 +9,7 @@ namespace DoAnXNA2
         private float _TimeSinceLastStep;
         private float _StepInterval;
 
-        public StepwiseMovement(float stepSize, float stepInterval)
+        public StepwiseMovement(float stepSize = 100f, float stepInterval = 1f)
         {
             _StepSize = stepSize;
             _StepInterval = stepInterval;

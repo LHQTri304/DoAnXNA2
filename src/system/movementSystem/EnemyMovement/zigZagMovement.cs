@@ -3,14 +3,14 @@ using Microsoft.Xna.Framework;
 
 namespace DoAnXNA2
 {
-    public class ZigZagMovement : IMovementStrategy
+    public class MeteoriteMovement : IMovementStrategy
     {
         private float _Speed;
         private float _Amplitude;
         private float _Frequency;
         private float _Time;
 
-        public ZigZagMovement(float speed, float amplitude, float frequency)
+        public MeteoriteMovement(float speed = 75f, float amplitude = 5f, float frequency = 0.1f)
         {
             _Speed = speed;
             _Amplitude = amplitude;

@@ -3,27 +3,28 @@ using Microsoft.Xna.Framework;
 
 namespace DoAnXNA2
 {
-    public class ZigZagMovement : IMovementStrategy
+    public class WaveMovement : IMovementStrategy
     {
         private float _Speed;
         private float _Amplitude;
-        private float _Frequency;
-        private float _Time;
+        private float _WaveLength;
+        private float _Offset;
 
-        public ZigZagMovement(float speed, float amplitude, float frequency)
+        public WaveMovement(float speed, float amplitude, float waveLength, float offset)
         {
             _Speed = speed;
             _Amplitude = amplitude;
-            _Frequency = frequency;
-            _Time = 0;
+            _WaveLength = waveLength;
+            _Offset = offset;
         }
 
         public Vector2 Move(GameTime gameTime, GraphicsDeviceManager graphics, Vector2 position)
         {
-            _Time += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            float offsetX = (float)Math.Sin(_Time * _Frequency) * _Amplitude;
+            _Offset += _Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            float offsetX = (float)Math.Cos(position.Y / _WaveLength) * _Amplitude;
             position += new Vector2(offsetX, _Speed * (float)gameTime.ElapsedGameTime.TotalSeconds);
             return position;
         }
     }
+
 }

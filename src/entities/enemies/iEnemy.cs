@@ -56,7 +56,7 @@ namespace DoAnXNA2
         public void Draw(SpriteBatch spriteBatch)
         {
             if (IsAlive)
-                SimplifyDrawing.HandleCentered(spriteBatch, Texture, Position);
+                SimplifyDrawing.HandleCentered(spriteBatch, Texture, Position, 0.6f);
         }
     }
 }

@@ -82,7 +82,11 @@ namespace DoAnXNA2
             foreach (var levelB in _levelButtons)
                 levelB.Draw(spriteBatch);
             foreach (var (levelP, index) in _levelPositions.Select((value, idx) => (value, idx)))
-                SimplifyDrawing.HandleCentered(spriteBatch, GetLevelImg(index + 1), levelP, 1.5f);
+                {
+                    Texture2D Img = GetLevelImg(index + 1);
+                    float Scale = (Textures.Blank_BTN.Width / Img.Width) * 0.45f;
+                    SimplifyDrawing.HandleCentered(spriteBatch, GetLevelImg(index + 1), levelP, Scale);
+                    }
             ReadyMadeBtn.BackwardButton.Draw(spriteBatch);
         }
     }

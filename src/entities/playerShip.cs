@@ -80,7 +80,7 @@ namespace DoAnXNA2
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            SimplifyDrawing.HandleRotatingTexture(spriteBatch, Texture, Position, 1000f);
+            SimplifyDrawing.HandleCentered(spriteBatch, Texture, Position);
         }
     }
 }

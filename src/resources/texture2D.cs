@@ -83,9 +83,9 @@ namespace DoAnXNA2
             BulletP = content.Load<Texture2D>("Fire Blaster");
 
             //Enemies
-            EnemyYellow = content.Load<Texture2D>("enemyYellow");
-            EnemyRed = content.Load<Texture2D>("enemyRed");
-            EnemyGreen = content.Load<Texture2D>("enemyGreen");
+            EnemyYellow = content.Load<Texture2D>("Reman Warbird Scimitar");
+            EnemyRed = content.Load<Texture2D>("Gquan Class Heavy Cruiser");
+            EnemyGreen = content.Load<Texture2D>("Star Trek Romulan Ship");
             EnemyBlue = content.Load<Texture2D>("enemyBlue");
             BulletE = content.Load<Texture2D>("Mini Galaxy");
 

@@ -5,9 +5,9 @@ namespace DoAnXNA2
 {
     public class StraightShot : IPlayerShootingStrategy
     {
-        public StraightShot()
+        public StraightShot(int level)
         {
-            _Level = 10;
+            _Level = level;
             _Speed = 5.5f;
             newBullets = [];
             ResetShootCoolDown(); // Khởi tạo cooldown ban đầu

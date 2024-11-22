@@ -3,10 +3,9 @@ namespace DoAnXNA2
     public static class HPStatsManager
     {
         public static int PlayerHP = 100;
-        public static int ERedHP = 200;
-        public static int EYellowHP = 150;
-        public static int EGreenHP = 100;
-        public static int EBlueHP = 50;
+        public static int EEasyHP = 25;
+        public static int EEliteHP = 55;
+        public static int EHardHP = 100;
     }
 
     public static class DMGStatsManager

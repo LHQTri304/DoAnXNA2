@@ -5,8 +5,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace DoAnXNA2
 {
-    public abstract class Enemy
+    public abstract class Enemy : IDamageable
     {
+        private Game1 _game1;
+        public int HP { get; set; }
         public Texture2D Texture { get; set; }
         public Vector2 Position { get; set; }
         protected int ScoreKilled { get; set; }
@@ -17,12 +19,16 @@ namespace DoAnXNA2
         protected List<IMovementStrategy> MovementStrategy;
         protected List<IBaseShootingStrategy> ShootingStrategy;
 
-        // Thêm tham chiếu đến Game1 --> Phục vụ game over và allBullets
-        private Game1 _game1;
-
         public Enemy(Game1 game, Texture2D texture, Vector2 position, int scoreKilled, List<IMovementStrategy> movementStrategy, List<IBaseShootingStrategy> shootingStrategy)
         {
             _game1 = game;
+            HP = shootingStrategy.Count switch
+            {
+                1 => HPStatsManager.EEasyHP,
+                2 => HPStatsManager.EEliteHP,
+                3 => HPStatsManager.EHardHP,
+                _ => 10
+            };
             Texture = texture;
             Position = position;
             ScoreKilled = scoreKilled;
@@ -31,14 +37,22 @@ namespace DoAnXNA2
             RandomIndex = new Random();
         }
 
+
+        public void TakeDamage(int damage)
+        {
+            HP -= damage;
+            if (HP <= 0)
+            {
+                HP = 0;
+                Soundtrack.EnemyKilled.Play(0.1f, 0f, 0f);
+                _game1._currentScore += ScoreKilled;
+                IsAlive = false; // Kẻ địch bị tiêu diệt
+            }
+        }
+
         private void CheckCollisions()
         {
-            CheckCollisionQuick.EnemyVsBulletPlayer(this, _game1.AllBullets, () =>
-                    {
-                        Soundtrack.EnemyKilled.Play(0.1f, 0f, 0f);
-                        _game1._currentScore += ScoreKilled;
-                        IsAlive = false; // Kẻ địch bị tiêu diệt
-                    });
+            CheckCollisionQuick.EnemyVsBulletPlayer(_game1, this);
         }
 
         private void CheckOutOfScreen()

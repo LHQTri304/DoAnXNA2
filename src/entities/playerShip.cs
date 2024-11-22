@@ -38,7 +38,7 @@ namespace DoAnXNA2
 
         public void SetShootingStrategy()
         {
-            ShootingStrategy = new ConicalShot(CurrentLevel);
+            ShootingStrategy = new StraightShot(CurrentLevel);
         }
 
         public void TakeDamage(int damage)

@@ -78,7 +78,7 @@ namespace DoAnXNA2
         private double LastSpawnTime;
         private double SpawnInterval;
 
-        public Wave(double startTime, double duration, double restDuration, Dictionary<string, float> enemySpawnRates, double spawnInterval = 1.0)
+        public Wave(double startTime, double duration, double restDuration, Dictionary<string, float> enemySpawnRates, double spawnInterval = 0.5)
         {
             StartTime = startTime;
             EndTime = startTime + duration;
@@ -96,9 +96,7 @@ namespace DoAnXNA2
             {
                 // Sinh kẻ địch
                 string enemyType = SelectEnemyType();
-                if (enemyType == "Yellow") game1.AllSpawners["Yellow"].SpawnEnemy();
-                else if (enemyType == "Red") game1.AllSpawners["Red"].SpawnEnemy();
-                else if (enemyType == "Green") game1.AllSpawners["Green"].SpawnEnemy();
+                game1.AllSpawners[enemyType].SpawnEnemy();
 
                 LastSpawnTime = currentTime;
                 spawnedEnemies++;

@@ -8,15 +8,24 @@ namespace DoAnXNA2
 {
     public static class CheckCollisionQuick
     {
-        public static void EnemyVsBulletPlayer(Enemy enemy, List<Bullet> allBullets, Action onCollision)
+        public static void EnemyVsBulletPlayer(Game1 game1, Enemy enemy, Action onCollisionBonusAction = null)
         {
-            allBullets.OfType<BulletPlayer>().ToList().RemoveAll(bullet =>
+            var enemyBounds = QuickGetUtilities.GetPlayerBounds(enemy.Position, enemy.Texture);
+            game1.AllBullets.RemoveAll(bullet =>
             {
-                return CheckCollision.CheckBounds(
-                    enemy.Position, enemy.Texture,
-                    bullet.Position, bullet.Texture,
-                    onCollision
-                );
+                if (bullet is BulletPlayer bulletPlayer)
+                {
+                    var bulletBounds = QuickGetUtilities.GetBounds(bulletPlayer.Position, bulletPlayer.Texture);
+                    return CheckCollision.CheckBounds(
+                        enemyBounds,
+                        bulletBounds,
+                        () =>
+                        {
+                            enemy.TakeDamage(bulletPlayer.Damage);
+                        }
+                    );
+                }
+                return false;
             });
         }
 

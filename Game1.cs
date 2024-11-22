@@ -26,8 +26,14 @@ public class Game1 : Game
 
     //the sprites
     public PlayerShip PlayerShip { get; set; }
-    //public List<EnemySpawner> _allSpawners { get; set; }
     public Dictionary<string, EnemySpawner> AllSpawners { get; set; } = [];
+    private List<string> _enemyNames =
+        [
+            "Yellow", "Red", "Green", "Blue", "Orange", "Purple", "Gray", "Cyan", 
+            "Pink", "Brown", "Teal", "Lime", "Black", "White", "Gold", "Silver", 
+            "Maroon", "Navy"
+        ];
+
     public List<Enemy> AllEnemies { get; set; } = [];
     public List<Bullet> AllBullets { get; set; } = [];
 
@@ -65,10 +71,22 @@ public class Game1 : Game
         PlayerShip = new PlayerShip(this);
         Cursor = new Cursor();
 
-        // Khởi tạo spawner
-        AllSpawners.Add("Yellow", new YellowSpawner(this));
-        AllSpawners.Add("Red", new RedSpawner(this));
-        AllSpawners.Add("Green", new GreenSpawner(this));
+        // Khởi tạo spawner --> Dùng ánh xạ (Reflection) để tạo tự động
+        foreach (var eName in _enemyNames)
+        {
+            // Tìm kiếm lớp có tên tương ứng với màu (ví dụ: YellowSpawner cho "Yellow")
+            string className = "DoAnXNA2." + eName + "Spawner";
+            Type spawnerType = Type.GetType(className);
+
+            if (spawnerType != null)
+            {
+                // Tạo đối tượng spawner từ lớp tìm được
+                var spawnerInstance = (EnemySpawner)Activator.CreateInstance(spawnerType, this);
+                AllSpawners.Add(eName, spawnerInstance);
+            }
+            else
+                Console.WriteLine($"Lớp {className} không tồn tại.");
+        }
 
         base.Initialize();
     }

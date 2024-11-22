@@ -27,6 +27,7 @@ namespace DoAnXNA2
         public static Button OkButton;
         public static Button PauseButton;
         public static Button RatingButton;
+        public static Button MainMenuButton;
 
         public static void InitAndLoad(Game1 game1)
         {
@@ -148,6 +149,11 @@ namespace DoAnXNA2
             RatingButton = new Button(game1, Textures.Rating_BTN, Textures.Rating_BTN_Active, () =>
             {
                 // Logic khi nhấn RatingButton
+            });
+
+            MainMenuButton = new Button(game1, Textures.Backward_BTN, Textures.Backward_BTN_Active, () =>
+            {
+                game1.SetMainMenu();
             });
         }
     }

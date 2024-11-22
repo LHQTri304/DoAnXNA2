@@ -8,6 +8,7 @@ namespace DoAnXNA2
     {
         private Game1 _game1;
         public int HP { get; set; }
+        public HealthBar HealthBar { get; set; }
         public Texture2D Texture { get; set; }
         public Vector2 Position { get; set; }
         public int CurrentLevel { get; set; }

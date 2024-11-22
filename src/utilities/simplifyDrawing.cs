@@ -7,77 +7,77 @@ namespace DoAnXNA2
     public static class SimplifyDrawing
     {
         #region Handle Draw Base On Origin
-        private static void DrawBaseOnOrigin(SpriteBatch _spriteBatch, Texture2D texture, Vector2 position, Vector2 origin, float scale)
+        private static void DrawBaseOnOrigin(SpriteBatch _spriteBatch, Texture2D texture, Vector2 position, Vector2 origin, float scale, float rotation)
         {
             _spriteBatch.Draw(texture, position,
-                null, Color.White, 0f,
+                null, Color.White, rotation,
                 origin, scale,
                 SpriteEffects.None, 0f
             );
         }
-        public static void HandleCentered(SpriteBatch _spriteBatch, Texture2D texture, Vector2 position, float scale = 1f)
+        public static void HandleCentered(SpriteBatch _spriteBatch, Texture2D texture, Vector2 position, float scale = 1f, float rotation = 0f)
         {
-            DrawBaseOnOrigin(_spriteBatch, texture, position, new Vector2(texture.Width / 2, texture.Height / 2), scale);
+            DrawBaseOnOrigin(_spriteBatch, texture, position, new Vector2(texture.Width / 2, texture.Height / 2), scale, rotation);
         }
 
-        public static void HandleTopLeft(SpriteBatch _spriteBatch, Texture2D texture, Vector2 position, float scale = 1f)
+        public static void HandleTopLeft(SpriteBatch _spriteBatch, Texture2D texture, Vector2 position, float scale = 1f, float rotation = 0f)
         {
-            DrawBaseOnOrigin(_spriteBatch, texture, position, Vector2.Zero, scale);
+            DrawBaseOnOrigin(_spriteBatch, texture, position, Vector2.Zero, scale, rotation);
         }
 
-        public static void HandleTopRight(SpriteBatch _spriteBatch, Texture2D texture, Vector2 position, float scale = 1f)
+        public static void HandleTopRight(SpriteBatch _spriteBatch, Texture2D texture, Vector2 position, float scale = 1f, float rotation = 0f)
         {
-            DrawBaseOnOrigin(_spriteBatch, texture, position, new Vector2(texture.Width, 0), scale);
+            DrawBaseOnOrigin(_spriteBatch, texture, position, new Vector2(texture.Width, 0), scale, rotation);
         }
 
-        public static void HandleBottomLeft(SpriteBatch _spriteBatch, Texture2D texture, Vector2 position, float scale = 1f)
+        public static void HandleBottomLeft(SpriteBatch _spriteBatch, Texture2D texture, Vector2 position, float scale = 1f, float rotation = 0f)
         {
-            DrawBaseOnOrigin(_spriteBatch, texture, position, new Vector2(0, texture.Height), scale);
+            DrawBaseOnOrigin(_spriteBatch, texture, position, new Vector2(0, texture.Height), scale, rotation);
         }
 
-        public static void HandleBottomRight(SpriteBatch _spriteBatch, Texture2D texture, Vector2 position, float scale = 1f)
+        public static void HandleBottomRight(SpriteBatch _spriteBatch, Texture2D texture, Vector2 position, float scale = 1f, float rotation = 0f)
         {
-            DrawBaseOnOrigin(_spriteBatch, texture, position, new Vector2(texture.Width, texture.Height), scale);
+            DrawBaseOnOrigin(_spriteBatch, texture, position, new Vector2(texture.Width, texture.Height), scale, rotation);
         }
         #endregion
 
         #region Handle DrawString(Text) Base On Origin
-        private static void DrawStringBaseOnOrigin(SpriteBatch _spriteBatch, SpriteFont _spriteFont, string _text, Vector2 _position, Vector2 _origin)
+        private static void DrawStringBaseOnOrigin(SpriteBatch _spriteBatch, SpriteFont _spriteFont, string _text, Vector2 _position, Vector2 _origin, float scale, float rotation)
         {
             _spriteBatch.DrawString(_spriteFont, _text, _position,
-                Color.White, 0f,
-                _origin,
-                1.0f, SpriteEffects.None, 0.5f
+                Color.White, rotation,
+                _origin, scale,
+                SpriteEffects.None, 0.5f
             );
         }
 
-        public static void HandleCenteredText(SpriteBatch _spriteBatch, SpriteFont _spriteFont, string _text, Vector2 _position)
+        public static void HandleCenteredText(SpriteBatch _spriteBatch, SpriteFont _spriteFont, string _text, Vector2 _position, float scale = 1f, float rotation = 0f)
         {
             Vector2 textSize = _spriteFont.MeasureString(_text);
-            DrawStringBaseOnOrigin(_spriteBatch, _spriteFont, _text, _position, textSize / 2);
+            DrawStringBaseOnOrigin(_spriteBatch, _spriteFont, _text, _position, textSize / 2, scale, rotation);
         }
 
-        public static void HandleTopLeftText(SpriteBatch _spriteBatch, SpriteFont _spriteFont, string _text, Vector2 _position)
+        public static void HandleTopLeftText(SpriteBatch _spriteBatch, SpriteFont _spriteFont, string _text, Vector2 _position, float scale = 1f, float rotation = 0f)
         {
-            DrawStringBaseOnOrigin(_spriteBatch, _spriteFont, _text, _position, Vector2.Zero);
+            DrawStringBaseOnOrigin(_spriteBatch, _spriteFont, _text, _position, Vector2.Zero, scale, rotation);
         }
 
-        public static void HandleTopRightText(SpriteBatch _spriteBatch, SpriteFont _spriteFont, string _text, Vector2 _position)
-        {
-            Vector2 textSize = _spriteFont.MeasureString(_text);
-            DrawStringBaseOnOrigin(_spriteBatch, _spriteFont, _text, _position, new Vector2(textSize.X, 0));
-        }
-
-        public static void HandleBottomLeftText(SpriteBatch _spriteBatch, SpriteFont _spriteFont, string _text, Vector2 _position)
+        public static void HandleTopRightText(SpriteBatch _spriteBatch, SpriteFont _spriteFont, string _text, Vector2 _position, float scale = 1f, float rotation = 0f)
         {
             Vector2 textSize = _spriteFont.MeasureString(_text);
-            DrawStringBaseOnOrigin(_spriteBatch, _spriteFont, _text, _position, new Vector2(0, textSize.Y));
+            DrawStringBaseOnOrigin(_spriteBatch, _spriteFont, _text, _position, new Vector2(textSize.X, 0), scale, rotation);
         }
 
-        public static void HandleBottomRightText(SpriteBatch _spriteBatch, SpriteFont _spriteFont, string _text, Vector2 _position)
+        public static void HandleBottomLeftText(SpriteBatch _spriteBatch, SpriteFont _spriteFont, string _text, Vector2 _position, float scale = 1f, float rotation = 0f)
         {
             Vector2 textSize = _spriteFont.MeasureString(_text);
-            DrawStringBaseOnOrigin(_spriteBatch, _spriteFont, _text, _position, new Vector2(textSize.X, textSize.Y));
+            DrawStringBaseOnOrigin(_spriteBatch, _spriteFont, _text, _position, new Vector2(0, textSize.Y), scale, rotation);
+        }
+
+        public static void HandleBottomRightText(SpriteBatch _spriteBatch, SpriteFont _spriteFont, string _text, Vector2 _position, float scale = 1f, float rotation = 0f)
+        {
+            Vector2 textSize = _spriteFont.MeasureString(_text);
+            DrawStringBaseOnOrigin(_spriteBatch, _spriteFont, _text, _position, new Vector2(textSize.X, textSize.Y), scale, rotation);
         }
         #endregion
 

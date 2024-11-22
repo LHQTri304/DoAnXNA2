@@ -15,7 +15,7 @@ public class Game1 : Game
     private SpriteBatch _spriteBatch;
 
     //GameState
-    public bool _isGameOver { get; private set; }
+    public bool IsAbleToWin { get; set; }
     private GameState _currentState;
     private GameState _previousState;
     private MainMenu _mainMenu;
@@ -23,6 +23,8 @@ public class Game1 : Game
     private ChoosingLevels _choosingLevels;
     private GameDisplay _gameDisplay;
     private GameOver _gameOver;
+    private Victory _victory;
+    private ComingSoon _comingSoon;
 
     //the sprites
     public PlayerShip PlayerShip { get; set; }
@@ -65,7 +67,7 @@ public class Game1 : Game
         _renderTarget = new RenderTarget2D(GraphicsDevice, VirtualWidth, VirtualHeight);
 
         //Flags
-        _isGameOver = false;
+        IsAbleToWin = false;
 
         // Tạo các sprites
         PlayerShip = new PlayerShip(this);
@@ -109,6 +111,8 @@ public class Game1 : Game
         _choosingLevels = new ChoosingLevels(this);
         _gameDisplay = new GameDisplay(this);
         _gameOver = new GameOver(this);
+        _victory = new Victory(this);
+        _comingSoon = new ComingSoon(this);
         _currentState = _mainMenu;
 
         // UI
@@ -182,7 +186,22 @@ public class Game1 : Game
     {
         _previousState = _currentState;
         BackgroundMusic = Soundtrack.GameOver;
+        IsAbleToWin = false;
         _currentState = _gameOver;
+    }
+    public void SetVictory()
+    {
+        _previousState = _currentState;
+        BackgroundMusic = Soundtrack.GameOver;
+        IsAbleToWin = false;
+        _currentState = _victory;
+    }
+    public void SetComingSoon()
+    {
+        _previousState = _currentState;
+        BackgroundMusic = Soundtrack.GameOver;
+        IsAbleToWin = false;
+        _currentState = _comingSoon;
     }
     public void SetStateBackward()
     {

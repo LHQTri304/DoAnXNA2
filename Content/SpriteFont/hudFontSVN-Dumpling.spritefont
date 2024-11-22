@@ -2,8 +2,8 @@
 <XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics">
   <Asset Type="Graphics:FontDescription">
     <FontName>SVN-Dumpling</FontName>
-    <Size>14</Size>
-    <Spacing>2</Spacing>
+    <Size>100</Size>
+    <Spacing>3</Spacing>
     <UseKerning>true</UseKerning>
     <Style>Regular</Style>
     <CharacterRegions>

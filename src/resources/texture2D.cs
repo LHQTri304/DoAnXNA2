@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -34,8 +33,54 @@ namespace DoAnXNA2
 
         // For UI
         public static List<Texture2D> BackgroundStuff { get; private set; }
+        public static Texture2D Health_Bar_1_1 { get; private set; }
+        public static Texture2D Health_Bar_1_2 { get; private set; }
+        public static Texture2D Health_Bar_1_3 { get; private set; }
+        public static Texture2D Loading_Bar_1_1 { get; private set; }
+        public static Texture2D Loading_Bar_1_2 { get; private set; }
+        public static Texture2D Loading_Bar_1_3 { get; private set; }
+        public static Texture2D Loading_Bar_2_1 { get; private set; }
+        public static Texture2D Loading_Bar_2_2 { get; private set; }
+        public static Texture2D Loading_Bar_2_3 { get; private set; }
+        public static Texture2D Loading_Bar_3_1 { get; private set; }
+        public static Texture2D Loading_Bar_3_2 { get; private set; }
+        public static Texture2D Loading_Bar_3_3 { get; private set; }
+        public static Texture2D Loading_Bar_Table { get; private set; }
         public static Texture2D Cursor { get; private set; }
         public static Texture2D TitleGame { get; private set; }
+        public static Texture2D WindowSquare { get; private set; }
+        public static Texture2D WindowLong { get; private set; }
+        public static Texture2D WindowHigh_2 { get; private set; }
+        public static Texture2D WindowHigh { get; private set; }
+        public static Texture2D Table_03 { get; private set; }
+        public static Texture2D Table_02 { get; private set; }
+        public static Texture2D Table_01 { get; private set; }
+        public static Texture2D Star_03 { get; private set; }
+        public static Texture2D Star_02 { get; private set; }
+        public static Texture2D Star_01 { get; private set; }
+        public static Texture2D Speed_Icon { get; private set; }
+        public static Texture2D HP_Icon { get; private set; }
+        public static Texture2D HeaderYouWin { get; private set; }
+        public static Texture2D HeaderYouLose { get; private set; }
+        public static Texture2D HeaderVibration { get; private set; }
+        public static Texture2D HeaderUpgrade { get; private set; }
+        public static Texture2D HeaderSpeed { get; private set; }
+        public static Texture2D HeaderSound { get; private set; }
+        public static Texture2D HeaderShop { get; private set; }
+        public static Texture2D HeaderSettings { get; private set; }
+        public static Texture2D HeaderScore { get; private set; }
+        public static Texture2D HeaderRecord { get; private set; }
+        public static Texture2D HeaderPause { get; private set; }
+        public static Texture2D HeaderNotifications { get; private set; }
+        public static Texture2D HeaderMusic { get; private set; }
+        public static Texture2D HeaderHealth { get; private set; }
+        public static Texture2D HeaderDamage { get; private set; }
+        public static Texture2D HeaderArmor { get; private set; }
+        public static Texture2D Dot_02 { get; private set; }
+        public static Texture2D Dot_01 { get; private set; }
+        public static Texture2D Damage_Icon { get; private set; }
+        public static Texture2D Cristal_Icon { get; private set; }
+        public static Texture2D Armor_Icon { get; private set; }
 
         // Buttons
         public static Texture2D Backward_BTN { get; private set; }
@@ -138,8 +183,54 @@ namespace DoAnXNA2
                 content.Load<Texture2D>("Mini Galaxy"),
                 content.Load<Texture2D>("Space Fighter"),
             ];
+            Health_Bar_1_1 = content.Load<Texture2D>("Health_Bar_1_1");
+            Health_Bar_1_2 = content.Load<Texture2D>("Health_Bar_1_2");
+            Health_Bar_1_3 = content.Load<Texture2D>("Health_Bar_1_3");
+            Loading_Bar_1_1 = content.Load<Texture2D>("Loading_Bar_1_1");
+            Loading_Bar_1_2 = content.Load<Texture2D>("Loading_Bar_1_2");
+            Loading_Bar_1_3 = content.Load<Texture2D>("Loading_Bar_1_3");
+            Loading_Bar_2_1 = content.Load<Texture2D>("Loading_Bar_2_1");
+            Loading_Bar_2_2 = content.Load<Texture2D>("Loading_Bar_2_2");
+            Loading_Bar_2_3 = content.Load<Texture2D>("Loading_Bar_2_3");
+            Loading_Bar_3_1 = content.Load<Texture2D>("Loading_Bar_3_1");
+            Loading_Bar_3_2 = content.Load<Texture2D>("Loading_Bar_3_2");
+            Loading_Bar_3_3 = content.Load<Texture2D>("Loading_Bar_3_3");
+            Loading_Bar_Table = content.Load<Texture2D>("Loading_Bar_Table");
             Cursor = content.Load<Texture2D>("Cursor");
             TitleGame = content.Load<Texture2D>("Title Game");
+            WindowSquare = content.Load<Texture2D>("WindowSquare");
+            WindowLong = content.Load<Texture2D>("WindowLong");
+            WindowHigh_2 = content.Load<Texture2D>("WindowHigh_2");
+            WindowHigh = content.Load<Texture2D>("WindowHigh");
+            Table_03 = content.Load<Texture2D>("Table_03");
+            Table_02 = content.Load<Texture2D>("Table_02");
+            Table_01 = content.Load<Texture2D>("Table_01");
+            Star_03 = content.Load<Texture2D>("Star_03");
+            Star_02 = content.Load<Texture2D>("Star_02");
+            Star_01 = content.Load<Texture2D>("Star_01");
+            Speed_Icon = content.Load<Texture2D>("Speed_Icon");
+            HP_Icon = content.Load<Texture2D>("HP_Icon");
+            HeaderYouWin = content.Load<Texture2D>("HeaderYouWin");
+            HeaderYouLose = content.Load<Texture2D>("HeaderYouLose");
+            HeaderVibration = content.Load<Texture2D>("HeaderVibration");
+            HeaderUpgrade = content.Load<Texture2D>("HeaderUpgrade");
+            HeaderSpeed = content.Load<Texture2D>("HeaderSpeed");
+            HeaderSound = content.Load<Texture2D>("HeaderSound");
+            HeaderShop = content.Load<Texture2D>("HeaderShop");
+            HeaderSettings = content.Load<Texture2D>("HeaderSettings");
+            HeaderScore = content.Load<Texture2D>("HeaderScore");
+            HeaderRecord = content.Load<Texture2D>("HeaderRecord");
+            HeaderPause = content.Load<Texture2D>("HeaderPause");
+            HeaderNotifications = content.Load<Texture2D>("HeaderNotifications");
+            HeaderMusic = content.Load<Texture2D>("HeaderMusic");
+            HeaderHealth = content.Load<Texture2D>("HeaderHealth");
+            HeaderDamage = content.Load<Texture2D>("HeaderDamage");
+            HeaderArmor = content.Load<Texture2D>("HeaderArmor");
+            Dot_02 = content.Load<Texture2D>("Dot_02");
+            Dot_01 = content.Load<Texture2D>("Dot_01");
+            Damage_Icon = content.Load<Texture2D>("Damage_Icon");
+            Cristal_Icon = content.Load<Texture2D>("Cristal_Icon");
+            Armor_Icon = content.Load<Texture2D>("Armor_Icon");
 
             // Buttons
             Backward_BTN = content.Load<Texture2D>("Backward_BTN");

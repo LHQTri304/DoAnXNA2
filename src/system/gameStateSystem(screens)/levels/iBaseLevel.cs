@@ -36,6 +36,7 @@ namespace DoAnXNA2
             if (CurrentWaveIndex >= Waves.Count || SpawnedEnemies >= MaxEnemies)
             {
                 // Kết thúc màn chơi nếu đã hết đợt hoặc số lượng kẻ địch đạt giới hạn
+                game1.IsAbleToWin = true;
                 return;
             }
 

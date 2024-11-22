@@ -19,33 +19,19 @@ namespace DoAnXNA2
             _isBGDecorDisplayed = false;
             _isCursorDisplayed = false;
             ListLevels = [
-                new Level01(),
-                new Level02(),
-                new Level03(),
-                new Level04(),
-                new Level05(),
-                new Level06(),
-                new Level01(),
-                new Level08(),
-                new Level09(),
-                new Level10(),
-                new Level11(),
-                new Level12(),
-                new Level13(),
-                new Level01(),
-                new Level15(),
-                new Level16(),
-                new Level17(),
-                new Level18(),
-                new Level19(),
-                new Level20(),
-                new Level01(),
+                new Level01(), new Level02(), new Level03(), new Level04(), new Level05(), new Level06(), new Level01(),
+                new Level08(), new Level09(), new Level10(), new Level11(), new Level12(), new Level13(), new Level01(),
+                new Level15(), new Level16(), new Level17(), new Level18(), new Level19(), new Level20(), new Level01(),
             ];
         }
 
         protected override void SubUpdate(GameTime gameTime)
         {
-            //Xử lý khi _game1 tạm dừng
+            //Xử lý khi win:
+            if(_game1.AllEnemies.Count == 0 && _game1.IsAbleToWin)
+                _game1.SetVictory();
+
+            //Xử lý khi tạm dừng
             InputUtilities.HandleKeyPress(Keys.Escape, kstate, () => _isPaused = !_isPaused);
             if (_isPaused)
             {
@@ -67,7 +53,7 @@ namespace DoAnXNA2
                 return !enemy.IsAlive; // Giữ lại kẻ địch còn sống
             });
             _game1.AllBullets = _game1.AllBullets.Where(b => b.Position.Y >= 0 && b.Position.Y <= _game1.VirtualHeight)
-                                    .Select(b => { b.Move(); return b; }).ToList();
+                .Select(b => { b.Move(); return b; }).ToList();
 
             // Cập nhật GUI và HUD
             foreach (var item in _game1.GameHUD)

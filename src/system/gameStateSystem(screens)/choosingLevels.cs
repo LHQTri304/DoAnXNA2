@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Linq;
+using System;
 #nullable enable
 
 namespace DoAnXNA2
@@ -28,21 +29,21 @@ namespace DoAnXNA2
                 4 => Textures.EnemyBlue,
                 5 => Textures.EnemyOrange,
                 6 => Textures.EnemyPurple,
-                7 => Textures.BulletE,
+                7 => Textures.Dot_02,
                 8 => Textures.EnemyGray,
                 9 => Textures.EnemyCyan,
                 10 => Textures.EnemyPink,
                 11 => Textures.EnemyBrown,
                 12 => Textures.EnemyTeal,
                 13 => Textures.EnemyLime,
-                14 => Textures.BulletP,
+                14 => Textures.Dot_02,
                 15 => Textures.EnemyBlack,
                 16 => Textures.EnemyWhite,
                 17 => Textures.EnemyGold,
                 18 => Textures.EnemySilver,
                 19 => Textures.EnemyMaroon,
                 20 => Textures.EnemyNavy,
-                21 => Textures.Backward_BTN,
+                21 => Textures.Dot_02,
                 _ => Textures.Player,
             };
         }
@@ -52,7 +53,12 @@ namespace DoAnXNA2
             for (int level = 1; level <= _levelPositions.Count; level++)
             {
                 int currentLevel = level;
-                _levelButtons.Add(new Button(_game1, Textures.Blank_BTN, Textures.Blank_BTN_Active, () => _game1.SetGameDisplay(currentLevel)));
+                _levelButtons.Add(
+                    new Button(_game1, Textures.Blank_BTN, Textures.Blank_BTN_Active,
+                    (level == 7 || level == 14 | level == 21) ?
+                        () => _game1.SetComingSoon() :
+                        () => _game1.SetGameDisplay(currentLevel))
+                );
             }
         }
 
@@ -100,11 +106,11 @@ namespace DoAnXNA2
             foreach (var levelB in _levelButtons)
                 levelB.Draw(spriteBatch);
             foreach (var (levelP, index) in _levelPositions.Select((value, idx) => (value, idx)))
-                {
-                    Texture2D Img = GetLevelImg(index + 1);
-                    float Scale = (Textures.Blank_BTN.Width / Img.Width) * 0.45f;
-                    SimplifyDrawing.HandleCentered(spriteBatch, GetLevelImg(index + 1), levelP, Scale);
-                    }
+            {
+                Texture2D Img = GetLevelImg(index + 1);
+                float Scale = (Textures.Blank_BTN.Width / Img.Width) * 0.45f;
+                SimplifyDrawing.HandleCentered(spriteBatch, GetLevelImg(index + 1), levelP, Scale);
+            }
             ReadyMadeBtn.BackwardButton.Draw(spriteBatch);
         }
     }

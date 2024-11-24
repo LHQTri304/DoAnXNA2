@@ -8,10 +8,10 @@ namespace DoAnXNA2
 {
     public static class CheckCollisionQuick
     {
-        public static void EnemyVsBulletPlayer(Game1 game1, Enemy enemy, Action onCollisionBonusAction = null)
+        public static void EnemyVsBulletPlayer(Enemy enemy, Action onCollisionBonusAction = null)
         {
             var enemyBounds = QuickGetUtilities.GetPlayerBounds(enemy.Position, enemy.Texture);
-            game1.AllBullets.RemoveAll(bullet =>
+            MainRes.AllBullets.RemoveAll(bullet =>
             {
                 if (bullet is BulletPlayer bulletPlayer)
                 {
@@ -29,11 +29,11 @@ namespace DoAnXNA2
             });
         }
 
-        public static void PlayerVsBulletEnemy(Game1 game1, Action onCollisionBonusAction = null)
+        public static void PlayerVsBulletEnemy(Action onCollisionBonusAction = null)
         {
-            var player = game1.PlayerShip;
+            var player = MainRes.PlayerShip;
             var playerBounds = QuickGetUtilities.GetPlayerBounds(player.Position, player.Texture);
-            game1.AllBullets.RemoveAll(bullet =>
+            MainRes.AllBullets.RemoveAll(bullet =>
             {
                 if (bullet is BulletEnemy bulletEnemy)
                 {
@@ -52,11 +52,11 @@ namespace DoAnXNA2
             });
         }
 
-        public static void PlayerVsEnemy(Game1 game1, Action onCollisionBonusAction = null)
+        public static void PlayerVsEnemy(Action onCollisionBonusAction = null)
         {
-            var player = game1.PlayerShip;
+            var player = MainRes.PlayerShip;
             var playerBounds = QuickGetUtilities.GetPlayerBounds(player.Position, player.Texture);
-            game1.AllEnemies.RemoveAll(bullet =>
+            MainRes.AllEnemies.RemoveAll(bullet =>
             {
                 if (bullet is Enemy Enemy)
                 {

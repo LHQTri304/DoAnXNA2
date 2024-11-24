@@ -4,8 +4,8 @@ namespace DoAnXNA2
 {
     public class EmptySpawner : EnemySpawner
     {
-        public EmptySpawner(Game1 game)
-            : base(game)
+        public EmptySpawner()
+            : base()
         {
             _spawnPosition = new Vector2(0, 0);
         }

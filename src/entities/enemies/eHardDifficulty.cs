@@ -5,9 +5,9 @@ namespace DoAnXNA2
 {
     public class EBlack : Enemy
 {
-    public EBlack(Game1 game, Vector2 position)
+    public EBlack(Vector2 position)
         : base(
-            game, Textures.EnemyBlack, position,
+            Textures.EnemyBlack, position,
             ScoreTable.ThirtyPoints,
             [new SpiralMovement(1.5f), new BounceMovement()],
             [new CircularRing10Shot(), new SpreadFan5Shot(), new ZigzagShot()]
@@ -17,9 +17,9 @@ namespace DoAnXNA2
 
 public class EWhite : Enemy
 {
-    public EWhite(Game1 game, Vector2 position)
+    public EWhite(Vector2 position)
         : base(
-            game, Textures.EnemyWhite, position,
+            Textures.EnemyWhite, position,
             ScoreTable.ThirtyPoints,
             [new RandomJitterMovement(), new StepwiseMovement(1.8f)],
             [new SpiralDoubleShot(), new StraightSingleShot(), new Wave3Shot()]
@@ -29,9 +29,9 @@ public class EWhite : Enemy
 
 public class EGold : Enemy
 {
-    public EGold(Game1 game, Vector2 position)
+    public EGold(Vector2 position)
         : base(
-            game, Textures.EnemyGold, position,
+            Textures.EnemyGold, position,
             ScoreTable.ThirtyPoints,
             [new StraightDownMovement(2.0f), new TeleportMovement()],
             [new SpreadRandom5Shot(), new VShapeDualShot(), new CircularRing8Shot()]
@@ -41,9 +41,9 @@ public class EGold : Enemy
 
 public class ESilver : Enemy
 {
-    public ESilver(Game1 game, Vector2 position)
+    public ESilver(Vector2 position)
         : base(
-            game, Textures.EnemySilver, position,
+            Textures.EnemySilver, position,
             ScoreTable.ThirtyPoints,
             [new GravityFallMovement(), new CurvedPathMovement()],
             [new ConvergingShot(), new ZigzagShot(), new SpiralSingleShot()]
@@ -53,9 +53,9 @@ public class ESilver : Enemy
 
 public class EMaroon : Enemy
 {
-    public EMaroon(Game1 game, Vector2 position)
+    public EMaroon(Vector2 position)
         : base(
-            game, Textures.EnemyMaroon, position,
+            Textures.EnemyMaroon, position,
             ScoreTable.ThirtyPoints,
             [new DiagonalRight2LMovement(2.5f), new CircularMovement()],
             [new CircularRing3MultiLayerShot(), new Wave3Shot(), new StraightDoubleShot()]
@@ -65,9 +65,9 @@ public class EMaroon : Enemy
 
 public class ENavy : Enemy
 {
-    public ENavy(Game1 game, Vector2 position)
+    public ENavy(Vector2 position)
         : base(
-            game, Textures.EnemyNavy, position,
+            Textures.EnemyNavy, position,
             ScoreTable.ThirtyPoints,
             [new MeteoriteMovement(), new SpiralMovement(1.7f)],
             [new SpiralDoubleShot(), new SpreadTripleShot(), new VShapeDualShot()]

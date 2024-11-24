@@ -11,7 +11,7 @@ namespace DoAnXNA2
             _Speed = speed;
         }
 
-        public Vector2 Move(GameTime gameTime, GraphicsDeviceManager graphics, Vector2 position)
+        public Vector2 Move(GameTime gameTime, Vector2 position)
         {
             position += new Vector2(0, _Speed);
             return position;

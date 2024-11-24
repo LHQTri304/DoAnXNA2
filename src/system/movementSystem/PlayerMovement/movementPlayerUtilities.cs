@@ -22,10 +22,10 @@ namespace DoAnXNA2
             return mousePosition;
         }
 
-        public static Vector2 KeepPlayerInsideWindow(GraphicsDeviceManager graphics, Vector2 position, Texture2D texture)
+        public static Vector2 KeepPlayerInsideWindow(Vector2 position, Texture2D texture)
         {
-            float windowWidth = graphics.PreferredBackBufferWidth;
-            float windowHeight = graphics.PreferredBackBufferHeight;
+            float windowWidth = MainRes.ScreenWidth;
+            float windowHeight = MainRes.ScreenHeight;
             return new Vector2(
                 MathHelper.Clamp(position.X, 0, windowWidth),
                 MathHelper.Clamp(position.Y, 0 + texture.Height / 2, windowHeight - texture.Height / 2)

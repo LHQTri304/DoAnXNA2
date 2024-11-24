@@ -14,7 +14,7 @@ namespace DoAnXNA2
             _PlayerPosition = playerPosition;
         }
 
-        public Vector2 Move(GameTime gameTime, GraphicsDeviceManager graphics, Vector2 position)
+        public Vector2 Move(GameTime gameTime, Vector2 position)
         {
             Vector2 direction = Vector2.Normalize(_PlayerPosition - position);
             position += direction * _Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;

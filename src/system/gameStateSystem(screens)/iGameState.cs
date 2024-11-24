@@ -7,7 +7,6 @@ namespace DoAnXNA2
 {
     public abstract class GameState
     {
-        protected Game1 _game1;
         protected SpriteFont _font;
         protected KeyboardState kstate;
         protected MouseState mstate;
@@ -23,18 +22,17 @@ namespace DoAnXNA2
         private bool _isLoadingActive = false;
         private float _loadingTimeElapsed = 0f;
 
-        public GameState(Game1 game, int loadBarLength = 300, float loadDuration = 0.5f)
+        public GameState(int loadBarLength = 300, float loadDuration = 0.5f)
         {
-            _game1 = game;
-            _font = game.Font;
+            _font = MainRes.Font;
             GetKeyStateMouseState();
-            _backgroundManager = new BackgroundManager(_game1);
+            _backgroundManager = new BackgroundManager();
             _isCursorDisplayed = true;
-            CommonPotion.Add(0, new Vector2(game.VirtualWidth / 2, game.VirtualHeight / 2));
+            CommonPotion.Add(0, new Vector2(MainRes.ScreenWidth / 2, MainRes.ScreenHeight / 2));
             CommonPotion.Add(1, new Vector2(0, 0));
-            CommonPotion.Add(2, new Vector2(game.VirtualWidth, 0));
-            CommonPotion.Add(3, new Vector2(0, game.VirtualHeight));
-            CommonPotion.Add(4, new Vector2(game.VirtualWidth, game.VirtualHeight));
+            CommonPotion.Add(2, new Vector2(MainRes.ScreenWidth, 0));
+            CommonPotion.Add(3, new Vector2(0, MainRes.ScreenHeight));
+            CommonPotion.Add(4, new Vector2(MainRes.ScreenWidth, MainRes.ScreenHeight));
 
             // Initialize LoadingBar
             _loadBarLength = loadBarLength;
@@ -70,7 +68,7 @@ namespace DoAnXNA2
 
             // Regular updates
             if (_isCursorDisplayed)
-                _game1.Cursor.Update(mstate);
+                MainRes.Cursor.Update(mstate);
             _backgroundManager.IsDecorationsDisplayed = _isBGDecorDisplayed;
             _backgroundManager.Update(gameTime);
             SubUpdate(gameTime);
@@ -89,7 +87,7 @@ namespace DoAnXNA2
             _backgroundManager.Draw(spriteBatch);
             SubDraw(spriteBatch);
             if (_isCursorDisplayed)
-                _game1.Cursor.Draw(spriteBatch);
+                MainRes.Cursor.Draw(spriteBatch);
         }
 
         public void StartLoading()

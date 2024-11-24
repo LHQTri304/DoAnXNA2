@@ -16,9 +16,9 @@ namespace DoAnXNA2
             _GoingRight = true;
         }
 
-        public Vector2 Move(GameTime gameTime, GraphicsDeviceManager graphics, Vector2 position)
+        public Vector2 Move(GameTime gameTime, Vector2 position)
         {
-            if (position.X <= 0 || position.X >= graphics.PreferredBackBufferWidth)
+            if (position.X <= 0 || position.X >= MainRes.ScreenWidth)
             {
                 _GoingRight = !_GoingRight;
             }

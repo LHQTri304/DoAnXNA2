@@ -7,7 +7,6 @@ namespace DoAnXNA2
 {
     public class Button
     {
-        private Game1 _game1;
         private Texture2D _defaultTexture;
         private Texture2D _hoverTexture;
         private Vector2 _position;
@@ -15,9 +14,8 @@ namespace DoAnXNA2
         private bool _isPressed;
         public float Scale { get; set; }
 
-        public Button(Game1 game1, Texture2D defaultTexture, Texture2D hoverTexture, Action onClick)
+        public Button(Texture2D defaultTexture, Texture2D hoverTexture, Action onClick)
         {
-            _game1 = game1;
             _defaultTexture = defaultTexture;
             _hoverTexture = hoverTexture;
             _position = new Vector2(0, 0);
@@ -40,7 +38,7 @@ namespace DoAnXNA2
                 (int)(btnBounds.Width * Scale),
                 (int)(btnBounds.Height * Scale)
             );
-            return realBtnBounds.Contains(_game1.Cursor.Position);
+            return realBtnBounds.Contains(MainRes.Cursor.Position);
         }
 
         public void Update(MouseState mstate, Vector2 newPosition)

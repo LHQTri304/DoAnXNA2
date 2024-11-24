@@ -14,7 +14,7 @@ namespace DoAnXNA2
             _Friction = friction;
         }
 
-        public Vector2 Move(GameTime gameTime, GraphicsDeviceManager graphics, Vector2 position)
+        public Vector2 Move(GameTime gameTime, Vector2 position)
         {
             _Speed = Math.Max(0, _Speed - _Friction * (float)gameTime.ElapsedGameTime.TotalSeconds);
             position += new Vector2(0, _Speed * (float)gameTime.ElapsedGameTime.TotalSeconds);

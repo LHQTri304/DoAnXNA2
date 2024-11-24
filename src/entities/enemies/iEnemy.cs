@@ -7,7 +7,6 @@ namespace DoAnXNA2
 {
     public abstract class Enemy : IDamageable
     {
-        private Game1 _game1;
         public int HP { get; set; }
         public HealthBar HealthBar { get; set; }
         public Texture2D Texture { get; set; }
@@ -23,9 +22,8 @@ namespace DoAnXNA2
         protected List<IMovementStrategy> MovementStrategy;
         protected List<IBaseShootingStrategy> ShootingStrategy;
 
-        public Enemy(Game1 game, Texture2D texture, Vector2 position, int scoreKilled, List<IMovementStrategy> movementStrategy, List<IBaseShootingStrategy> shootingStrategy)
+        public Enemy(Texture2D texture, Vector2 position, int scoreKilled, List<IMovementStrategy> movementStrategy, List<IBaseShootingStrategy> shootingStrategy)
         {
-            _game1 = game;
             HP = shootingStrategy.Count switch
             {
                 1 => HPStatsManager.EEasyHP,
@@ -52,7 +50,7 @@ namespace DoAnXNA2
             {
                 HP = 0;
                 Soundtrack.EnemyKilled.Play(0.1f, 0f, 0f);
-                _game1._currentScore += ScoreKilled;
+                MainRes.CurrentScore += ScoreKilled;
                 IsAlive = false; // Kẻ địch bị tiêu diệt
             }
             else
@@ -63,12 +61,12 @@ namespace DoAnXNA2
 
         private void CheckCollisions()
         {
-            CheckCollisionQuick.EnemyVsBulletPlayer(_game1, this);
+            CheckCollisionQuick.EnemyVsBulletPlayer(this);
         }
 
         private void CheckOutOfScreen()
         {
-            if (Position.Y > _game1.VirtualHeight + 50)
+            if (Position.Y > MainRes.ScreenHeight + 50)
                 IsAlive = false;
         }
 
@@ -77,7 +75,7 @@ namespace DoAnXNA2
             HealthBar.Position = Position + new Vector2(0, Texture.Height / 2);
         }
 
-        public void Update(GameTime gameTime, GraphicsDeviceManager graphics)
+        public void Update(GameTime gameTime)
         {
             if (!IsAlive) return; // Không cập nhật kẻ địch nếu nó đã bị tiêu diệt
 
@@ -88,8 +86,8 @@ namespace DoAnXNA2
             SetPositionHealthBar();
             HealthBar.Update(gameTime, HP, 1f);
 
-            ShootingStrategy[RandomIndex.Next(ShootingStrategy.Count)].Shoot(gameTime, Position, _game1.AllBullets);
-            Position = MovementStrategy[RandomIndex.Next(MovementStrategy.Count)].Move(gameTime, graphics, Position);
+            ShootingStrategy[RandomIndex.Next(ShootingStrategy.Count)].Shoot(gameTime, Position, MainRes.AllBullets);
+            Position = MovementStrategy[RandomIndex.Next(MovementStrategy.Count)].Move(gameTime, Position);
             CheckCollisions();
             CheckOutOfScreen();
         }

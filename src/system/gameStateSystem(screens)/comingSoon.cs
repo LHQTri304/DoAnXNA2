@@ -7,8 +7,8 @@ namespace DoAnXNA2
 {
     public class ComingSoon : GameState
     {       
-        public ComingSoon(Game1 _game1) :
-            base(_game1)
+        public ComingSoon() :
+            base()
         { }
 
         protected override void SubUpdate(GameTime gameTime)

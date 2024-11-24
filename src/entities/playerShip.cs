@@ -6,7 +6,6 @@ namespace DoAnXNA2
 {
     public class PlayerShip : IDamageable
     {
-        private Game1 _game1;
         public int HP { get; set; }
         public HealthBar HealthBar { get; set; }
         public Texture2D Texture { get; set; }
@@ -17,9 +16,8 @@ namespace DoAnXNA2
         private IPlayerShootingStrategy ShootingStrategy;
 
 
-        public PlayerShip(Game1 game)
+        public PlayerShip()
         {
-            _game1 = game;
             ResetStats();
             Texture = null;
             Position = new(0, 0);
@@ -48,20 +46,20 @@ namespace DoAnXNA2
             if (HP <= 0)
             {
                 HP = 0;
-                //_game1.SetGameOver();
+                //MainRes.GSM.SetGameOver();
             }
         }
 
         private void CheckCollisions()
         {
-            CheckCollisionQuick.PlayerVsBulletEnemy(_game1);
-            CheckCollisionQuick.PlayerVsEnemy(_game1);
+            CheckCollisionQuick.PlayerVsBulletEnemy();
+            CheckCollisionQuick.PlayerVsEnemy();
         }
 
-        public void Update(GameTime gameTime, GraphicsDeviceManager graphics, KeyboardState kstate, MouseState mstate)
+        public void Update(GameTime gameTime, KeyboardState kstate, MouseState mstate)
         {
             // Level up khi đạt Milestone
-            if (CurrentLevel < 10 && _game1._currentScore == ScoreTable.MilestoneLv0to10[CurrentLevel + 1])
+            if (CurrentLevel < 10 && MainRes.CurrentScore == ScoreTable.MilestoneLv0to10[CurrentLevel + 1])
             {
                 CurrentLevel++;
                 SetShootingStrategy();
@@ -69,11 +67,11 @@ namespace DoAnXNA2
 
             // Di chuyển & Giới hạn vị trí player trong cửa sổ
             Position = MovementPlayerUtilities.GetNewPosition(Position, mstate);
-            Position = MovementPlayerUtilities.KeepPlayerInsideWindow(graphics, Position, Texture);
+            Position = MovementPlayerUtilities.KeepPlayerInsideWindow(Position, Texture);
 
             // Xử lý bắn
             float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            ShootingStrategy.Shoot(elapsedTime, mstate, Position, _game1.AllBullets);
+            ShootingStrategy.Shoot(elapsedTime, mstate, Position, MainRes.AllBullets);
 
             // Xử lý va chạm
             CheckCollisions();

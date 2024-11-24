@@ -14,7 +14,7 @@ namespace DoAnXNA2
             _Gravity = gravity;
         }
 
-        public Vector2 Move(GameTime gameTime, GraphicsDeviceManager graphics, Vector2 position)
+        public Vector2 Move(GameTime gameTime, Vector2 position)
         {
             _Speed += _Gravity * (float)gameTime.ElapsedGameTime.TotalSeconds;
             position += new Vector2(0, _Speed * (float)gameTime.ElapsedGameTime.TotalSeconds);

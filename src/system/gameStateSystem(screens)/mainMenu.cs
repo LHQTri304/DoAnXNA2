@@ -5,8 +5,8 @@ namespace DoAnXNA2
 {
     public class MainMenu : GameState
     {
-        public MainMenu(Game1 game) :
-            base(game)
+        public MainMenu() :
+            base()
         { }
 
         protected override void SubUpdate(GameTime gameTime)

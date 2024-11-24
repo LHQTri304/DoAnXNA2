@@ -10,15 +10,15 @@ namespace DoAnXNA2
     {
         private int _enemyCount;
 
-        public EnemyCountHUD(Game1 game, SpriteFont font)
-            : base(game, font)
+        public EnemyCountHUD(SpriteFont font)
+            : base(font)
         {
             _enemyCount = 0;
         }
 
         public override void Update(GameTime gameTime)
         {
-            _enemyCount = _game1.AllEnemies.Count;
+            _enemyCount = MainRes.AllEnemies.Count;
         }
 
         public override void Draw(SpriteBatch spriteBatch)

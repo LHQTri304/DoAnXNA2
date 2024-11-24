@@ -1,14 +1,12 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using DoAnXNA2;
 
 namespace DoAnXNA2
 {
     public class Victory : GameState
     {       
-        public Victory(Game1 _game1) :
-            base(_game1)
+        public Victory() :
+            base()
         { }
 
         protected override void SubUpdate(GameTime gameTime)

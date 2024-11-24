@@ -29,131 +29,131 @@ namespace DoAnXNA2
         public static Button RatingButton;
         public static Button MainMenuButton;
 
-        public static void InitAndLoad(Game1 game1)
+        public static void InitAndLoad()
         {
-            PlayButton = new Button(game1, Textures.Play_BTN, Textures.Play_BTN_Active, () =>
+            PlayButton = new Button(Textures.Play_BTN, Textures.Play_BTN_Active, () =>
             {
-                game1.SetChoosingLevels();
+                MainRes.GSM.SetChoosingLevels();
             });
 
-            SettingsButton = new Button(game1, Textures.Settings_BTN, Textures.Settings_BTN_Active, () =>
+            SettingsButton = new Button(Textures.Settings_BTN, Textures.Settings_BTN_Active, () =>
             {
-                game1.SetSetting();
+                MainRes.GSM.SetSetting();
             });
 
-            BackwardButton = new Button(game1, Textures.Backward_BTN, Textures.Backward_BTN_Active, () =>
+            BackwardButton = new Button(Textures.Backward_BTN, Textures.Backward_BTN_Active, () =>
             {
-                game1.SetStateBackward();
+                MainRes.GSM.SetStateBackward();
             });
 
-            CloseButton = new Button(game1, Textures.Close_BTN, Textures.Close_BTN_Active, () =>
+            CloseButton = new Button(Textures.Close_BTN, Textures.Close_BTN_Active, () =>
             {
                 // Logic khi nhấn CloseButton
             });
 
-            ReplayButton = new Button(game1, Textures.Replay_BTN, Textures.Replay_BTN_Active, () =>
+            ReplayButton = new Button(Textures.Replay_BTN, Textures.Replay_BTN_Active, () =>
             {
                 // Logic khi nhấn ReplayButton
             });
 
-            FacebookButton = new Button(game1, Textures.Facebook_BTN, Textures.Facebook_BTN_Active, () =>
+            FacebookButton = new Button(Textures.Facebook_BTN, Textures.Facebook_BTN_Active, () =>
             {
                 // Logic khi nhấn FacebookButton
             });
 
-            ShopButton = new Button(game1, Textures.Shop_BTN, Textures.Shop_BTN_Active, () =>
+            ShopButton = new Button(Textures.Shop_BTN, Textures.Shop_BTN_Active, () =>
             {
                 // Logic khi nhấn ShopButton
             });
 
-            FAQButton = new Button(game1, Textures.FAQ_BTN, Textures.FAQ_BTN_Active, () =>
+            FAQButton = new Button(Textures.FAQ_BTN, Textures.FAQ_BTN_Active, () =>
             {
                 // Logic khi nhấn FAQButton
             });
 
-            ForwardButton = new Button(game1, Textures.Forward_BTN, Textures.Forward_BTN_Active, () =>
+            ForwardButton = new Button(Textures.Forward_BTN, Textures.Forward_BTN_Active, () =>
             {
                 // Logic khi nhấn ForwardButton
             });
 
-            SoundButton = new Button(game1, Textures.Sound_BTN, Textures.Sound_BTN_Active, () =>
+            SoundButton = new Button(Textures.Sound_BTN, Textures.Sound_BTN_Active, () =>
             {
                 // Logic khi nhấn SoundButton
             });
 
-            TwitterButton = new Button(game1, Textures.Twitter_BTN, Textures.Twitter_BTN_Active, () =>
+            TwitterButton = new Button(Textures.Twitter_BTN, Textures.Twitter_BTN_Active, () =>
             {
                 // Logic khi nhấn TwitterButton
             });
 
-            GoogleButton = new Button(game1, Textures.Google_BTN, Textures.Google_BTN_Active, () =>
+            GoogleButton = new Button(Textures.Google_BTN, Textures.Google_BTN_Active, () =>
             {
                 // Logic khi nhấn GoogleButton
             });
 
-            UpgradeButton = new Button(game1, Textures.Upgrade_BTN, Textures.Upgrade_BTN_Active, () =>
+            UpgradeButton = new Button(Textures.Upgrade_BTN, Textures.Upgrade_BTN_Active, () =>
             {
                 // Logic khi nhấn UpgradeButton
             });
 
-            VibrationButton = new Button(game1, Textures.Vibration_BTN, Textures.Vibration_BTN_Active, () =>
+            VibrationButton = new Button(Textures.Vibration_BTN, Textures.Vibration_BTN_Active, () =>
             {
                 // Logic khi nhấn VibrationButton
             });
 
-            VKButton = new Button(game1, Textures.VK_BTN, Textures.VK_BTN_Active, () =>
+            VKButton = new Button(Textures.VK_BTN, Textures.VK_BTN_Active, () =>
             {
                 // Logic khi nhấn VKButton
             });
 
-            HangarButton = new Button(game1, Textures.Hangar_BTN, Textures.Hangar_BTN_Active, () =>
+            HangarButton = new Button(Textures.Hangar_BTN, Textures.Hangar_BTN_Active, () =>
             {
                 // Logic khi nhấn HangarButton
             });
 
-            InfoButton = new Button(game1, Textures.Info_BTN, Textures.Info_BTN_Active, () =>
+            InfoButton = new Button(Textures.Info_BTN, Textures.Info_BTN_Active, () =>
             {
                 // Logic khi nhấn InfoButton
             });
 
-            MenuButton = new Button(game1, Textures.Menu_BTN, Textures.Menu_BTN_Active, () =>
+            MenuButton = new Button(Textures.Menu_BTN, Textures.Menu_BTN_Active, () =>
             {
                 // Logic khi nhấn MenuButton
             });
 
-            MoreGamesButton = new Button(game1, Textures.More_Games_BTN, Textures.More_Games_BTN_Active, () =>
+            MoreGamesButton = new Button(Textures.More_Games_BTN, Textures.More_Games_BTN_Active, () =>
             {
                 // Logic khi nhấn MoreGamesButton
             });
 
-            MusicButton = new Button(game1, Textures.Music_BTN, Textures.Music_BTN_Active, () =>
+            MusicButton = new Button(Textures.Music_BTN, Textures.Music_BTN_Active, () =>
             {
                 // Logic khi nhấn MusicButton
             });
 
-            NotificationsButton = new Button(game1, Textures.Notifications_BTN, Textures.Notifications_BTN_Active, () =>
+            NotificationsButton = new Button(Textures.Notifications_BTN, Textures.Notifications_BTN_Active, () =>
             {
                 // Logic khi nhấn NotificationsButton
             });
 
-            OkButton = new Button(game1, Textures.Ok_BTN, Textures.Ok_BTN_Active, () =>
+            OkButton = new Button(Textures.Ok_BTN, Textures.Ok_BTN_Active, () =>
             {
                 // Logic khi nhấn OkButton
             });
 
-            PauseButton = new Button(game1, Textures.Pause_BTN, Textures.Pause_BTN_Active, () =>
+            PauseButton = new Button(Textures.Pause_BTN, Textures.Pause_BTN_Active, () =>
             {
                 // Logic khi nhấn PauseButton
             });
 
-            RatingButton = new Button(game1, Textures.Rating_BTN, Textures.Rating_BTN_Active, () =>
+            RatingButton = new Button(Textures.Rating_BTN, Textures.Rating_BTN_Active, () =>
             {
                 // Logic khi nhấn RatingButton
             });
 
-            MainMenuButton = new Button(game1, Textures.Backward_BTN, Textures.Backward_BTN_Active, () =>
+            MainMenuButton = new Button(Textures.Backward_BTN, Textures.Backward_BTN_Active, () =>
             {
-                game1.SetMainMenu();
+                MainRes.GSM.SetMainMenu();
             });
         }
     }

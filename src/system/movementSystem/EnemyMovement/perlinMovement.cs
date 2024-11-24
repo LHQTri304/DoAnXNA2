@@ -29,7 +29,7 @@ namespace DoAnXNA2
             _Texture = texture;
         }
 
-        public Vector2 Move(GameTime gameTime, GraphicsDeviceManager graphics, Vector2 position)
+        public Vector2 Move(GameTime gameTime, Vector2 position)
         {
             //Move down
             float MovingY = _VerticalSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -37,21 +37,21 @@ namespace DoAnXNA2
             float perlinValue = MathHelper.Lerp(-1, 1, (float)SimplexNoise.Noise.CalcPixel2D((int)horizontalOffset, 0, 0.05f) / 255f);
             horizontalOffset += 0.1f;
             float moveValue = perlinValue * _HorizontalSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            float MovingX = MoveAfterCollisionWithWall(gameTime, graphics, position, moveValue);
+            float MovingX = MoveAfterCollisionWithWall(gameTime, position, moveValue);
             //Complete the new position
             position += new Vector2(MovingX, MovingY);
             return position;
         }
 
 
-        public float MoveAfterCollisionWithWall(GameTime gameTime, GraphicsDeviceManager graphics, Vector2 position, float moveValue)
+        public float MoveAfterCollisionWithWall(GameTime gameTime, Vector2 position, float moveValue)
         {
             if (position.X < _Texture.Width / 2)
             {
                 isCollidedWithWall = true;
                 wallCollisionCoolDown = wallCollisionCoolDownTime;
             }
-            else if (position.X > graphics.PreferredBackBufferWidth - _Texture.Width / 2)
+            else if (position.X > MainRes.ScreenWidth - _Texture.Width / 2)
             {
                 wallCollisionCoolDown = wallCollisionCoolDownTime;
             }

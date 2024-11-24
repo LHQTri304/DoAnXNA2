@@ -16,7 +16,7 @@ namespace DoAnXNA2
             _Angle = 0;
         }
 
-        public Vector2 Move(GameTime gameTime, GraphicsDeviceManager graphics, Vector2 position)
+        public Vector2 Move(GameTime gameTime, Vector2 position)
         {
             _Angle += 0.1f;
             position += new Vector2((float)Math.Cos(_Angle) * _Radius, (float)Math.Sin(_Angle) * _Radius + _Speed * (float)gameTime.ElapsedGameTime.TotalSeconds);

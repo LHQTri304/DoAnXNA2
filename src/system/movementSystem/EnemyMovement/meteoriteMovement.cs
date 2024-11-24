@@ -18,7 +18,7 @@ namespace DoAnXNA2
             _Time = 0;
         }
 
-        public Vector2 Move(GameTime gameTime, GraphicsDeviceManager graphics, Vector2 position)
+        public Vector2 Move(GameTime gameTime, Vector2 position)
         {
             _Time += (float)gameTime.ElapsedGameTime.TotalSeconds;
             float offsetX = (float)Math.Sin(_Time * _Frequency) * _Amplitude;

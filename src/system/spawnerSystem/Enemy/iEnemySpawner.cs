@@ -9,15 +9,12 @@ namespace DoAnXNA2
     public abstract class EnemySpawner
     {
         protected Vector2 _spawnPosition;
-        protected Game1 _game1;
-
         private double _elapsedTime;
         private double _spawnInterval;
         private int _maxEnemies;
 
-        public EnemySpawner(Game1 game)
+        public EnemySpawner()
         {
-            _game1 = game;
             _elapsedTime = 0;
         }
 
@@ -35,14 +32,14 @@ namespace DoAnXNA2
             _elapsedTime += gameTime.ElapsedGameTime.TotalSeconds;
 
             // Nếu đủ thời gian và số lượng kẻ địch chưa đạt max
-            if (_elapsedTime >= _spawnInterval && _game1.AllEnemies.Count < _maxEnemies)
+            if (_elapsedTime >= _spawnInterval && MainRes.AllEnemies.Count < _maxEnemies)
             {
                 SpawnEnemy();
                 _elapsedTime = 0; // Reset thời gian
             }
         }
 
-        public void Update(GameTime gameTime, GraphicsDeviceManager graphics)
+        public void Update(GameTime gameTime)
         {
             AutoSpawn(gameTime);
         }

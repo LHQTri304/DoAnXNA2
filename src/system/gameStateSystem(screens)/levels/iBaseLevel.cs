@@ -29,14 +29,14 @@ namespace DoAnXNA2
             IsResting = false;
         }
 
-        public void Update(Game1 game1, GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
             ElapsedTime += gameTime.ElapsedGameTime.TotalSeconds;
 
             if (CurrentWaveIndex >= Waves.Count && SpawnedEnemies >= MaxEnemies)
             {
                 // Kết thúc màn chơi nếu đã hết đợt hoặc số lượng kẻ địch đạt giới hạn
-                game1.IsAbleToWin = true;
+                MainRes.IsAbleToWin = true;
                 return;
             }
 
@@ -58,7 +58,7 @@ namespace DoAnXNA2
                 if (ElapsedTime >= currentWave.StartTime && ElapsedTime <= currentWave.EndTime)
                 {
                     // Spawn kẻ địch trong wave hiện tại
-                    currentWave.SpawnEnemies(gameTime, game1, ref SpawnedEnemies);
+                    currentWave.SpawnEnemies(gameTime, ref SpawnedEnemies);
                 }
                 else if (ElapsedTime > currentWave.EndTime)
                 {
@@ -89,7 +89,7 @@ namespace DoAnXNA2
             LastSpawnTime = 0;
         }
 
-        public void SpawnEnemies(GameTime gameTime, Game1 game1, ref int spawnedEnemies)
+        public void SpawnEnemies(GameTime gameTime, ref int spawnedEnemies)
         {
             double currentTime = gameTime.TotalGameTime.TotalSeconds;
 
@@ -97,7 +97,7 @@ namespace DoAnXNA2
             {
                 // Sinh kẻ địch
                 string enemyType = SelectEnemyType();
-                game1.AllSpawners[enemyType].SpawnEnemy();
+                MainRes.AllSpawners[enemyType].SpawnEnemy();
 
                 LastSpawnTime = currentTime;
                 spawnedEnemies++;

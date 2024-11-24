@@ -9,21 +9,21 @@ namespace DoAnXNA2
     {
         private double _gameScore;
 
-        public GameScoreHUD(Game1 game, SpriteFont font)
-            : base(game, font)
+        public GameScoreHUD(SpriteFont font)
+            : base(font)
         {
             _gameScore = 0;
         }
 
         public override void Update(GameTime gameTime)
         {
-            _gameScore = _game1._currentScore;
+            _gameScore = MainRes.CurrentScore;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             string text = $"Score: {_gameScore}";
-            spriteBatch.DrawString(Font, text, new Vector2(10, _game1.VirtualHeight - 70), Color.White);
+            spriteBatch.DrawString(Font, text, new Vector2(10, MainRes.ScreenHeight - 70), Color.White);
             //SimplifyDrawing.HandleCenteredText(spriteBatch, Font, timeText, new Vector2(100, 10));
         }
     }

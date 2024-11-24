@@ -4,6 +4,6 @@ namespace DoAnXNA2
 {
     public interface IMovementStrategy
     {
-        Vector2 Move(GameTime gameTime, GraphicsDeviceManager graphics, Vector2 position);
+        Vector2 Move(GameTime gameTime, Vector2 position);
     }
 }

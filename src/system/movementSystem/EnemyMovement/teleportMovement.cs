@@ -25,13 +25,13 @@ namespace DoAnXNA2
             _TeleportInterval = (float)_Random.NextDouble() * 10;
         }
 
-        public Vector2 Move(GameTime gameTime, GraphicsDeviceManager graphics, Vector2 position)
+        public Vector2 Move(GameTime gameTime, Vector2 position)
         {
             _TimeSinceLastTeleport += (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (_TimeSinceLastTeleport >= _TeleportInterval)
             {
                 _TimeSinceLastTeleport = 0;
-                position.X = _Random.Next(0, graphics.PreferredBackBufferWidth);
+                position.X = _Random.Next(0, MainRes.ScreenWidth);
                 RenewTeleportInterval();
             }
             else

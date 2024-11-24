@@ -13,8 +13,8 @@ namespace DoAnXNA2
         private List<Level> ListLevels = [];
         private bool _isPaused;
 
-        public GameDisplay(Game1 _game1) :
-            base(_game1)
+        public GameDisplay() :
+            base()
         {
             _isBGDecorDisplayed = false;
             _isCursorDisplayed = false;
@@ -33,46 +33,46 @@ namespace DoAnXNA2
         protected override void SubUpdate(GameTime gameTime)
         {
             //Xử lý khi win:
-            if(_game1.AllEnemies.Count == 0 && _game1.IsAbleToWin)
-                _game1.SetVictory();
+            if (MainRes.AllEnemies.Count == 0 && MainRes.IsAbleToWin)
+                MainRes.GSM.SetVictory();
 
             //Xử lý khi tạm dừng
             InputUtilities.HandleKeyPress(Keys.Escape, kstate, () => _isPaused = !_isPaused);
             if (_isPaused)
             {
                 InputUtilities.HandleKeyPress(Keys.Space, kstate, () => _isPaused = false);
-                InputUtilities.HandleKeyPress(Keys.X, kstate, () => { _isPaused = false; _game1.SetMainMenu(); });
+                InputUtilities.HandleKeyPress(Keys.X, kstate, () => { _isPaused = false; MainRes.GSM.SetMainMenu(); });
                 return;
             }
 
             // Thêm kẻ địch liên tục
             Level SelectedLevel = ListLevels[CurrentLevel - 1];
-            SelectedLevel.Update(_game1, gameTime);
+            SelectedLevel.Update(gameTime);
 
 
             // Cập nhật các sprites
-            _game1.PlayerShip.Update(gameTime, _game1.Graphics, kstate, mstate);
-            _game1.AllEnemies.RemoveAll(enemy =>
+            MainRes.PlayerShip.Update(gameTime, kstate, mstate);
+            MainRes.AllEnemies.RemoveAll(enemy =>
             {
-                enemy.Update(gameTime, _game1.Graphics);
+                enemy.Update(gameTime);
                 return !enemy.IsAlive; // Giữ lại kẻ địch còn sống
             });
-            _game1.AllBullets = _game1.AllBullets.Where(b => b.Position.Y >= 0 && b.Position.Y <= _game1.VirtualHeight)
+            MainRes.AllBullets = MainRes.AllBullets.Where(b => b.Position.Y >= 0 && b.Position.Y <= MainRes.ScreenHeight)
                 .Select(b => { b.Move(); return b; }).ToList();
 
             // Cập nhật GUI và HUD
-            foreach (var item in _game1.GameHUD)
+            foreach (var item in MainRes.GameHUD)
                 item.Update(gameTime);
         }
 
         protected override void SubDraw(SpriteBatch spriteBatch)
         {
-            _game1.PlayerShip.Draw(spriteBatch);
-            foreach (var bullet in _game1.AllBullets)
+            MainRes.PlayerShip.Draw(spriteBatch);
+            foreach (var bullet in MainRes.AllBullets)
                 bullet.Draw(spriteBatch);
-            foreach (var enemy in _game1.AllEnemies)
+            foreach (var enemy in MainRes.AllEnemies)
                 enemy.Draw(spriteBatch);
-            foreach (var item in _game1.GameHUD)
+            foreach (var item in MainRes.GameHUD)
                 item.Draw(spriteBatch);
             if (_isPaused)
                 SimplifyDrawing.HandleCenteredText(spriteBatch, _font, "PAUSED\nPress Space to Continue\nPress X to Main Menu", CommonPotion[0]);

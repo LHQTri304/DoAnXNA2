@@ -16,7 +16,7 @@ namespace DoAnXNA2
             _TimeSinceLastStep = 0;
         }
 
-        public Vector2 Move(GameTime gameTime, GraphicsDeviceManager graphics, Vector2 position)
+        public Vector2 Move(GameTime gameTime, Vector2 position)
         {
             _TimeSinceLastStep += (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (_TimeSinceLastStep >= _StepInterval)

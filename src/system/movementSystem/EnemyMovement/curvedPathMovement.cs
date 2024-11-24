@@ -14,7 +14,7 @@ namespace DoAnXNA2
             _Curvature = curvature;
         }
 
-        public Vector2 Move(GameTime gameTime, GraphicsDeviceManager graphics, Vector2 position)
+        public Vector2 Move(GameTime gameTime, Vector2 position)
         {
             position += new Vector2((float)Math.Sin(position.Y * _Curvature), _Speed * (float)gameTime.ElapsedGameTime.TotalSeconds);
             return position;

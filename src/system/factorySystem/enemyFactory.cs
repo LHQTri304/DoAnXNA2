@@ -4,28 +4,28 @@ namespace DoAnXNA2
 {
     public static class EnemyFactory
     {
-        public static Enemy CreateEnemy(Game1 game, string type, Vector2 position)
+        public static Enemy CreateEnemy(string type, Vector2 position)
         {
             return type switch
             {
-                "Red" => new ERed(game, position),
-                "Yellow" => new EYellow(game, position),
-                "Green" => new EGreen(game, position),
-                "Blue" => new EBlue(game, position),
-                "Orange" => new EOrange(game, position),
-                "Purple" => new EPurple(game, position),
-                "Gray" => new EGray(game, position),
-                "Cyan" => new ECyan(game, position),
-                "Pink" => new EPink(game, position),
-                "Brown" => new EBrown(game, position),
-                "Teal" => new ETeal(game, position),
-                "Lime" => new ELime(game, position),
-                "Black" => new EBlack(game, position),
-                "White" => new EWhite(game, position),
-                "Gold" => new EGold(game, position),
-                "Silver" => new ESilver(game, position),
-                "Maroon" => new EMaroon(game, position),
-                "Navy" => new ENavy(game, position),
+                "Red" => new ERed(position),
+                "Yellow" => new EYellow(position),
+                "Green" => new EGreen(position),
+                "Blue" => new EBlue(position),
+                "Orange" => new EOrange(position),
+                "Purple" => new EPurple(position),
+                "Gray" => new EGray(position),
+                "Cyan" => new ECyan(position),
+                "Pink" => new EPink(position),
+                "Brown" => new EBrown(position),
+                "Teal" => new ETeal(position),
+                "Lime" => new ELime(position),
+                "Black" => new EBlack(position),
+                "White" => new EWhite(position),
+                "Gold" => new EGold(position),
+                "Silver" => new ESilver(position),
+                "Maroon" => new EMaroon(position),
+                "Navy" => new ENavy(position),
                 _ => null
             };
         }

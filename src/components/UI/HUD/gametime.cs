@@ -9,8 +9,8 @@ namespace DoAnXNA2
     {
         private TimeSpan _gameTimeElapsed;
 
-        public GameTimeHUD(Game1 game, SpriteFont font)
-            : base(game, font)
+        public GameTimeHUD(SpriteFont font)
+            : base(font)
         {
             _gameTimeElapsed = TimeSpan.Zero;
         }

@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 
 namespace DoAnXNA2
 {
@@ -8,7 +7,7 @@ namespace DoAnXNA2
     {
         public MainMenu(Game1 game) :
             base(game)
-        {        }
+        { }
 
         protected override void SubUpdate(GameTime gameTime)
         {

@@ -11,7 +11,6 @@ namespace DoAnXNA2
     {
         public int CurrentLevel { get; set; }
         private List<Level> ListLevels = [];
-        private bool _isPaused;
 
         public GameDisplay() :
             base()
@@ -37,11 +36,13 @@ namespace DoAnXNA2
                 MainRes.GSM.SetVictory();
 
             //Xử lý khi tạm dừng
-            InputUtilities.HandleKeyPress(Keys.Escape, kstate, () => _isPaused = !_isPaused);
-            if (_isPaused)
+            _isCursorDisplayed = false;
+            InputUtilities.HandleKeyPress(Keys.Escape, kstate, () => MainRes.IsPaused = !MainRes.IsPaused);
+            if (MainRes.IsPaused)
             {
-                InputUtilities.HandleKeyPress(Keys.Space, kstate, () => _isPaused = false);
-                InputUtilities.HandleKeyPress(Keys.X, kstate, () => { _isPaused = false; MainRes.GSM.SetMainMenu(); });
+                _isCursorDisplayed = true;
+                ReadyMadeBtn.ResumeButton.Update(mstate, CommonPotion[0] + new Vector2(100, 175));
+                ReadyMadeBtn.MainMenuButton.Update(mstate, CommonPotion[0] + new Vector2(-100, 175));
                 return;
             }
 
@@ -74,8 +75,13 @@ namespace DoAnXNA2
                 enemy.Draw(spriteBatch);
             foreach (var item in MainRes.GameHUD)
                 item.Draw(spriteBatch);
-            if (_isPaused)
-                SimplifyDrawing.HandleCenteredText(spriteBatch, _font, "PAUSED\nPress Space to Continue\nPress X to Main Menu", CommonPotion[0]);
+            if (MainRes.IsPaused)
+            {
+                SimplifyDrawing.HandleCentered(spriteBatch, Textures.WindowLong, CommonPotion[0], 0.66f);
+                SimplifyDrawing.HandleCentered(spriteBatch, Textures.HeaderPause, CommonPotion[0] + new Vector2(0, -210));
+                ReadyMadeBtn.ResumeButton.Draw(spriteBatch);
+                ReadyMadeBtn.MainMenuButton.Draw(spriteBatch);
+            }
         }
     }
 }

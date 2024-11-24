@@ -6,7 +6,6 @@ namespace DoAnXNA2
 {
     public class AudioManager
     {
-        private Song _currentSong;
         public static void Play(Song song, float volume = 1.0f, bool loop = true)
         {
             if (MediaPlayer.State != MediaState.Playing || MediaPlayer.Queue.ActiveSong != song)   //MediaPlayer.State != MediaState.Playing || MediaPlayer.Queue.ActiveSong != song

@@ -26,6 +26,7 @@ namespace DoAnXNA2
         public static Button NotificationsButton;
         public static Button OkButton;
         public static Button PauseButton;
+        public static Button ResumeButton;
         public static Button RatingButton;
         public static Button MainMenuButton;
 
@@ -146,12 +147,17 @@ namespace DoAnXNA2
                 // Logic khi nhấn PauseButton
             });
 
+            ResumeButton = new Button(Textures.Play_BTN, Textures.Play_BTN_Active, () =>
+            {
+                MainRes.IsPaused = false;
+            });
+
             RatingButton = new Button(Textures.Rating_BTN, Textures.Rating_BTN_Active, () =>
             {
                 // Logic khi nhấn RatingButton
             });
 
-            MainMenuButton = new Button(Textures.Backward_BTN, Textures.Backward_BTN_Active, () =>
+            MainMenuButton = new Button(Textures.Menu_BTN, Textures.Menu_BTN_Active, () =>
             {
                 MainRes.GSM.SetMainMenu();
             });

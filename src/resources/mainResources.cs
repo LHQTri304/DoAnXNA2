@@ -10,7 +10,8 @@ namespace DoAnXNA2
         // Game properties
         public static int ScreenWidth { get; set; } = 1280;
         public static int ScreenHeight { get; set; } = 720;
-        public static bool IsAbleToWin { get; set; } = false;
+        public static bool IsAbleToWin { get; set; }
+        public static bool IsPaused { get; set; }
         public static GameState CurrentState { get; set; }
         public static GameState PreviousState { get; set; }
         public static GameStateManager GSM { get; set; }
@@ -33,6 +34,7 @@ namespace DoAnXNA2
         public static void Initialize()
         {
             IsAbleToWin = false;
+            IsPaused = false;
             PlayerShip = new PlayerShip();
             Cursor = new Cursor();
             // Khởi tạo spawner --> Dùng ánh xạ (Reflection) để tạo tự động
@@ -61,6 +63,7 @@ namespace DoAnXNA2
         public static void ResetData()
         {
             IsAbleToWin = false;
+            IsPaused = false;
             AllEnemies.Clear();
             AllBullets.Clear();
             CurrentScore = 0;

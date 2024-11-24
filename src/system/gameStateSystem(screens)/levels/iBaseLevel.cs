@@ -33,7 +33,7 @@ namespace DoAnXNA2
         {
             ElapsedTime += gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (CurrentWaveIndex >= Waves.Count || SpawnedEnemies >= MaxEnemies)
+            if (CurrentWaveIndex >= Waves.Count && SpawnedEnemies >= MaxEnemies)
             {
                 // Kết thúc màn chơi nếu đã hết đợt hoặc số lượng kẻ địch đạt giới hạn
                 game1.IsAbleToWin = true;

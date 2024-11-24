@@ -6,18 +6,14 @@ namespace DoAnXNA2
 {
     public class MainMenu : GameState
     {
-        private LoadingBar loadingBar;
         public MainMenu(Game1 game) :
             base(game)
-        { 
-            loadingBar = new(CommonPotion[0] ,game.VirtualWidth);
-        }
+        {        }
 
         protected override void SubUpdate(GameTime gameTime)
         {
             ReadyMadeBtn.PlayButton.Update(mstate, CommonPotion[0] + new Vector2(100, 200));
             ReadyMadeBtn.SettingsButton.Update(mstate, CommonPotion[0] + new Vector2(-100, 200));
-            loadingBar.Update(gameTime);
         }
 
         protected override void SubDraw(SpriteBatch spriteBatch)
@@ -25,7 +21,6 @@ namespace DoAnXNA2
             SimplifyDrawing.HandleCentered(spriteBatch, Textures.TitleGame, CommonPotion[0] + new Vector2(0, -100), 0.3f);
             ReadyMadeBtn.PlayButton.Draw(spriteBatch);
             ReadyMadeBtn.SettingsButton.Draw(spriteBatch);
-            loadingBar.Draw(spriteBatch);
         }
     }
 }

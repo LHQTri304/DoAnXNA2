@@ -169,6 +169,7 @@ public class Game1 : Game
     {
         _previousState = _currentState;
         BackgroundMusic = Soundtrack.TitleTheme;
+        _choosingLevels.StartLoading();
         _currentState = _choosingLevels;
     }
     public void SetGameDisplay(int level)
@@ -176,6 +177,7 @@ public class Game1 : Game
         _previousState = _currentState;
         BackgroundMusic = RandomCombatTheme();
         _gameDisplay.CurrentLevel = level;
+        _gameDisplay.RenewListLevels();
         _currentScore = 0;
         PlayerShip.ResetStats();
         AllBullets.Clear();

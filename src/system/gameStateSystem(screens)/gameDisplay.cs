@@ -18,6 +18,11 @@ namespace DoAnXNA2
         {
             _isBGDecorDisplayed = false;
             _isCursorDisplayed = false;
+            RenewListLevels();
+        }
+
+        public void RenewListLevels()
+        {
             ListLevels = [
                 new Level01(), new Level02(), new Level03(), new Level04(), new Level05(), new Level06(), new Level01(),
                 new Level08(), new Level09(), new Level10(), new Level11(), new Level12(), new Level13(), new Level01(),

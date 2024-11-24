@@ -16,9 +16,9 @@ namespace DoAnXNA2
             Position = position;
             _progress = 0f;
             _totalWidth = totalWidth;
-            _barStart = Textures.Loading_Bar_2_1;
-            _barMiddle = Textures.Loading_Bar_2_2;
-            _barEnd = Textures.Loading_Bar_2_3;
+            _barStart = Textures.Loading_Bar_3_1;
+            _barMiddle = Textures.Loading_Bar_3_2;
+            _barEnd = Textures.Loading_Bar_3_3;
         }
 
         public void SetProgress(float newProgress)

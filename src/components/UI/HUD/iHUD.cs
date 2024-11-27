@@ -8,9 +8,9 @@ namespace DoAnXNA2
     {
         protected SpriteFont Font { get; set; }
 
-        public I_HUD(SpriteFont font)
+        public I_HUD()
         {
-            Font = font;
+            Font = MainRes.Font;
         }
         
         public abstract void Update(GameTime gameTime);

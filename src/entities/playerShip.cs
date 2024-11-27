@@ -51,7 +51,7 @@ namespace DoAnXNA2
             if (HP <= 0)
             {
                 HP = 0;
-                //MainRes.GSM.SetGameOver();
+                MainRes.GSM.SetGameOver();
             }
         }
 

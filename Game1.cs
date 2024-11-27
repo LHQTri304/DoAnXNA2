@@ -51,8 +51,9 @@ public class Game1 : Game
 
         // UI
         MainRes.GameHUD = [
-            new NextLevelMilestoneHUD(MainRes.Font),
-            new GameScoreHUD(MainRes.Font),
+            new NextLevelMilestoneHUD(),
+            new GameScoreHUD(),
+            new PlayerHeathHUD()
         ];
     }
 

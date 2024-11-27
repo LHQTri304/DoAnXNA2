@@ -7,8 +7,8 @@ namespace DoAnXNA2
     {
         private int _playerCurrentLevel;
 
-        public NextLevelMilestoneHUD(SpriteFont font)
-            : base(font)
+        public NextLevelMilestoneHUD()
+            : base()
         {
             _playerCurrentLevel = 1;
         }

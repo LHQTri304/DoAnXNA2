@@ -10,8 +10,8 @@ namespace DoAnXNA2
     {
         private int _enemyCount;
 
-        public EnemyCountHUD(SpriteFont font)
-            : base(font)
+        public EnemyCountHUD()
+            : base()
         {
             _enemyCount = 0;
         }

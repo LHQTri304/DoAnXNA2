@@ -67,7 +67,7 @@ namespace DoAnXNA2
         {
             float progress = (float)_currentHP / _maxHP;
             DrawTableBar(spriteBatch, Position, (int)(_totalWidth * 1.025), _scale);
-            DrawHealthBar(spriteBatch, Position, _totalWidth, progress, _scale);
+            DrawHealthBar(spriteBatch, Position, _totalWidth, progress, _scale);            
         }
 
         private void DrawHealthBar(SpriteBatch spriteBatch, Vector2 centerPosition, int totalWidth, float progress, float scale)

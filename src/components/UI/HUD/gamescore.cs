@@ -7,8 +7,8 @@ namespace DoAnXNA2
     {
         private double _gameScore;
 
-        public GameScoreHUD(SpriteFont font)
-            : base(font)
+        public GameScoreHUD()
+            : base()
         {
             _gameScore = 0;
         }

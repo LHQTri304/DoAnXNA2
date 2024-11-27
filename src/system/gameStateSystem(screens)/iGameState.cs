@@ -13,7 +13,7 @@ namespace DoAnXNA2
         protected BackgroundManager _backgroundManager;
         protected bool _isBGDecorDisplayed = true;
         protected bool _isCursorDisplayed = true;
-        protected Dictionary<int, Vector2> CommonPotion = new();
+        protected List<Vector2> CommonPotion = new();
 
         // LoadingBar instance
         private LoadingBar _loadingBar;
@@ -28,11 +28,7 @@ namespace DoAnXNA2
             GetKeyStateMouseState();
             _backgroundManager = new BackgroundManager();
             _isCursorDisplayed = true;
-            CommonPotion.Add(0, new Vector2(MainRes.ScreenWidth / 2, MainRes.ScreenHeight / 2));
-            CommonPotion.Add(1, new Vector2(0, 0));
-            CommonPotion.Add(2, new Vector2(MainRes.ScreenWidth, 0));
-            CommonPotion.Add(3, new Vector2(0, MainRes.ScreenHeight));
-            CommonPotion.Add(4, new Vector2(MainRes.ScreenWidth, MainRes.ScreenHeight));
+            CommonPotion = MainRes.CommonPotion;
 
             // Initialize LoadingBar
             _loadBarLength = loadBarLength;

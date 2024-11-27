@@ -68,11 +68,11 @@ namespace DoAnXNA2
 
         protected override void SubDraw(SpriteBatch spriteBatch)
         {
-            MainRes.PlayerShip.Draw(spriteBatch);
             foreach (var bullet in MainRes.AllBullets)
                 bullet.Draw(spriteBatch);
             foreach (var enemy in MainRes.AllEnemies)
                 enemy.Draw(spriteBatch);
+            MainRes.PlayerShip.Draw(spriteBatch);
             foreach (var item in MainRes.GameHUD)
                 item.Draw(spriteBatch);
             if (MainRes.IsPaused)

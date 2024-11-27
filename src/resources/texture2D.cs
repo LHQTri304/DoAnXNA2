@@ -36,6 +36,9 @@ namespace DoAnXNA2
         public static Texture2D Health_Bar_1_1 { get; private set; }
         public static Texture2D Health_Bar_1_2 { get; private set; }
         public static Texture2D Health_Bar_1_3 { get; private set; }
+        public static Texture2D Health_Bar_2_1 { get; private set; }
+        public static Texture2D Health_Bar_2_2 { get; private set; }
+        public static Texture2D Health_Bar_2_3 { get; private set; }
         public static Texture2D Loading_Bar_1_1 { get; private set; }
         public static Texture2D Loading_Bar_1_2 { get; private set; }
         public static Texture2D Loading_Bar_1_3 { get; private set; }
@@ -45,7 +48,9 @@ namespace DoAnXNA2
         public static Texture2D Loading_Bar_3_1 { get; private set; }
         public static Texture2D Loading_Bar_3_2 { get; private set; }
         public static Texture2D Loading_Bar_3_3 { get; private set; }
-        public static Texture2D Loading_Bar_Table { get; private set; }
+        public static Texture2D Bar_Table_1_1 { get; private set; }
+        public static Texture2D Bar_Table_1_2 { get; private set; }
+        public static Texture2D Bar_Table_1_3 { get; private set; }
         public static Texture2D Cursor { get; private set; }
         public static Texture2D TitleGame { get; private set; }
         public static Texture2D WindowSquare { get; private set; }
@@ -186,6 +191,9 @@ namespace DoAnXNA2
             Health_Bar_1_1 = content.Load<Texture2D>("Health_Bar_1_1");
             Health_Bar_1_2 = content.Load<Texture2D>("Health_Bar_1_2");
             Health_Bar_1_3 = content.Load<Texture2D>("Health_Bar_1_3");
+            Health_Bar_2_1 = content.Load<Texture2D>("Health_Bar_2_1");
+            Health_Bar_2_2 = content.Load<Texture2D>("Health_Bar_2_2");
+            Health_Bar_2_3 = content.Load<Texture2D>("Health_Bar_2_3");
             Loading_Bar_1_1 = content.Load<Texture2D>("Loading_Bar_1_1");
             Loading_Bar_1_2 = content.Load<Texture2D>("Loading_Bar_1_2");
             Loading_Bar_1_3 = content.Load<Texture2D>("Loading_Bar_1_3");
@@ -195,7 +203,9 @@ namespace DoAnXNA2
             Loading_Bar_3_1 = content.Load<Texture2D>("Loading_Bar_3_1");
             Loading_Bar_3_2 = content.Load<Texture2D>("Loading_Bar_3_2");
             Loading_Bar_3_3 = content.Load<Texture2D>("Loading_Bar_3_3");
-            Loading_Bar_Table = content.Load<Texture2D>("Loading_Bar_Table");
+            Bar_Table_1_1 = content.Load<Texture2D>("Bar_Table_1_1");
+            Bar_Table_1_2 = content.Load<Texture2D>("Bar_Table_1_2");
+            Bar_Table_1_3 = content.Load<Texture2D>("Bar_Table_1_3");
             Cursor = content.Load<Texture2D>("Cursor");
             TitleGame = content.Load<Texture2D>("Title Game");
             WindowSquare = content.Load<Texture2D>("WindowSquare");

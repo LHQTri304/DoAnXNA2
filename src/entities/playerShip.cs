@@ -26,6 +26,10 @@ namespace DoAnXNA2
         public void ReloadTexture()
         {
             Texture = Textures.Player;
+            HealthBar = new HealthBar( //Trong đây có Texture của HealthBar
+                2, new Vector2(MainRes.ScreenWidth / 6, 45),
+                HP, MainRes.ScreenWidth / 3 - 10
+            );
         }
 
         public void ResetStats()
@@ -43,6 +47,7 @@ namespace DoAnXNA2
         public void TakeDamage(int damage)
         {
             HP -= damage;
+            HealthBar.SetHP(HP);
             if (HP <= 0)
             {
                 HP = 0;
@@ -75,11 +80,13 @@ namespace DoAnXNA2
 
             // Xử lý va chạm
             CheckCollisions();
+            HealthBar.Update(gameTime, HP, 1f);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             SimplifyDrawing.HandleCentered(spriteBatch, Texture, Position);
+            HealthBar.Draw(spriteBatch);
         }
     }
 }

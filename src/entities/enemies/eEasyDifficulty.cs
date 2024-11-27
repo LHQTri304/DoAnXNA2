@@ -9,7 +9,7 @@ namespace DoAnXNA2
             : base(
                 Textures.EnemyYellow, position,
                 ScoreTable.TenPoints,
-                [new TeleportMovement()],
+                [new StraightDownMovement(1.0f)],
                 [new StraightDoubleShot()]
             )
         { }
@@ -33,7 +33,7 @@ namespace DoAnXNA2
             : base(
                 Textures.EnemyGreen, position,
                 ScoreTable.TenPoints,
-                [new StraightDownMovement(1.0f)],
+                [new SpiralMovement()],
                 [new CircularRing10Shot()]
             )
         { }

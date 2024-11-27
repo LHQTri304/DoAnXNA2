@@ -923,6 +923,234 @@
 /processorParam:TextureFormat=Color
 /build:SpriteStuff/Asteroid.png;Asteroid.png
 
+#begin SpriteStuff/Bars/BarTable/Bar_Table_1_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Bars/BarTable/Bar_Table_1_1.png;Bar_Table_1_1.png
+
+#begin SpriteStuff/Bars/BarTable/Bar_Table_1_2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Bars/BarTable/Bar_Table_1_2.png;Bar_Table_1_2.png
+
+#begin SpriteStuff/Bars/BarTable/Bar_Table_1_3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Bars/BarTable/Bar_Table_1_3.png;Bar_Table_1_3.png
+
+#begin SpriteStuff/Bars/BarTable/Bar_Table_full_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Bars/BarTable/Bar_Table_full_1.png;Bar_Table_full_1.png
+
+#begin SpriteStuff/Bars/HealthBar/Health_Bar_1_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Bars/HealthBar/Health_Bar_1_1.png;Health_Bar_1_1.png
+
+#begin SpriteStuff/Bars/HealthBar/Health_Bar_1_2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Bars/HealthBar/Health_Bar_1_2.png;Health_Bar_1_2.png
+
+#begin SpriteStuff/Bars/HealthBar/Health_Bar_1_3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Bars/HealthBar/Health_Bar_1_3.png;Health_Bar_1_3.png
+
+#begin SpriteStuff/Bars/HealthBar/Health_Bar_2_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Bars/HealthBar/Health_Bar_2_1.png;Health_Bar_2_1.png
+
+#begin SpriteStuff/Bars/HealthBar/Health_Bar_2_2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Bars/HealthBar/Health_Bar_2_2.png;Health_Bar_2_2.png
+
+#begin SpriteStuff/Bars/HealthBar/Health_Bar_2_3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Bars/HealthBar/Health_Bar_2_3.png;Health_Bar_2_3.png
+
+#begin SpriteStuff/Bars/LoadingBar/Loading_Bar_1_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Bars/LoadingBar/Loading_Bar_1_1.png;Loading_Bar_1_1.png
+
+#begin SpriteStuff/Bars/LoadingBar/Loading_Bar_1_2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Bars/LoadingBar/Loading_Bar_1_2.png;Loading_Bar_1_2.png
+
+#begin SpriteStuff/Bars/LoadingBar/Loading_Bar_1_3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Bars/LoadingBar/Loading_Bar_1_3.png;Loading_Bar_1_3.png
+
+#begin SpriteStuff/Bars/LoadingBar/Loading_Bar_2_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Bars/LoadingBar/Loading_Bar_2_1.png;Loading_Bar_2_1.png
+
+#begin SpriteStuff/Bars/LoadingBar/Loading_Bar_2_2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Bars/LoadingBar/Loading_Bar_2_2.png;Loading_Bar_2_2.png
+
+#begin SpriteStuff/Bars/LoadingBar/Loading_Bar_2_3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Bars/LoadingBar/Loading_Bar_2_3.png;Loading_Bar_2_3.png
+
+#begin SpriteStuff/Bars/LoadingBar/Loading_Bar_3_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Bars/LoadingBar/Loading_Bar_3_1.png;Loading_Bar_3_1.png
+
+#begin SpriteStuff/Bars/LoadingBar/Loading_Bar_3_2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Bars/LoadingBar/Loading_Bar_3_2.png;Loading_Bar_3_2.png
+
+#begin SpriteStuff/Bars/LoadingBar/Loading_Bar_3_3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SpriteStuff/Bars/LoadingBar/Loading_Bar_3_3.png;Loading_Bar_3_3.png
+
 #begin SpriteStuff/Buttons/BTNs_Active/Backward_BTN_Active.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1966,162 +2194,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:SpriteStuff/GUI Kit/WindowSquare.png;WindowSquare.png
-
-#begin SpriteStuff/LoadingBar/Health_Bar_1_1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:SpriteStuff/LoadingBar/Health_Bar_1_1.png;Health_Bar_1_1.png
-
-#begin SpriteStuff/LoadingBar/Health_Bar_1_2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:SpriteStuff/LoadingBar/Health_Bar_1_2.png;Health_Bar_1_2.png
-
-#begin SpriteStuff/LoadingBar/Health_Bar_1_3.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:SpriteStuff/LoadingBar/Health_Bar_1_3.png;Health_Bar_1_3.png
-
-#begin SpriteStuff/LoadingBar/Loading_Bar_1_1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:SpriteStuff/LoadingBar/Loading_Bar_1_1.png;Loading_Bar_1_1.png
-
-#begin SpriteStuff/LoadingBar/Loading_Bar_1_2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:SpriteStuff/LoadingBar/Loading_Bar_1_2.png;Loading_Bar_1_2.png
-
-#begin SpriteStuff/LoadingBar/Loading_Bar_1_3.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:SpriteStuff/LoadingBar/Loading_Bar_1_3.png;Loading_Bar_1_3.png
-
-#begin SpriteStuff/LoadingBar/Loading_Bar_2_1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:SpriteStuff/LoadingBar/Loading_Bar_2_1.png;Loading_Bar_2_1.png
-
-#begin SpriteStuff/LoadingBar/Loading_Bar_2_2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:SpriteStuff/LoadingBar/Loading_Bar_2_2.png;Loading_Bar_2_2.png
-
-#begin SpriteStuff/LoadingBar/Loading_Bar_2_3.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:SpriteStuff/LoadingBar/Loading_Bar_2_3.png;Loading_Bar_2_3.png
-
-#begin SpriteStuff/LoadingBar/Loading_Bar_3_1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:SpriteStuff/LoadingBar/Loading_Bar_3_1.png;Loading_Bar_3_1.png
-
-#begin SpriteStuff/LoadingBar/Loading_Bar_3_2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:SpriteStuff/LoadingBar/Loading_Bar_3_2.png;Loading_Bar_3_2.png
-
-#begin SpriteStuff/LoadingBar/Loading_Bar_3_3.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:SpriteStuff/LoadingBar/Loading_Bar_3_3.png;Loading_Bar_3_3.png
-
-#begin SpriteStuff/LoadingBar/Loading_Bar_Table.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:SpriteStuff/LoadingBar/Loading_Bar_Table.png;Loading_Bar_Table.png
 
 #begin SpriteStuff/Mini Galaxy.png
 /importer:TextureImporter

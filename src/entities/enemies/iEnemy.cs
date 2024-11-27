@@ -31,7 +31,7 @@ namespace DoAnXNA2
                 3 => HPStatsManager.EHardHP,
                 _ => 1
             };
-            HealthBar = new HealthBar(position, HP, texture.Width / 2, 0.5f);
+            HealthBar = new HealthBar(1, position, HP, texture.Width / 3, 0.2f);
             Texture = texture;
             Position = position;
             ScoreKilled = scoreKilled;

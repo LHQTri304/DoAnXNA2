@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
 
@@ -26,6 +27,7 @@ namespace DoAnXNA2
         public static Cursor Cursor { get; set; }
         public static List<I_HUD> GameHUD { get; set; } = [];
         public static SpriteFont Font { get; set; }
+        public static List<Vector2> CommonPotion = [];
 
         // Level system
         public static int CurrentScore { get; set; }
@@ -54,11 +56,17 @@ namespace DoAnXNA2
                 {
                     // Tạo đối tượng spawner từ lớp tìm được
                     var spawnerInstance = (EnemySpawner)Activator.CreateInstance(spawnerType);
-                    MainRes.AllSpawners.Add(eName, spawnerInstance);
+                    AllSpawners.Add(eName, spawnerInstance);
                 }
                 else
                     Console.WriteLine($"Lớp {className} không tồn tại.");
             }
+
+            CommonPotion = [new Vector2(ScreenWidth / 2, ScreenHeight / 2), //Center
+                new Vector2(0, 0),                                          //TopLeft
+                new Vector2(ScreenWidth, 0),                                //BottomLeft
+                new Vector2(0, ScreenHeight),                               //TopRight
+                new Vector2(ScreenWidth, ScreenHeight)];                    //BottomRight
         }
         public static void ResetData()
         {
